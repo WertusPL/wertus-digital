@@ -601,14 +601,9 @@
             </div>
           </div>
 
-          <!--
-            UWAGA: Formularz jest na tym etapie wyłącznie frontendowy — nie wysyła wiadomości.
-            Aby realnie wysyłał e-maile, należy później podpiąć backend, np.:
-            - Formspree: ustaw action="https://formspree.io/f/TWOJ_ID" i method="post",
-            - Netlify Forms: dodaj atrybut data-netlify="true" (przy hostingu na Netlify),
-            - własny backend / PHP: ustaw action na endpoint obsługujący wysyłkę.
-          -->
-          <form class="contact-form reveal" id="contact-form" novalidate>
+          <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xnjkkjbd" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Wertus Digital">
+            <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
             <h3 class="form-title">Napisz do mnie</h3>
             <div class="form-field">
               <label for="form-name">Imię</label>

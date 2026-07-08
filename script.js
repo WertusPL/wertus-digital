@@ -144,7 +144,7 @@
     });
   }
 
-  /* ---------- 6. Formularz kontaktowy (frontend) ---------- */
+  /* ---------- 6. Formularz kontaktowy (Formspree) ---------- */
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 
@@ -181,10 +181,39 @@
         return;
       }
 
-      // Tu docelowo nastąpi realna wysyłka: backend / Formspree / Netlify Forms
-      form.reset();
-      formStatus.textContent = "Dziękuję za wiadomość! Odezwę się najszybciej, jak to możliwe.";
-      formStatus.className = "form-status success";
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      formStatus.textContent = "Wysyłanie wiadomości…";
+      formStatus.className = "form-status";
+
+      fetch(form.action, {
+        method: form.method || "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.reset();
+            formStatus.textContent = "Dziękuję za wiadomość! Odezwę się najszybciej, jak to możliwe.";
+            formStatus.className = "form-status success";
+          } else {
+            formStatus.textContent = "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na wertusdigital@gmail.com.";
+            formStatus.className = "form-status error";
+          }
+        })
+        .catch(function () {
+          formStatus.textContent = "Brak połączenia. Spróbuj ponownie lub napisz na wertusdigital@gmail.com.";
+          formStatus.className = "form-status error";
+        })
+        .finally(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
+        });
     });
 
     form.addEventListener("input", function (event) {

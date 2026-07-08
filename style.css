@@ -1442,6 +1442,10 @@ button {
   box-shadow: 0 0 0 4px rgba(224, 67, 60, 0.1);
 }
 
+.hidden-field {
+  display: none;
+}
+
 .form-status {
   margin-top: 1rem;
   font-size: 0.92rem;
