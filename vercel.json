@@ -4,6 +4,17 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/en.html",
+      "destination": "/en",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/en",
+      "destination": "/en.html"
     }
   ]
 }
