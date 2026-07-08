@@ -6,6 +6,27 @@
 (function () {
   "use strict";
 
+  /* ---------- Teksty interfejsu zależne od języka strony ---------- */
+  const isEnglish = document.documentElement.lang === "en";
+
+  const t = isEnglish
+    ? {
+        openMenu: "Open menu",
+        closeMenu: "Close menu",
+        formValidation: "Please fill in all form fields correctly.",
+        formSending: "Sending…",
+        formSuccess: "Thank you for your message! We will get back to you as soon as possible.",
+        formError: "Your message could not be sent. Please try again or contact us directly at wertusdigital@gmail.com."
+      }
+    : {
+        openMenu: "Otwórz menu",
+        closeMenu: "Zamknij menu",
+        formValidation: "Uzupełnij poprawnie wszystkie pola formularza.",
+        formSending: "Wysyłanie wiadomości…",
+        formSuccess: "Dziękuję za wiadomość! Odezwę się najszybciej, jak to możliwe.",
+        formError: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na wertusdigital@gmail.com."
+      };
+
   /* ---------- 1. Sticky header — cień po przewinięciu ---------- */
   const header = document.querySelector(".site-header");
 
@@ -27,14 +48,14 @@
 
     siteNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", "Otwórz menu");
+    navToggle.setAttribute("aria-label", t.openMenu);
   }
 
   if (navToggle && siteNav) {
     navToggle.addEventListener("click", function () {
       const isOpen = siteNav.classList.toggle("open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
-      navToggle.setAttribute("aria-label", isOpen ? "Zamknij menu" : "Otwórz menu");
+      navToggle.setAttribute("aria-label", isOpen ? t.closeMenu : t.openMenu);
     });
 
     siteNav.addEventListener("click", function (event) {
@@ -176,7 +197,7 @@
       });
 
       if (!valid) {
-        formStatus.textContent = "Uzupełnij poprawnie wszystkie pola formularza.";
+        formStatus.textContent = t.formValidation;
         formStatus.className = "form-status error";
         return;
       }
@@ -187,7 +208,7 @@
         submitButton.disabled = true;
       }
 
-      formStatus.textContent = "Wysyłanie wiadomości…";
+      formStatus.textContent = t.formSending;
       formStatus.className = "form-status";
 
       fetch(form.action, {
@@ -198,15 +219,15 @@
         .then(function (response) {
           if (response.ok) {
             form.reset();
-            formStatus.textContent = "Dziękuję za wiadomość! Odezwę się najszybciej, jak to możliwe.";
+            formStatus.textContent = t.formSuccess;
             formStatus.className = "form-status success";
           } else {
-            formStatus.textContent = "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na wertusdigital@gmail.com.";
+            formStatus.textContent = t.formError;
             formStatus.className = "form-status error";
           }
         })
         .catch(function () {
-          formStatus.textContent = "Brak połączenia. Spróbuj ponownie lub napisz na wertusdigital@gmail.com.";
+          formStatus.textContent = t.formError;
           formStatus.className = "form-status error";
         })
         .finally(function () {
