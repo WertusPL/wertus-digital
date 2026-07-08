@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wertusdigital.pl/sitemap.xml
+
+# deployment refresh
