@@ -235,7 +235,7 @@ button {
 }
 
 .brand-logo {
-  height: 72px;
+  height: 46px;
   width: auto;
 }
 
@@ -289,6 +289,36 @@ button {
   font-size: 0.92rem;
 }
 
+/* Przełącznik języka PL | EN */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.lang-link {
+  color: var(--color-ink-soft);
+  padding: 0.2rem 0.15rem;
+  transition: color 0.2s ease;
+}
+
+.lang-link:hover,
+.lang-link:focus-visible {
+  color: var(--color-ink);
+}
+
+.lang-link.active {
+  color: var(--color-accent);
+}
+
+.lang-sep {
+  color: var(--color-border);
+  user-select: none;
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -333,10 +363,17 @@ button {
 .hero {
   padding: calc(var(--header-height) + clamp(3rem, 7vw, 5.5rem)) 0 clamp(3.5rem, 7vw, 5.5rem);
   background:
-    radial-gradient(ellipse 55% 60% at 85% 12%, rgba(6, 85, 254, 0.07), transparent 65%),
-    radial-gradient(ellipse 45% 50% at 8% 90%, rgba(6, 85, 254, 0.05), transparent 60%),
-    var(--color-bg);
+    radial-gradient(ellipse 60% 55% at 85% 10%, rgba(6, 85, 254, 0.22), transparent 62%),
+    radial-gradient(ellipse 50% 60% at 5% 95%, rgba(6, 85, 254, 0.1), transparent 60%),
+    linear-gradient(160deg, #0b1220 0%, #0e1a33 55%, #12234a 100%);
   overflow: hidden;
+}
+
+.hero .eyebrow,
+.portfolio .eyebrow {
+  background: rgba(6, 85, 254, 0.18);
+  color: #8fb0ff;
+  border: 1px solid rgba(109, 148, 255, 0.28);
 }
 
 .hero-grid {
@@ -352,11 +389,12 @@ button {
   font-weight: 800;
   letter-spacing: -0.025em;
   margin-bottom: 1.35rem;
+  color: #fff;
 }
 
 .hero-lead {
   font-size: 1.12rem;
-  color: var(--color-ink-soft);
+  color: rgba(199, 210, 232, 0.92);
   max-width: 34rem;
   margin-bottom: 2rem;
 }
@@ -380,13 +418,13 @@ button {
   gap: 0.5rem;
   font-size: 0.92rem;
   font-weight: 600;
-  color: var(--color-ink-soft);
+  color: rgba(199, 210, 232, 0.85);
 }
 
 .hero-trust .icon {
   width: 1.1em;
   height: 1.1em;
-  color: var(--color-accent);
+  color: #5b8cff;
 }
 
 /* ---------- Mockup przeglądarki (czysty CSS) ---------- */
@@ -782,20 +820,39 @@ button {
 }
 
 /* ============================================================
-   REALIZACJE — miniatury w czystym CSS
+   REALIZACJE — miniatury w czystym CSS (sekcja ciemna, premium)
    ============================================================ */
+.portfolio {
+  background:
+    radial-gradient(ellipse 55% 50% at 88% 0%, rgba(6, 85, 254, 0.18), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #101d3a 100%);
+}
+
+.portfolio .section-title {
+  color: #fff;
+}
+
+.portfolio .section-lead {
+  color: rgba(185, 197, 220, 0.85);
+}
+
+.portfolio .section-note {
+  color: rgba(185, 197, 220, 0.6);
+}
+
 .work-card {
-  background: #fff;
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
 }
 
 .work-card:hover {
   transform: translateY(-7px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
+  border-color: rgba(109, 148, 255, 0.4);
 }
 
 .work-thumb {
@@ -933,11 +990,12 @@ button {
   font-size: 1.12rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  color: #fff;
 }
 
 .work-desc {
   font-size: 0.92rem;
-  color: var(--color-ink-soft);
+  color: rgba(185, 197, 220, 0.8);
 }
 
 .work-tag {
@@ -948,8 +1006,8 @@ button {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  background: var(--color-accent-light);
+  color: #8fb0ff;
+  background: rgba(6, 85, 254, 0.22);
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
 }
@@ -1377,35 +1435,34 @@ button {
    FOOTER
    ============================================================ */
 .site-footer {
-  background: var(--color-footer);
+  background:
+    radial-gradient(ellipse 50% 45% at 85% 0%, rgba(6, 85, 254, 0.1), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #070c16 100%);
   color: #b9c1d1;
-  padding: 4rem 0 0;
+  padding: 4.5rem 0 0;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 2.5rem;
-  padding-bottom: 3rem;
+  padding-bottom: 3.25rem;
 }
 
 .footer-logo-wrap {
   display: inline-block;
-  background: #fff;
-  border-radius: var(--radius-md);
-  padding: 0.4rem;
-  margin-bottom: 1.25rem;
-  transition: transform 0.25s ease;
+  margin-bottom: 1.4rem;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .footer-logo-wrap:hover {
   transform: translateY(-3px);
+  opacity: 0.9;
 }
 
 .footer-logo {
-  height: 84px;
+  height: 72px;
   width: auto;
-  border-radius: 10px;
 }
 
 .footer-desc {
@@ -1565,7 +1622,7 @@ button {
   }
 
   .brand-logo {
-    height: 60px;
+    height: 40px;
   }
 
   /* Menu mobilne */
@@ -1620,6 +1677,12 @@ button {
     margin-top: 1rem;
     justify-content: center;
     padding: 0.85rem 1.25rem;
+  }
+
+  .lang-switch {
+    justify-content: center;
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
   }
 
   /* Sekcje */
