@@ -1766,11 +1766,69 @@ button {
   color: var(--gray, #475569);
 }
 
+.seo-points {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.seo-point {
+  padding: 22px 20px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 16px);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.seo-point:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(6, 85, 254, 0.25);
+}
+
+.seo-point-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  margin-bottom: 0.85rem;
+}
+
+.seo-point-icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.seo-point .seo-point-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 0.35rem;
+}
+
+.seo-point .seo-point-text {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
 .seo-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 32px;
+}
+
+@media (max-width: 992px) {
+  .seo-points {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -1785,5 +1843,11 @@ button {
 
   .seo-actions .btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-points {
+    grid-template-columns: 1fr;
   }
 }
