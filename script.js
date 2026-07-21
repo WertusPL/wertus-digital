@@ -252,7 +252,22 @@
      2. Dodaj wpis poniżej (klucz = nazwa folderu) z listą plików i opisami alt
      3. W index.html i en.html dodaj kartę .work-card-link z przyciskiem
         <button class="work-card-trigger" data-gallery="<nazwa-projektu>">
-     Galeria nie zmienia adresu URL — działa wyłącznie na stanie JS. */
+        (gotowy szablon karty znajduje się w komentarzu w sekcji portfolio)
+     Galeria nie zmienia adresu URL — działa wyłącznie na stanie JS.
+
+     Prawdziwe realizacje (case studies): każdy wpis może dodatkowo zawierać
+     pola opisujące projekt dla klienta — na razie nieużywane w UI, ale
+     przygotowane pod przyszłą rozbudowę portfolio:
+       caseStudy: {
+         client:  "Nazwa firmy",
+         industry:{ pl: "Branża", en: "Industry" },
+         problem: { pl: "Krótki opis problemu klienta", en: "..." },
+         scope:   { pl: "Zakres realizacji", en: "..." },
+         result:  { pl: "Efekt wdrożenia", en: "..." },
+         testimonial: { text: "Prawdziwa opinia klienta", author: "Imię, firma" },
+         url:     "https://adres-strony-klienta.pl"
+       }
+     Uzupełniaj wyłącznie prawdziwymi danymi. */
   const PORTFOLIO_GALLERIES = {
     "miso-sushi": {
       title: "Miso Sushi",

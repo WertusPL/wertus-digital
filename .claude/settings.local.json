@@ -25,7 +25,8 @@
       "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if \\(-not \\(Test-Path $edge\\)\\) { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" }; \"=== open lex + 2x next + ArrowLeft ===\"; & $edge --headless --disable-gpu --virtual-time-budget=8000 --dump-dom \"http://localhost:8123/_test-lightbox.html?open=lex-finanse&next=2&arrow=ArrowLeft\" 2>$null | Select-String -Pattern \"REPORT\" -Context 0,20; \"=== open miso + Escape ===\"; & $edge --headless --disable-gpu --virtual-time-budget=8000 --dump-dom \"http://localhost:8123/_test-lightbox.html?open=miso-sushi&esc=1\" 2>$null | Select-String -Pattern \"REPORT\" -Context 0,20)",
       "Bash(kill %1)",
       "Bash(taskkill //F //IM python.exe)",
-      "PowerShell(Get-Item *)"
+      "PowerShell(Get-Item *)",
+      "Bash(python *)"
     ]
   }
 }
