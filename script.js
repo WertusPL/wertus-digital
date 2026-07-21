@@ -16,15 +16,17 @@
         formValidation: "Please fill in all form fields correctly.",
         formSending: "Sending…",
         formSuccess: "Thank you for your message! We will get back to you as soon as possible.",
-        formError: "Your message could not be sent. Please try again or contact us directly at wertusdigital@gmail.com."
+        formError: "Your message could not be sent. Please try again or contact us directly at wertusdigital@gmail.com.",
+        galleryLabel: "Project gallery"
       }
     : {
         openMenu: "Otwórz menu",
         closeMenu: "Zamknij menu",
         formValidation: "Uzupełnij poprawnie wszystkie pola formularza.",
         formSending: "Wysyłanie wiadomości…",
-        formSuccess: "Dziękuję za wiadomość! Odezwę się najszybciej, jak to możliwe.",
-        formError: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na wertusdigital@gmail.com."
+        formSuccess: "Dziękujemy za wiadomość! Odezwiemy się najszybciej, jak to możliwe.",
+        formError: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na wertusdigital@gmail.com.",
+        galleryLabel: "Galeria projektu"
       };
 
   /* ---------- 1. Sticky header — cień po przewinięciu ---------- */
@@ -242,5 +244,192 @@
         event.target.classList.remove("field-error");
       }
     });
+  }
+
+  /* ---------- 7. Galeria realizacji (lightbox) ----------
+     Konfiguracja obrazów portfolio. Aby dodać nową realizację:
+     1. Wgraj screenshoty do assets/portfolio/<nazwa-projektu>/
+     2. Dodaj wpis poniżej (klucz = nazwa folderu) z listą plików i opisami alt
+     3. W index.html i en.html dodaj kartę .work-card-link z przyciskiem
+        <button class="work-card-trigger" data-gallery="<nazwa-projektu>">
+     Galeria nie zmienia adresu URL — działa wyłącznie na stanie JS. */
+  const PORTFOLIO_GALLERIES = {
+    "miso-sushi": {
+      title: "Miso Sushi",
+      path: "assets/portfolio/miso-sushi/",
+      images: [
+        { file: "01_hero_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – strona główna", en: "Miso Sushi website design – homepage" } },
+        { file: "02_menu_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja menu restauracji", en: "Miso Sushi website design – restaurant menu section" } },
+        { file: "03_gallery_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – galeria zdjęć restauracji", en: "Miso Sushi website design – restaurant photo gallery" } },
+        { file: "04_cta_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja o restauracji", en: "Miso Sushi website design – about the restaurant section" } }
+      ]
+    },
+    "lex-finanse": {
+      title: "Lex Finanse",
+      path: "assets/portfolio/lex-finanse/",
+      images: [
+        { file: "lex-01.png", alt: { pl: "Projekt strony internetowej Lex Finanse – strona główna", en: "Lex Finanse website design – homepage" } },
+        { file: "lex-02.png", alt: { pl: "Projekt strony Lex Finanse – sekcja usług", en: "Lex Finanse website design – services section" } },
+        { file: "lex-03.png", alt: { pl: "Projekt strony Lex Finanse – sekcja Dlaczego my", en: "Lex Finanse website design – Why us section" } },
+        { file: "lex-04.png", alt: { pl: "Projekt strony Lex Finanse – opinie klientów", en: "Lex Finanse website design – client testimonials" } },
+        { file: "lex-05.png", alt: { pl: "Projekt strony Lex Finanse – sekcja FAQ", en: "Lex Finanse website design – FAQ section" } },
+        { file: "lex-06.png", alt: { pl: "Projekt strony Lex Finanse – sekcja kontaktu", en: "Lex Finanse website design – contact section" } }
+      ]
+    }
+  };
+
+  const lightbox = document.getElementById("lightbox");
+
+  if (lightbox) {
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxCounter = document.getElementById("lightbox-counter");
+    const closeButton = lightbox.querySelector(".lightbox-close");
+    const prevButton = lightbox.querySelector(".lightbox-prev");
+    const nextButton = lightbox.querySelector(".lightbox-next");
+
+    let activeGallery = null;
+    let activeIndex = 0;
+    let lastFocusedElement = null;
+    let touchStartX = null;
+
+    function imageSrc(gallery, index) {
+      return gallery.path + gallery.images[index].file;
+    }
+
+    function preloadImage(gallery, index) {
+      if (index < 0 || index >= gallery.images.length) return;
+      const img = new Image();
+      img.src = imageSrc(gallery, index);
+    }
+
+    function renderImage() {
+      const image = activeGallery.images[activeIndex];
+
+      lightboxImage.src = imageSrc(activeGallery, activeIndex);
+      lightboxImage.alt = isEnglish ? image.alt.en : image.alt.pl;
+      lightboxCounter.textContent = (activeIndex + 1) + " / " + activeGallery.images.length;
+
+      // Sąsiednie zdjęcia ładują się w tle — szybkie przełączanie strzałkami
+      preloadImage(activeGallery, activeIndex + 1);
+      preloadImage(activeGallery, activeIndex - 1);
+    }
+
+    /* Blokada scrolla bez "skakania" layoutu — rekompensata szerokości
+       paska przewijania na body i przyklejonym headerze */
+    function lockScroll() {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+      document.body.style.overflow = "hidden";
+
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = scrollbarWidth + "px";
+        if (header) header.style.paddingRight = scrollbarWidth + "px";
+      }
+    }
+
+    function unlockScroll() {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+      if (header) header.style.paddingRight = "";
+    }
+
+    function openLightbox(galleryKey, trigger) {
+      const gallery = PORTFOLIO_GALLERIES[galleryKey];
+
+      if (!gallery) return;
+
+      activeGallery = gallery;
+      activeIndex = 0;
+      lastFocusedElement = trigger || document.activeElement;
+
+      lightbox.setAttribute("aria-label", t.galleryLabel + " " + gallery.title);
+      lightboxTitle.textContent = gallery.title;
+      renderImage();
+
+      lightbox.hidden = false;
+      lockScroll();
+      closeButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      activeGallery = null;
+      unlockScroll();
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
+    }
+
+    function showImage(step) {
+      if (!activeGallery) return;
+
+      const count = activeGallery.images.length;
+      activeIndex = (activeIndex + step + count) % count;
+      renderImage();
+    }
+
+    document.querySelectorAll(".work-card-trigger[data-gallery]").forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openLightbox(trigger.getAttribute("data-gallery"), trigger);
+      });
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+    prevButton.addEventListener("click", function () { showImage(-1); });
+    nextButton.addEventListener("click", function () { showImage(1); });
+
+    // Kliknięcie poza zdjęciem (tło lub pusta część sceny) zamyka galerię
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox || event.target.classList.contains("lightbox-stage")) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (lightbox.hidden) return;
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      } else if (event.key === "ArrowRight") {
+        showImage(1);
+      } else if (event.key === "ArrowLeft") {
+        showImage(-1);
+      } else if (event.key === "Tab") {
+        // Prosty focus trap — fokus krąży po przyciskach galerii
+        const focusable = [closeButton, prevButton, nextButton];
+        const currentIndex = focusable.indexOf(document.activeElement);
+        let nextIndex;
+
+        if (event.shiftKey) {
+          nextIndex = currentIndex <= 0 ? focusable.length - 1 : currentIndex - 1;
+        } else {
+          nextIndex = currentIndex === -1 || currentIndex === focusable.length - 1 ? 0 : currentIndex + 1;
+        }
+
+        event.preventDefault();
+        focusable[nextIndex].focus();
+      }
+    });
+
+    // Swipe na urządzeniach dotykowych
+    lightbox.addEventListener("touchstart", function (event) {
+      if (event.touches.length === 1) {
+        touchStartX = event.touches[0].clientX;
+      }
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", function (event) {
+      if (touchStartX === null) return;
+
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      touchStartX = null;
+
+      if (Math.abs(deltaX) > 45) {
+        showImage(deltaX < 0 ? 1 : -1);
+      }
+    }, { passive: true });
   }
 })();

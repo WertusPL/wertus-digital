@@ -12,7 +12,20 @@
       "PowerShell(Add-Type -AssemblyName System.Drawing; $src=[System.Drawing.Bitmap]::FromFile\\('F:\\\\wertus-digital\\\\_full-desktop.png'\\); \"size: $\\($src.Width\\)x$\\($src.Height\\)\"; function CropPart\\($src,$y,$h,$out\\){ $h=[Math]::Min\\($h,$src.Height-$y\\); $r=New-Object System.Drawing.Rectangle\\(0,$y,$src.Width,$h\\); $b=$src.Clone\\($r,$src.PixelFormat\\); $b.Save\\($out,[System.Drawing.Imaging.ImageFormat]::Png\\); $b.Dispose\\(\\) }; CropPart $src 0 1050 'F:\\\\wertus-digital\\\\_crop-hero.png'; CropPart $src 2500 1000 'F:\\\\wertus-digital\\\\_crop-mid.png'; CropPart $src \\($src.Height-950\\) 950 'F:\\\\wertus-digital\\\\_crop-footer.png'; $src.Dispose\\(\\))",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $src=[System.Drawing.Bitmap]::FromFile\\('F:\\\\wertus-digital\\\\_full-mobile.png'\\); \"size: $\\($src.Width\\)x$\\($src.Height\\)\"; function CropPart\\($src,$y,$h,$out\\){ $h=[Math]::Min\\($h,$src.Height-$y\\); $r=New-Object System.Drawing.Rectangle\\(0,$y,[Math]::Min\\(390,$src.Width\\),$h\\); $b=$src.Clone\\($r,$src.PixelFormat\\); $b.Save\\($out,[System.Drawing.Imaging.ImageFormat]::Png\\); $b.Dispose\\(\\) }; CropPart $src 0 900 'F:\\\\wertus-digital\\\\_crop-m-top.png'; CropPart $src \\($src.Height-900\\) 900 'F:\\\\wertus-digital\\\\_crop-m-footer.png'; $src.Dispose\\(\\))",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $src=[System.Drawing.Bitmap]::FromFile\\('F:\\\\wertus-digital\\\\_full-mobile.png'\\); $bottom=0; for\\($y=$src.Height-1;$y -ge 0;$y-=5\\){ $found=$false; foreach\\($x in 20,100,200,300,380\\){ $p=$src.GetPixel\\($x,$y\\); if\\($p.R -lt 240 -or $p.G -lt 240 -or $p.B -lt 240\\){ $found=$true; break } }; if\\($found\\){ $bottom=$y; break } }; \"content bottom: $bottom\"; $y0=[Math]::Max\\(0,$bottom-1000\\); $r=New-Object System.Drawing.Rectangle\\(0,$y0,390,\\($bottom-$y0+10\\)\\); $b=$src.Clone\\($r,$src.PixelFormat\\); $b.Save\\('F:\\\\wertus-digital\\\\_crop-m-footer.png',[System.Drawing.Imaging.ImageFormat]::Png\\); $b.Dispose\\(\\); $src.Dispose\\(\\); 'ok')",
-      "PowerShell(CropTo *)"
+      "PowerShell(CropTo *)",
+      "Bash(node --check script.js)",
+      "Bash(python -m http.server 8123)",
+      "Bash(curl -s -o /dev/null -w \"index: %{http_code}\\\\n\" http://localhost:8123/index.html)",
+      "Bash(curl -s -o /dev/null -w \"en: %{http_code}\\\\n\" http://localhost:8123/en.html)",
+      "Bash(curl -s -o /dev/null -w \"lex-01: %{http_code}\\\\n\" http://localhost:8123/assets/portfolio/lex-finanse/lex-01.png)",
+      "Bash(curl -s -o /dev/null -w \"miso-01: %{http_code}\\\\n\" \"http://localhost:8123/assets/portfolio/miso-sushi/01_hero_1080x1350.png\")",
+      "PowerShell(New-Item *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Out-File *)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if \\(-not \\(Test-Path $edge\\)\\) { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" }; \"=== open lex + 2x next + ArrowLeft ===\"; & $edge --headless --disable-gpu --virtual-time-budget=8000 --dump-dom \"http://localhost:8123/_test-lightbox.html?open=lex-finanse&next=2&arrow=ArrowLeft\" 2>$null | Select-String -Pattern \"REPORT\" -Context 0,20; \"=== open miso + Escape ===\"; & $edge --headless --disable-gpu --virtual-time-budget=8000 --dump-dom \"http://localhost:8123/_test-lightbox.html?open=miso-sushi&esc=1\" 2>$null | Select-String -Pattern \"REPORT\" -Context 0,20)",
+      "Bash(kill %1)",
+      "Bash(taskkill //F //IM python.exe)",
+      "PowerShell(Get-Item *)"
     ]
   }
 }
