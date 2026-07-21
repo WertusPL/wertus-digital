@@ -258,10 +258,10 @@
       title: "Miso Sushi",
       path: "assets/portfolio/miso-sushi/",
       images: [
-        { file: "01_hero_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – strona główna", en: "Miso Sushi website design – homepage" } },
-        { file: "02_menu_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja menu restauracji", en: "Miso Sushi website design – restaurant menu section" } },
-        { file: "03_gallery_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – galeria zdjęć restauracji", en: "Miso Sushi website design – restaurant photo gallery" } },
-        { file: "04_cta_1080x1350.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja o restauracji", en: "Miso Sushi website design – about the restaurant section" } }
+        { file: "miso-01.png", alt: { pl: "Projekt strony internetowej Miso Sushi – strona główna", en: "Miso Sushi website design – homepage" } },
+        { file: "miso-02.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja menu restauracji", en: "Miso Sushi website design – restaurant menu section" } },
+        { file: "miso-03.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja o restauracji i galeria", en: "Miso Sushi website design – about section and photo gallery" } },
+        { file: "miso-04.png", alt: { pl: "Projekt strony internetowej Miso Sushi – opinie gości i sekcja rezerwacji", en: "Miso Sushi website design – guest reviews and booking section" } }
       ]
     },
     "lex-finanse": {
