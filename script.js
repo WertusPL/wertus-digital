@@ -318,9 +318,14 @@
       img.src = imageSrc(gallery, index);
     }
 
+    function resetZoom() {
+      lightbox.classList.remove("zoomed");
+    }
+
     function renderImage() {
       const image = activeGallery.images[activeIndex];
 
+      resetZoom();
       lightboxImage.src = imageSrc(activeGallery, activeIndex);
       lightboxImage.alt = isEnglish ? image.alt.en : image.alt.pl;
       lightboxCounter.textContent = (activeIndex + 1) + " / " + activeGallery.images.length;
@@ -370,6 +375,7 @@
     function closeLightbox() {
       lightbox.hidden = true;
       activeGallery = null;
+      resetZoom();
       unlockScroll();
 
       if (lastFocusedElement) {
@@ -429,7 +435,17 @@
       }
     });
 
-    // Swipe na urządzeniach dotykowych
+    // Zoom na małych ekranach — dotknięcie zdjęcia przybliża / oddala
+    const zoomQuery = window.matchMedia("(max-width: 768px)");
+
+    lightboxImage.addEventListener("click", function () {
+      if (zoomQuery.matches) {
+        lightbox.classList.toggle("zoomed");
+      }
+    });
+
+    // Swipe na urządzeniach dotykowych (wyłączony podczas zoomu,
+    // bo przesuwanie palcem służy wtedy do przewijania zdjęcia)
     lightbox.addEventListener("touchstart", function (event) {
       if (event.touches.length === 1) {
         touchStartX = event.touches[0].clientX;
@@ -438,6 +454,10 @@
 
     lightbox.addEventListener("touchend", function (event) {
       if (touchStartX === null) return;
+      if (lightbox.classList.contains("zoomed")) {
+        touchStartX = null;
+        return;
+      }
 
       const deltaX = event.changedTouches[0].clientX - touchStartX;
       touchStartX = null;
