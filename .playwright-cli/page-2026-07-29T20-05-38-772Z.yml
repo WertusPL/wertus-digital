@@ -1,0 +1,193 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Wertus Digital — strona główna" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Wertus Digital" [ref=e5]
+      - navigation "Menu główne" [ref=e6]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Oferta" [ref=e9] [cursor=pointer]:
+              - /url: /oferta
+          - listitem [ref=e10]:
+            - link "Realizacje" [ref=e11] [cursor=pointer]:
+              - /url: /realizacje
+          - listitem [ref=e12]:
+            - link "O nas" [ref=e13] [cursor=pointer]:
+              - /url: /o-nas
+          - listitem [ref=e14]:
+            - link "Kontakt" [ref=e15] [cursor=pointer]:
+              - /url: /kontakt
+        - link "Bezpłatna wycena" [ref=e16] [cursor=pointer]:
+          - /url: /kontakt
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Studio projektowania stron
+        - heading "Strony internetowe, które budują profesjonalny wizerunek Twojej firmy" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Projektujemy i wdrażamy nowoczesne strony internetowe dla firm. Od pierwszego projektu po publikację i dalszą opiekę.
+        - generic [ref=e24]:
+          - link "Bezpłatna wycena" [ref=e25] [cursor=pointer]:
+            - /url: /kontakt
+          - link "Zobacz realizacje" [ref=e26] [cursor=pointer]:
+            - /url: /realizacje
+      - generic [ref=e27]:
+        - generic [ref=e28]: Projekt koncepcyjny — Miso Sushi
+        - img "Przykładowy projekt strony internetowej wykonany przez Wertus Digital — strona restauracji Miso Sushi" [ref=e33]
+    - region [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: Realizacje
+            - heading "Wybrane realizacje" [level=2] [ref=e39]
+            - paragraph [ref=e40]: Projekty koncepcyjne, na których pokazujemy nasze podejście do projektowania stron dla różnych branż.
+          - link "Zobacz wszystkie realizacje →" [ref=e41] [cursor=pointer]:
+            - /url: /realizacje
+        - generic [ref=e42]:
+          - article [ref=e43]:
+            - img "Projekt strony internetowej Lex Finanse — strona główna" [ref=e45]
+            - generic [ref=e46]:
+              - paragraph [ref=e47]: Doradztwo finansowe
+              - heading "Lex Finanse" [level=3] [ref=e48]
+              - paragraph [ref=e49]: Uporządkowany serwis, który jasno przedstawia ofertę finansową i prowadzi klienta do kontaktu.
+              - generic [ref=e50]:
+                - generic [ref=e51]: Projekt koncepcyjny
+                - link "Zobacz projekt Lex Finanse" [ref=e52] [cursor=pointer]:
+                  - /url: /realizacje/lex-finanse
+                  - text: Zobacz projekt
+          - article [ref=e53]:
+            - img "Projekt strony internetowej Miso Sushi — strona główna restauracji" [ref=e55]
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: Restauracja
+              - heading "Miso Sushi" [level=3] [ref=e58]
+              - paragraph [ref=e59]: Apetyczna prezentacja menu i klimatu lokalu z prostą drogą do rezerwacji i kontaktu.
+              - generic [ref=e60]:
+                - generic [ref=e61]: Projekt koncepcyjny
+                - link "Zobacz projekt Miso Sushi" [ref=e62] [cursor=pointer]:
+                  - /url: /realizacje/miso-sushi
+                  - text: Zobacz projekt
+          - article [ref=e63]:
+            - generic [ref=e81]:
+              - paragraph [ref=e82]: Motoryzacja / performance
+              - heading "Monaco Performance" [level=3] [ref=e83]
+              - paragraph [ref=e84]: Dynamiczny kierunek graficzny dla studia zajmującego się tuningiem i osiągami samochodów.
+              - generic [ref=e85]:
+                - generic [ref=e86]: Projekt koncepcyjny
+                - link "Zobacz projekt Monaco Performance" [ref=e87] [cursor=pointer]:
+                  - /url: /realizacje/monaco-performance
+                  - text: Zobacz projekt
+    - region [ref=e88]:
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - paragraph [ref=e91]: Oferta
+          - heading "Czym się zajmujemy" [level=2] [ref=e92]
+          - paragraph [ref=e93]: Projektujemy, kodujemy i uruchamiamy strony — a po publikacji pomagamy je rozwijać.
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - heading "Landing page" [level=3] [ref=e99]
+            - paragraph [ref=e100]: Jedna, konkretna strona pod usługę, produkt lub kampanię — skupiona na kontakcie i konwersji.
+          - generic [ref=e101]:
+            - heading "Strony firmowe" [level=3] [ref=e106]
+            - paragraph [ref=e107]: Wielostronicowa strona z ofertą, realizacjami i kontaktem — pełna prezentacja firmy w sieci.
+          - generic [ref=e108]:
+            - heading "Opieka i rozwój strony" [level=3] [ref=e113]
+            - paragraph [ref=e114]: Aktualizacje, drobne zmiany, pomoc techniczna i dalszy rozwój strony po jej uruchomieniu.
+        - link "Poznaj pełną ofertę" [ref=e116] [cursor=pointer]:
+          - /url: /oferta
+    - region [ref=e117]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: Współpraca
+          - heading "Jak wygląda współpraca" [level=2] [ref=e121]
+          - paragraph [ref=e122]: Prosty, uporządkowany proces — od pierwszej rozmowy do uruchomionej strony.
+        - list [ref=e123]:
+          - listitem [ref=e124]:
+            - generic [ref=e125]: "01"
+            - heading "Rozmowa" [level=3] [ref=e126]
+            - paragraph [ref=e127]: Poznajemy firmę, zakres projektu i oczekiwania.
+          - listitem [ref=e128]:
+            - generic [ref=e129]: "02"
+            - heading "Projekt" [level=3] [ref=e130]
+            - paragraph [ref=e131]: Przygotowujemy strukturę i wygląd strony.
+          - listitem [ref=e132]:
+            - generic [ref=e133]: "03"
+            - heading "Wdrożenie" [level=3] [ref=e134]
+            - paragraph [ref=e135]: Kodujemy stronę i dostosowujemy ją do urządzeń mobilnych.
+          - listitem [ref=e136]:
+            - generic [ref=e137]: "04"
+            - heading "Publikacja" [level=3] [ref=e138]
+            - paragraph [ref=e139]: Uruchamiamy stronę i pomagamy w dalszej obsłudze.
+    - region [ref=e140]:
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - paragraph [ref=e143]: Ceny
+          - heading "Orientacyjne ceny" [level=2] [ref=e144]
+          - paragraph [ref=e145]: Wiesz od początku, od jakiej kwoty zaczynamy rozmowę o projekcie.
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - paragraph [ref=e148]: Landing page
+            - paragraph [ref=e149]: od 1500 zł
+            - paragraph [ref=e150]: Jedna strona pod usługę, produkt lub kampanię.
+          - generic [ref=e151]:
+            - paragraph [ref=e152]: Strona firmowa
+            - paragraph [ref=e153]: od 3000 zł
+            - paragraph [ref=e154]: Wielostronicowa strona z pełną prezentacją oferty.
+          - generic [ref=e155]:
+            - paragraph [ref=e156]: Opieka nad stroną
+            - paragraph [ref=e157]: od 300 zł / mies.
+            - paragraph [ref=e158]: Aktualizacje, poprawki i rozwój po wdrożeniu.
+        - generic [ref=e159]:
+          - paragraph [ref=e160]: Końcowa cena zależy od zakresu i funkcjonalności projektu.
+          - link "Poproś o wycenę" [ref=e161] [cursor=pointer]:
+            - /url: /kontakt
+    - region [ref=e162]:
+      - generic [ref=e164]:
+        - heading "Wertus Digital" [level=2] [ref=e165]
+        - generic [ref=e166]:
+          - paragraph [ref=e167]: Tworzymy strony internetowe dla firm, które chcą prezentować swoją ofertę profesjonalnie i przejrzyście. Łączymy projekt, wdrożenie i techniczne uruchomienie strony w jednym procesie.
+          - link "Poznaj Wertus Digital" [ref=e168] [cursor=pointer]:
+            - /url: /o-nas
+    - generic [ref=e171]:
+      - heading "Masz pomysł na stronę?" [level=2] [ref=e172]
+      - paragraph [ref=e173]: Opisz krótko swoją firmę i to, czego potrzebujesz. Odpowiemy z propozycją zakresu i bezpłatną wyceną.
+      - link "Porozmawiajmy o projekcie" [ref=e174] [cursor=pointer]:
+        - /url: /kontakt
+  - contentinfo [ref=e175]:
+    - generic [ref=e176]:
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - link "Wertus Digital — strona główna" [ref=e179] [cursor=pointer]:
+            - /url: /
+            - img "Wertus Digital" [ref=e180]
+          - paragraph [ref=e181]: Wertus Digital projektuje i wdraża strony internetowe dla firm. Działamy z Białegostoku i współpracujemy zdalnie z klientami z całej Polski.
+        - navigation "Menu w stopce" [ref=e182]:
+          - heading "Na skróty" [level=3] [ref=e183]
+          - list [ref=e184]:
+            - listitem [ref=e185]:
+              - link "Oferta" [ref=e186] [cursor=pointer]:
+                - /url: /oferta
+            - listitem [ref=e187]:
+              - link "Realizacje" [ref=e188] [cursor=pointer]:
+                - /url: /realizacje
+            - listitem [ref=e189]:
+              - link "O nas" [ref=e190] [cursor=pointer]:
+                - /url: /o-nas
+            - listitem [ref=e191]:
+              - link "Kontakt" [ref=e192] [cursor=pointer]:
+                - /url: /kontakt
+        - generic [ref=e193]:
+          - heading "Kontakt" [level=3] [ref=e194]
+          - list [ref=e195]:
+            - listitem [ref=e196]:
+              - link "kontakt@wertusdigital.pl" [ref=e197] [cursor=pointer]:
+                - /url: mailto:kontakt@wertusdigital.pl
+            - listitem [ref=e198]:
+              - link "+48 516 950 801" [ref=e199] [cursor=pointer]:
+                - /url: tel:+48516950801
+            - listitem [ref=e200]:
+              - link "wertusdigital.pl" [ref=e201] [cursor=pointer]:
+                - /url: https://wertusdigital.pl
+      - generic [ref=e202]:
+        - paragraph [ref=e203]: © 2026 Wertus Digital. Wszelkie prawa zastrzeżone.
+        - link "Polityka prywatności" [ref=e204] [cursor=pointer]:
+          - /url: /polityka-prywatnosci

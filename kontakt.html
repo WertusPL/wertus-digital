@@ -43,10 +43,10 @@
   <main>
 
     <!-- ============ KONTAKT ============ -->
-    <section class="section" style="padding-top: calc(var(--header-height) + clamp(2.5rem, 5vw, 3.75rem));">
+    <section class="section section-blue" style="padding-top: calc(var(--header-height) + clamp(2.5rem, 5vw, 3.75rem));">
       <div class="container">
         <div class="contact-grid">
-          <div class="contact-info">
+          <div class="contact-info reveal">
             <p class="eyebrow">Kontakt</p>
             <h1 class="section-title">Porozmawiajmy o Twojej stronie</h1>
             <p class="section-lead">Opisz swoją firmę i czego potrzebujesz. Na tej podstawie możemy określić zakres projektu i przygotować orientacyjną wycenę.</p>
@@ -56,13 +56,28 @@
                 <span class="contact-detail-icon">
                   <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
                 </span>
-                <a href="mailto:kontakt@wertusdigital.pl" class="contact-link">kontakt@wertusdigital.pl</a>
+                <span class="contact-detail-body">
+                  <span class="contact-detail-label">E-mail</span>
+                  <a href="mailto:kontakt@wertusdigital.pl" class="contact-link">kontakt@wertusdigital.pl</a>
+                </span>
               </li>
               <li>
                 <span class="contact-detail-icon">
                   <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </span>
-                <a href="tel:+48516950801" class="contact-link">+48 516 950 801</a>
+                <span class="contact-detail-body">
+                  <span class="contact-detail-label">Telefon</span>
+                  <a href="tel:+48516950801" class="contact-link">+48 516 950 801</a>
+                </span>
+              </li>
+              <li>
+                <span class="contact-detail-icon">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span class="contact-detail-body">
+                  <span class="contact-detail-label">Lokalizacja</span>
+                  <span class="contact-link">Białystok · obsługa całej Polski</span>
+                </span>
               </li>
             </ul>
 
@@ -70,9 +85,14 @@
               <a href="mailto:kontakt@wertusdigital.pl" class="btn btn-primary">Napisz e-mail</a>
               <a href="tel:+48516950801" class="btn btn-secondary">Zadzwoń</a>
             </div>
+
+            <div class="contact-brand brand-lines" aria-hidden="true">
+              <img src="/assets/logo-horizontal-light.png" alt="" class="contact-brand-logo" width="710" height="140">
+              <p class="contact-brand-slogan">Projekt i wdrożenie strony w jednym miejscu — bez pośredników.</p>
+            </div>
           </div>
 
-          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xnjkkjbd" method="POST" novalidate>
+          <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xnjkkjbd" method="POST" novalidate>
             <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Wertus Digital">
             <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
             <h2 class="form-title">Wyślij zapytanie</h2>
@@ -127,7 +147,7 @@
               <textarea id="form-message" name="message" rows="5" placeholder="Opisz krótko swoją firmę i czego potrzebujesz…" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Wyślij zapytanie</button>
+            <button type="submit" class="btn btn-primary btn-block btn-lg btn-arrow">Wyślij zapytanie</button>
             <p class="form-consent">Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych w celu odpowiedzi na zapytanie. Szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>.</p>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>

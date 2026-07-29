@@ -35,7 +35,24 @@
       "Bash(rm -f qa-*.png .qa-server.js)",
       "Bash(rm -rf .playwright-cli)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(py *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8799/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8799/oferta)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8799/realizacje/miso-sushi)",
+      "Bash(playwright-cli open *)",
+      "Bash(playwright-cli resize *)",
+      "Bash(playwright-cli --raw eval \"document.title\")",
+      "Bash(playwright-cli screenshot *)",
+      "Bash(playwright-cli goto *)",
+      "Bash(cygpath *)",
+      "Bash(playwright-cli *)",
+      "Bash(cd /tmp)",
+      "Bash(playwright-cli reload *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8799/realizacje)",
+      "Bash(curl -s \"http://127.0.0.1:8799/__shutdown\")",
+      "Bash(playwright-cli click *)",
+      "Bash(playwright-cli --raw eval \"window.scrollTo\\(0, 1200\\)\")"
     ]
   }
 }

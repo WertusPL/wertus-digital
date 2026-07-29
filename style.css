@@ -16,6 +16,12 @@
   --color-border: #e5e9f2;
   --color-footer: #0b1220;
 
+  /* Warianty tła sekcji — budują rytm kolorystyczny strony */
+  --color-bg-soft: #f4f7fc;   /* bardzo jasny chłodny szary */
+  --color-bg-blue: #eef3fd;   /* delikatny niebiesko-szary */
+  --color-dark: #0a1020;      /* granat brandowy (primary) */
+  --color-dark-2: #0f1c3a;    /* jaśniejszy granat do gradientów */
+
   /* Cienie */
   --shadow-sm: 0 1px 3px rgba(11, 18, 32, 0.06), 0 1px 2px rgba(11, 18, 32, 0.04);
   --shadow-md: 0 6px 20px rgba(11, 18, 32, 0.08);
@@ -27,6 +33,9 @@
   --radius-md: 16px;
   --radius-lg: 24px;
   --header-height: 76px;
+
+  /* Skala odstępów sekcji — bogato, ale kontrolowanie */
+  --space-section: clamp(3.25rem, 6vw, 5rem);
 
   --font-main: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
@@ -85,7 +94,7 @@ button {
 
 /* ---------- Układ ---------- */
 .container {
-  width: min(100% - 2.5rem, 1180px);
+  width: min(100% - 2.5rem, 1240px);
   margin-inline: auto;
 }
 
@@ -94,11 +103,72 @@ button {
 }
 
 .section {
-  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  padding: var(--space-section) 0;
 }
 
 .section-gray {
   background: var(--color-surface);
+}
+
+/* ---------- Rytm tła sekcji ---------- */
+.section-soft { background: var(--color-bg-soft); }
+
+.section-blue {
+  background:
+    radial-gradient(ellipse 70% 60% at 90% 0%, rgba(6, 85, 254, 0.06), transparent 60%),
+    linear-gradient(180deg, var(--color-bg-blue) 0%, #f7faff 100%);
+}
+
+/* Sekcja ciemna — wspólny fundament dla granatowych pasm */
+.section-dark {
+  position: relative;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 55% 55% at 85% 5%, rgba(6, 85, 254, 0.22), transparent 62%),
+    linear-gradient(165deg, var(--color-dark) 0%, var(--color-dark-2) 100%);
+}
+
+.section-dark .section-title,
+.section-dark .about-band-title { color: #fff; }
+
+.section-dark .section-lead,
+.section-dark p { color: rgba(206, 217, 238, 0.9); }
+
+.section-dark .eyebrow { color: #8fb0ff; }
+
+/* Detal brandowy Wertus — subtelne ukośne linie z logo "W".
+   Reużywalne tło; nakładane tylko tam, gdzie ma sens kompozycyjny. */
+.brand-lines {
+  position: relative;
+}
+
+.brand-lines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(6, 85, 254, 0.05) 0 1px,
+    transparent 1px 26px
+  );
+  -webkit-mask-image: linear-gradient(90deg, transparent 55%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 55%, #000 100%);
+  opacity: 0.9;
+}
+
+/* Wariant na ciemnym tle */
+.section-dark.brand-lines::before {
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(143, 176, 255, 0.09) 0 1px,
+    transparent 1px 26px
+  );
+}
+
+/* Delikatny separator między sekcjami — cienka linia z akcentem */
+.section-divider {
+  border-top: 1px solid var(--color-border);
 }
 
 /* ---------- Typografia sekcji ---------- */
@@ -163,6 +233,35 @@ button {
 
 .btn-block {
   width: 100%;
+}
+
+/* Strzałka w przycisku — przesuwa się przy hover (mikrointerakcja) */
+.btn-arrow::after {
+  content: "→";
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.btn-arrow:hover::after,
+.btn-arrow:focus-visible::after {
+  transform: translateX(4px);
+}
+
+/* Kontener ikony — reużywalny „chip" z jasnoniebieskim tłem (design system) */
+.icon-box {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.icon-box .icon {
+  width: 22px;
+  height: 22px;
 }
 
 .btn-primary {
@@ -1347,9 +1446,15 @@ button {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
-  align-items: center;
+  grid-template-columns: 1.02fr 1fr;
+  gap: clamp(2.5rem, 5vw, 4.25rem);
+  align-items: stretch;
+}
+
+/* Lewa kolumna wypełnia wysokość formularza — brak wielkiej pustki */
+.contact-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-info .section-title {
@@ -1362,8 +1467,8 @@ button {
 
 .contact-details {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.9rem;
+  margin-bottom: 1.9rem;
 }
 
 .contact-details li {
@@ -1383,13 +1488,26 @@ button {
   flex-shrink: 0;
 }
 
+.contact-detail-body {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.contact-detail-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
 .contact-link {
   font-size: 1.05rem;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
-.contact-link:hover {
+a.contact-link:hover {
   color: var(--color-accent);
 }
 
@@ -1397,6 +1515,32 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+}
+
+/* Panel brandowy wypełniający dolną część lewej kolumny */
+.contact-brand {
+  margin-top: auto;
+  padding: 1.6rem 1.75rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 70% at 90% 0%, rgba(6, 85, 254, 0.28), transparent 60%),
+    linear-gradient(150deg, var(--color-dark) 0%, #0f1c3a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-brand-logo {
+  height: 34px;
+  width: auto;
+  margin-bottom: 0.9rem;
+}
+
+.contact-brand-slogan {
+  color: rgba(206, 217, 238, 0.92);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 26rem;
 }
 
 /* Formularz */
@@ -1490,11 +1634,33 @@ button {
    FOOTER
    ============================================================ */
 .site-footer {
+  position: relative;
+  overflow: hidden;
   background:
-    radial-gradient(ellipse 50% 45% at 85% 0%, rgba(6, 85, 254, 0.1), transparent 60%),
-    linear-gradient(180deg, #0b1220 0%, #070c16 100%);
+    radial-gradient(ellipse 50% 45% at 85% 0%, rgba(6, 85, 254, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--color-dark) 0%, #070c16 100%);
   color: #b9c1d1;
   padding: 4.5rem 0 0;
+}
+
+/* Subtelny pattern brandowy — ukośne linie z logo „W" */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(143, 176, 255, 0.05) 0 1px,
+    transparent 1px 30px
+  );
+  -webkit-mask-image: linear-gradient(90deg, transparent 45%, #000 105%);
+  mask-image: linear-gradient(90deg, transparent 45%, #000 105%);
+}
+
+.site-footer .container {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-grid {
@@ -1584,8 +1750,9 @@ button {
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -1596,17 +1763,29 @@ button {
 /* delikatne opóźnienia kaskadowe wewnątrz siatek */
 .cards-grid .reveal:nth-child(2),
 .trust-list .reveal:nth-child(2),
-.steps .reveal:nth-child(2) { transition-delay: 0.1s; }
+.steps .reveal:nth-child(2),
+.services-mini .reveal:nth-child(2),
+.about-facts .reveal:nth-child(2),
+.values-grid .reveal:nth-child(2),
+.gallery-grid .reveal:nth-child(2),
+.price-item.reveal:nth-child(2) { transition-delay: 0.09s; }
 
 .cards-grid .reveal:nth-child(3),
 .trust-list .reveal:nth-child(3),
-.steps .reveal:nth-child(3) { transition-delay: 0.2s; }
+.steps .reveal:nth-child(3),
+.services-mini .reveal:nth-child(3),
+.about-facts .reveal:nth-child(3),
+.values-grid .reveal:nth-child(3),
+.gallery-grid .reveal:nth-child(3),
+.price-item.reveal:nth-child(3) { transition-delay: 0.18s; }
 
 .cards-grid .reveal:nth-child(4),
 .trust-list .reveal:nth-child(4),
-.steps .reveal:nth-child(4) { transition-delay: 0.3s; }
+.steps .reveal:nth-child(4),
+.values-grid .reveal:nth-child(4),
+.gallery-grid .reveal:nth-child(4) { transition-delay: 0.27s; }
 
-.steps .reveal:nth-child(5) { transition-delay: 0.4s; }
+.steps .reveal:nth-child(5) { transition-delay: 0.36s; }
 
 .pricing-grid .reveal:nth-child(2) { transition-delay: 0.12s; }
 .pricing-grid .reveal:nth-child(3) { transition-delay: 0.24s; }
@@ -2416,9 +2595,32 @@ button {
 .lead-hero {
   position: relative;
   color: #fff;
-  background: linear-gradient(168deg, #0b1220 0%, #0d1830 55%, #0f1e3d 100%);
+  background:
+    radial-gradient(ellipse 55% 55% at 88% 12%, rgba(6, 85, 254, 0.28), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 0% 100%, rgba(6, 85, 254, 0.12), transparent 62%),
+    linear-gradient(168deg, var(--color-dark) 0%, #0d1830 55%, #0f1e3d 100%);
   padding: calc(var(--header-height) + clamp(3rem, 6vw, 5rem)) 0 clamp(3.5rem, 6.5vw, 5.5rem);
   overflow: hidden;
+}
+
+/* Ukośne linie brandowe (motyw z logo „W") — bardzo subtelne */
+.lead-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(143, 176, 255, 0.07) 0 1px,
+    transparent 1px 30px
+  );
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 80% 30%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 80% 90% at 80% 30%, #000 0%, transparent 70%);
+}
+
+.lead-hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 .lead-hero .eyebrow {
@@ -2469,13 +2671,58 @@ button {
   color: #fff;
 }
 
+/* Scena hero — mockup projektu + telefon + badge + poświata */
+.hero-stage {
+  position: relative;
+}
+
+/* Poświata pod mockupem */
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 78%;
+  height: 78%;
+  transform: translate(-40%, -50%);
+  background: radial-gradient(circle, rgba(6, 85, 254, 0.45), transparent 68%);
+  filter: blur(18px);
+  z-index: 0;
+}
+
 /* Ramka ze zrzutem prawdziwego projektu */
 .hero-shot {
+  position: relative;
+  z-index: 1;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: #0b1220;
-  box-shadow: 0 26px 60px rgba(2, 8, 23, 0.5);
+  box-shadow:
+    0 30px 70px rgba(2, 8, 23, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* „Ghost frame" — subtelny drugi ekran za głównym */
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: -14px;
+  top: -18px;
+  width: 62%;
+  height: 62%;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(143, 176, 255, 0.22);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.05), transparent 60%);
+}
+
+.hero-stage:hover .hero-shot {
+  transform: translateY(-5px);
+  box-shadow:
+    0 40px 90px rgba(2, 8, 23, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.07);
 }
 
 .hero-shot .browser-bar {
@@ -2493,6 +2740,91 @@ button {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Mały mockup telefonu nakładający się na róg (drugi ekran projektu) */
+.hero-phone {
+  position: absolute;
+  z-index: 2;
+  bottom: -22px;
+  left: -20px;
+  width: 22%;
+  min-width: 96px;
+  aspect-ratio: 9 / 18.5;
+  border-radius: 16px;
+  padding: 5px;
+  background: linear-gradient(160deg, #1a2540, #0b1220);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 45px rgba(2, 8, 23, 0.55);
+  overflow: hidden;
+}
+
+.hero-phone::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.22);
+  z-index: 1;
+}
+
+.hero-phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: 12px;
+}
+
+/* Plakietka „projekt koncepcyjny" na mockupie */
+.hero-badge {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  right: -12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(6, 85, 254, 0.95);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-accent);
+}
+
+.hero-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7ef7a8;
+  box-shadow: 0 0 0 4px rgba(126, 247, 168, 0.2);
+}
+
+/* Tagi zakresu pod mockupem */
+.hero-shot-tags {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+}
+
+.hero-shot-tags li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(206, 217, 238, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
 }
 
 /* ============================================================
@@ -2680,6 +3012,65 @@ button {
 }
 
 /* ============================================================
+   REALIZACJE — layout editorial (wyróżniony + rząd 2)
+   ============================================================ */
+.portfolio-editorial {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.portfolio-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* Karta wyróżniona — dominujący zrzut po lewej, treść po prawej */
+.project-card-feature {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+}
+
+.project-card-feature .project-media {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 340px;
+  border-bottom: none;
+  border-right: 1px solid var(--color-border);
+}
+
+.project-card-feature .project-body {
+  justify-content: center;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.project-card-feature .project-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+}
+
+.project-card-feature .project-desc {
+  font-size: 1.05rem;
+  max-width: 34rem;
+}
+
+@media (max-width: 768px) {
+  .project-card-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card-feature .project-media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .portfolio-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
    BLOK "ZOBACZ WSZYSTKIE" / stopka sekcji
    ============================================================ */
 .section-cta {
@@ -2812,18 +3203,55 @@ button {
    ============================================================ */
 .about-band {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 
-.about-band-title {
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+/* Panel brandowy wypełniający lewą kolumnę */
+.about-band-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 220px;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 60% at 85% 10%, rgba(6, 85, 254, 0.3), transparent 60%),
+    linear-gradient(155deg, var(--color-dark) 0%, #0f1c3a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-md);
 }
 
-.about-band-body p {
+.about-band-logo {
+  height: 40px;
+  width: auto;
+}
+
+.about-band-kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8fb0ff;
+}
+
+.about-band-body .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.about-band-title {
+  font-size: clamp(1.55rem, 2.8vw, 2.05rem);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+.about-band-body p:not(.eyebrow) {
   color: var(--color-ink-soft);
   font-size: 1.03rem;
   line-height: 1.75;
@@ -2834,14 +3262,73 @@ button {
    KOŃCOWE CTA (ciemne pasmo)
    ============================================================ */
 .cta-band {
-  background: linear-gradient(165deg, #0b1220 0%, #10203f 100%);
+  position: relative;
+  overflow: hidden;
   color: #fff;
   text-align: center;
+  background:
+    radial-gradient(ellipse 50% 70% at 50% -10%, rgba(6, 85, 254, 0.38), transparent 60%),
+    radial-gradient(ellipse 40% 60% at 12% 120%, rgba(6, 85, 254, 0.16), transparent 60%),
+    linear-gradient(165deg, var(--color-dark) 0%, #10203f 100%);
+}
+
+/* Geometryczny pattern siatki + ukośne linie brandowe */
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(143, 176, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 176, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 40%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 40%, #000, transparent 75%);
+}
+
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(143, 176, 255, 0.06) 0 1px,
+    transparent 1px 30px
+  );
+  -webkit-mask-image: linear-gradient(90deg, transparent 60%, #000 105%);
+  mask-image: linear-gradient(90deg, transparent 60%, #000 105%);
 }
 
 .cta-band-inner {
-  max-width: 620px;
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
   margin: 0 auto;
+}
+
+/* Mała plakietka nad tytułem CTA */
+.cta-band-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #8fb0ff;
+  background: rgba(143, 176, 255, 0.12);
+  border: 1px solid rgba(143, 176, 255, 0.25);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.cta-band-eyebrow .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7ef7a8;
+  box-shadow: 0 0 0 4px rgba(126, 247, 168, 0.18);
 }
 
 .cta-band-title {
@@ -2864,10 +3351,10 @@ button {
    ============================================================ */
 .service-block {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2rem, 4.5vw, 4rem);
   align-items: center;
-  padding: clamp(2.25rem, 4vw, 3rem) 0;
+  padding: clamp(2.5rem, 5vw, 3.75rem) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -2875,52 +3362,226 @@ button {
   border-bottom: none;
 }
 
-.service-block-rev .scope-panel {
+/* Blok odwrócony — grafika po lewej, treść po prawej */
+.service-block-rev .service-aside {
   order: -1;
 }
 
 .service-block-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.service-block-num::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-accent);
 }
 
 .service-block-title {
   font-size: clamp(1.5rem, 2.8vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
+/* Elegancka cena — „od" małe, kwota mocna */
 .service-block-price {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.35rem;
-  font-size: 1.05rem;
-  font-weight: 700;
+  gap: 0.4rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--color-ink);
-  background: var(--color-accent-light);
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
   margin-bottom: 1.1rem;
 }
 
 .service-block-price .price-from {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-ink-soft);
+  letter-spacing: 0.02em;
 }
 
 .service-block-desc {
   color: var(--color-ink-soft);
   font-size: 1.03rem;
   line-height: 1.7;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.6rem;
+  max-width: 34rem;
 }
 
+/* Prawa kolumna: mockup + pogrupowany zakres */
+.service-aside {
+  display: grid;
+  gap: 1.4rem;
+}
+
+/* ---- Wizualny mockup usługi (czysty CSS) ---- */
+.service-visual {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 60% at 85% 5%, rgba(6, 85, 254, 0.18), transparent 60%),
+    linear-gradient(155deg, var(--color-dark) 0%, #0f1c3a 100%);
+  box-shadow: var(--shadow-md);
+}
+
+.svc-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 45px rgba(2, 8, 23, 0.4);
+}
+
+.svc-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.55rem 0.8rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.svc-bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d4dae6;
+}
+
+.svc-bar i:nth-child(1) { background: #ff5f57; }
+.svc-bar i:nth-child(2) { background: #febc2e; }
+.svc-bar i:nth-child(3) { background: #28c840; }
+
+.svc-body {
+  padding: 1.1rem 1.15rem 1.25rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+/* skeleton elementy */
+.svc-body .row { height: 8px; border-radius: 4px; background: #dde3ee; }
+.svc-body .row.h { height: 13px; background: #c2cadb; }
+.svc-body .row.w-70 { width: 70%; }
+.svc-body .row.w-50 { width: 50%; }
+.svc-body .row.w-40 { width: 40%; }
+.svc-body .row.w-85 { width: 85%; }
+
+.svc-btn {
+  width: 96px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--color-accent);
+  box-shadow: 0 6px 14px rgba(6, 85, 254, 0.35);
+  margin-top: 0.2rem;
+}
+
+.svc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.svc-logo { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--color-accent), #4d86ff); }
+.svc-links { display: flex; gap: 8px; }
+.svc-links span { width: 26px; height: 6px; border-radius: 3px; background: #dde3ee; }
+
+.svc-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.svc-tile { height: 46px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); }
+.svc-tile.accent { background: var(--color-accent-light); border-color: rgba(6, 85, 254, 0.25); }
+
+/* Landing — jeden ekran hero + CTA */
+.svc-hero-shot {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0.8rem;
+  align-items: center;
+}
+.svc-hero-art {
+  height: 88px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, #10203f, var(--color-accent) 160%);
+}
+
+/* Opieka — wiersze aktualizacji z „ptaszkiem" */
+.svc-tasks { display: grid; gap: 0.6rem; }
+.svc-task { display: flex; align-items: center; gap: 0.6rem; }
+.svc-task::before {
+  content: "";
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--color-accent-light);
+  position: relative; flex-shrink: 0;
+  background-image:
+    linear-gradient(45deg, transparent 45%, var(--color-accent) 45% 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, var(--color-accent) 45% 55%, transparent 55%);
+  background-size: 8px 8px, 8px 8px;
+  background-position: 4px 6px, 7px 6px;
+  background-repeat: no-repeat;
+}
+.svc-task span { flex: 1; height: 8px; border-radius: 4px; background: #dde3ee; }
+
+/* ---- Pogrupowany zakres z ikonami ---- */
+.scope-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.25rem 1.5rem;
+  padding: 1.5rem 1.7rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.scope-group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: 0.75rem;
+}
+
+.scope-group-head .icon-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+}
+
+.scope-group-head .icon-box .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.scope-group ul {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.scope-group li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+}
+
+/* Panel „zakres" — pozostawiony dla zgodności, gdyby był użyty */
 .scope-panel {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -3188,10 +3849,21 @@ button {
 }
 
 .about-fact {
-  padding: 1.5rem 1.6rem;
+  padding: 1.6rem 1.6rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.about-fact:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(6, 85, 254, 0.28);
+}
+
+.about-fact .icon-box {
+  margin-bottom: 1rem;
 }
 
 .about-fact h3 {
@@ -3214,17 +3886,27 @@ button {
 
 .value-item {
   display: flex;
-  gap: 0.9rem;
+  gap: 1rem;
   align-items: flex-start;
-  padding: 1.1rem 0;
+  padding: 1.2rem 0;
   border-bottom: 1px solid var(--color-border);
 }
 
-.value-item .icon {
-  color: var(--color-accent);
-  margin-top: 0.2rem;
-  width: 1.4em;
-  height: 1.4em;
+.value-item .icon-box {
+  width: 42px;
+  height: 42px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.value-item:hover .icon-box {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.value-item .icon-box .icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
 }
 
 .value-item h3 {
@@ -3335,11 +4017,16 @@ button {
 
   .service-block {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 
-  .service-block-rev .scope-panel {
+  .service-block-rev .service-aside {
     order: 0;
+  }
+
+  .scope-groups {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
   }
 
   .about-facts {
