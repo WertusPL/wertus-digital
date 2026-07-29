@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strony internetowe dla firm | Wertus Digital</title>
-  <meta name="description" content="Wertus Digital — projektowanie stron internetowych dla firm. Landing page, strony firmowe, SEO i opieka po wdrożeniu. Białystok, obsługa klientów z całej Polski. Bezpłatna wycena.">
+  <title>Wertus Digital — studio projektowania stron internetowych dla firm</title>
+  <meta name="description" content="Wertus Digital projektuje i wdraża nowoczesne strony internetowe dla firm — od landing page po stronę firmową, z opieką po publikacji. Białystok, obsługa klientów z całej Polski.">
   <link rel="canonical" href="https://www.wertusdigital.pl/">
   <link rel="alternate" hreflang="pl" href="https://www.wertusdigital.pl/">
   <link rel="alternate" hreflang="en" href="https://www.wertusdigital.pl/en">
   <link rel="alternate" hreflang="x-default" href="https://www.wertusdigital.pl/">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
-  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wertus Digital — studio projektowania stron internetowych dla firm">
+  <meta property="og:description" content="Projektujemy i wdrażamy nowoczesne strony internetowe dla firm. Od pierwszego projektu po publikację i dalszą opiekę.">
+  <meta property="og:url" content="https://www.wertusdigital.pl/">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:image" content="https://www.wertusdigital.pl/assets/portfolio/lex-finanse/lex-01.png">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+  <link rel="preload" as="image" href="/assets/portfolio/miso-sushi/miso-01.png">
+  <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -20,7 +27,7 @@
     "url": "https://www.wertusdigital.pl/",
     "email": "wertusdigital@gmail.com",
     "telephone": "+48516950801",
-    "description": "Projektowanie stron internetowych dla firm — landing page, strony firmowe, SEO i opieka po wdrożeniu.",
+    "description": "Studio projektowania i wdrażania stron internetowych dla firm — landing page, strony firmowe, SEO i opieka po wdrożeniu.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Białystok",
@@ -33,35 +40,20 @@
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="#start" class="brand" aria-label="Wertus Digital — strona główna">
-        <img src="assets/logo-horizontal-dark.png" alt="Wertus Digital — logo" class="brand-logo">
+      <a href="/" class="brand" aria-label="Wertus Digital — strona główna">
+        <img src="/assets/logo-horizontal-dark.png" alt="Wertus Digital" class="brand-logo" width="710" height="140">
       </a>
-
       <nav class="site-nav" id="site-nav" aria-label="Menu główne">
         <ul class="nav-list">
-          <li><a href="#start" class="nav-link">Strona główna</a></li>
-          <li><a href="#oferta" class="nav-link">Oferta</a></li>
-          <li><a href="#realizacje" class="nav-link">Realizacje</a></li>
-          <li><a href="#cennik" class="nav-link">Cennik</a></li>
-          <li><a href="#proces" class="nav-link">Proces</a></li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
-          <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+          <li><a href="/oferta" class="nav-link">Oferta</a></li>
+          <li><a href="/realizacje" class="nav-link">Realizacje</a></li>
+          <li><a href="/o-nas" class="nav-link">O nas</a></li>
+          <li><a href="/kontakt" class="nav-link">Kontakt</a></li>
         </ul>
-        <div class="language-switcher" aria-label="Wybór języka / Language switcher">
-          <a href="/" class="language-link active" aria-current="page" lang="pl" aria-label="Polska wersja językowa">
-            <img src="assets/pl.png" alt="" class="language-flag" width="22" height="15">
-            <span>PL</span>
-          </a>
-          <a href="/en" class="language-link" lang="en" hreflang="en" aria-label="English language version">
-            <img src="assets/gb.webp" alt="" class="language-flag" width="22" height="15">
-            <span>EN</span>
-          </a>
-        </div>
-        <a href="#kontakt" class="btn btn-primary nav-cta">Bezpłatna wycena</a>
+        <a href="/kontakt" class="btn btn-primary nav-cta">Bezpłatna wycena</a>
       </nav>
-
       <button class="nav-toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
@@ -73,680 +65,230 @@
   <main>
 
     <!-- ============ HERO ============ -->
-    <section class="hero" id="start">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="eyebrow">Strony internetowe dla firm</p>
-          <h1 class="hero-title">Strony internetowe, które pomagają firmom zdobywać klientów</h1>
-          <p class="hero-lead">Projektujemy nowoczesne strony, które jasno przedstawiają ofertę firmy i prowadzą klienta do kontaktu. Od landing page po pełną stronę firmową — z wdrożeniem i wsparciem po starcie.</p>
-
-          <div class="hero-actions">
-            <a href="#kontakt" class="btn btn-primary btn-lg">Bezpłatna wycena</a>
-            <a href="#realizacje" class="btn btn-secondary btn-lg">Zobacz realizacje</a>
+    <section class="lead-hero">
+      <div class="container lead-hero-grid">
+        <div class="lead-hero-content">
+          <p class="eyebrow">Studio projektowania stron</p>
+          <h1 class="lead-hero-title">Strony internetowe, które budują profesjonalny wizerunek Twojej firmy</h1>
+          <p class="lead-hero-lead">Projektujemy i wdrażamy nowoczesne strony internetowe dla firm. Od pierwszego projektu po publikację i dalszą opiekę.</p>
+          <div class="lead-hero-actions">
+            <a href="/kontakt" class="btn btn-primary btn-lg">Bezpłatna wycena</a>
+            <a href="/realizacje" class="btn btn-secondary btn-lg">Zobacz realizacje</a>
           </div>
-
-          <ul class="hero-trust" aria-label="Dlaczego warto">
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Jasna oferta
-            </li>
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Responsywny projekt
-            </li>
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Wsparcie po wdrożeniu
-            </li>
-          </ul>
         </div>
 
-        <!-- Mockup strony wykonany w czystym CSS -->
-        <div class="hero-visual" aria-hidden="true">
-          <div class="browser-mockup">
-            <div class="browser-bar">
-              <span class="browser-dot dot-red"></span>
-              <span class="browser-dot dot-yellow"></span>
-              <span class="browser-dot dot-green"></span>
-              <span class="browser-address">wertusdigital.pl</span>
+        <div class="hero-shot">
+          <div class="browser-bar">
+            <span class="browser-dot dot-red"></span>
+            <span class="browser-dot dot-yellow"></span>
+            <span class="browser-dot dot-green"></span>
+            <span class="browser-address">Projekt koncepcyjny — Miso Sushi</span>
+          </div>
+          <img src="/assets/portfolio/miso-sushi/miso-01.png" alt="Przykładowy projekt strony internetowej wykonany przez Wertus Digital — strona restauracji Miso Sushi" class="hero-shot-media" width="1853" height="933" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WYBRANE REALIZACJE ============ -->
+    <section class="section" id="realizacje" aria-labelledby="realizacje-title">
+      <div class="container">
+        <div class="section-head-row">
+          <div class="section-head">
+            <p class="eyebrow">Realizacje</p>
+            <h2 class="section-title" id="realizacje-title">Wybrane realizacje</h2>
+            <p class="section-lead">Projekty koncepcyjne, na których pokazujemy nasze podejście do projektowania stron dla różnych branż.</p>
+          </div>
+          <a href="/realizacje" class="text-link">Zobacz wszystkie realizacje</a>
+        </div>
+
+        <div class="project-grid project-grid-3">
+          <article class="project-card reveal">
+            <div class="project-media">
+              <img src="/assets/portfolio/lex-finanse/lex-01.png" alt="Projekt strony internetowej Lex Finanse — strona główna" width="1865" height="925" loading="lazy" decoding="async">
             </div>
-            <div class="browser-body">
-              <div class="mock-nav">
-                <span class="mock-logo"></span>
-                <span class="mock-nav-links">
-                  <span class="mock-line w-sm"></span>
-                  <span class="mock-line w-sm"></span>
-                  <span class="mock-line w-sm"></span>
-                </span>
-                <span class="mock-btn-sm"></span>
-              </div>
-              <div class="mock-hero">
-                <div class="mock-hero-text">
-                  <span class="mock-chip"></span>
-                  <span class="mock-heading w-lg"></span>
-                  <span class="mock-heading w-md"></span>
-                  <span class="mock-line w-lg light"></span>
-                  <span class="mock-line w-md light"></span>
-                  <span class="mock-cta">Bezpłatna wycena</span>
-                </div>
-                <div class="mock-hero-art"></div>
-              </div>
-              <div class="mock-cards">
-                <div class="mock-card">
-                  <span class="mock-icon"></span>
-                  <span class="mock-line w-md"></span>
-                  <span class="mock-line w-sm light"></span>
-                </div>
-                <div class="mock-card">
-                  <span class="mock-icon"></span>
-                  <span class="mock-line w-md"></span>
-                  <span class="mock-line w-sm light"></span>
-                </div>
-                <div class="mock-card">
-                  <span class="mock-icon"></span>
-                  <span class="mock-line w-md"></span>
-                  <span class="mock-line w-sm light"></span>
-                </div>
-              </div>
-              <div class="mock-bottom">
-                <div class="mock-stats">
-                  <div class="mock-stat">
-                    <span class="mock-stat-value">✓</span>
-                    <span class="mock-stat-label">szybkie ładowanie</span>
-                  </div>
-                  <div class="mock-stat">
-                    <span class="mock-stat-value">✓</span>
-                    <span class="mock-stat-label">responsywność</span>
-                  </div>
-                  <div class="mock-stat">
-                    <span class="mock-stat-value">✓</span>
-                    <span class="mock-stat-label">gotowe pod SEO</span>
-                  </div>
-                </div>
-                <div class="mock-chart">
-                  <span class="mock-bar" style="--h: 35%"></span>
-                  <span class="mock-bar" style="--h: 55%"></span>
-                  <span class="mock-bar" style="--h: 45%"></span>
-                  <span class="mock-bar" style="--h: 70%"></span>
-                  <span class="mock-bar" style="--h: 60%"></span>
-                  <span class="mock-bar mock-bar-accent" style="--h: 92%"></span>
-                </div>
+            <div class="project-body">
+              <p class="project-type">Doradztwo finansowe</p>
+              <h3 class="project-title">Lex Finanse</h3>
+              <p class="project-desc">Uporządkowany serwis, który jasno przedstawia ofertę finansową i prowadzi klienta do kontaktu.</p>
+              <div class="project-foot">
+                <span class="project-concept">Projekt koncepcyjny</span>
+                <a href="/realizacje/lex-finanse" class="text-link stretched-link" aria-label="Zobacz projekt Lex Finanse">Zobacz projekt</a>
               </div>
             </div>
-          </div>
-
-          <div class="float-card float-card-bottom">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>
-            <span>Strona, która sprzedaje</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PASEK ZAUFANIA ============ -->
-    <section class="trust-bar" aria-label="Zasady współpracy">
-      <div class="container">
-        <ul class="trust-list">
-          <li class="trust-item reveal">
-            <span class="trust-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </span>
-            <span class="trust-text">Indywidualne podejście</span>
-          </li>
-          <li class="trust-item reveal">
-            <span class="trust-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>
-            </span>
-            <span class="trust-text">Jasne zasady współpracy</span>
-          </li>
-          <li class="trust-item reveal">
-            <span class="trust-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9.5a3.5 3.5 0 0 0-6 2.5c0 2 1.5 2.5 3 3s3 1 3 3a3.5 3.5 0 0 1-6 1"/><path d="M12 5v2M12 17v2"/></svg>
-            </span>
-            <span class="trust-text">Bez ukrytych kosztów</span>
-          </li>
-          <li class="trust-item reveal">
-            <span class="trust-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </span>
-            <span class="trust-text">Wsparcie po wdrożeniu</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ PROBLEM / EFEKT ============ -->
-    <section class="benefits section">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="eyebrow">Efekty, nie tylko wygląd</p>
-          <h2 class="section-title">Strona, która nie tylko wygląda dobrze</h2>
-          <p class="section-lead">Dobra strona jasno pokazuje ofertę i ułatwia klientom kontakt z Twoją firmą.</p>
-        </header>
-
-        <div class="cards-grid cards-4">
-          <article class="card reveal">
-            <span class="card-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <h3 class="card-title">Więcej zapytań</h3>
-            <p class="card-text">Przejrzysta oferta i mocne CTA prowadzą klienta do kontaktu.</p>
           </article>
-          <article class="card reveal">
-            <span class="card-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15l-3.5 2 1-4L6 10l4-.5L12 6l2 3.5 4 .5-3.5 3 1 4z"/><circle cx="12" cy="12" r="10"/></svg>
-            </span>
-            <h3 class="card-title">Dopracowany design</h3>
-            <p class="card-text">Spójny, przemyślany wygląd, który dobrze reprezentuje Twoją markę.</p>
+
+          <article class="project-card reveal">
+            <div class="project-media">
+              <img src="/assets/portfolio/miso-sushi/miso-01.png" alt="Projekt strony internetowej Miso Sushi — strona główna restauracji" width="1853" height="933" loading="lazy" decoding="async">
+            </div>
+            <div class="project-body">
+              <p class="project-type">Restauracja</p>
+              <h3 class="project-title">Miso Sushi</h3>
+              <p class="project-desc">Apetyczna prezentacja menu i klimatu lokalu z prostą drogą do rezerwacji i kontaktu.</p>
+              <div class="project-foot">
+                <span class="project-concept">Projekt koncepcyjny</span>
+                <a href="/realizacje/miso-sushi" class="text-link stretched-link" aria-label="Zobacz projekt Miso Sushi">Zobacz projekt</a>
+              </div>
+            </div>
           </article>
-          <article class="card reveal">
-            <span class="card-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-            </span>
-            <h3 class="card-title">Szybkość i mobile</h3>
-            <p class="card-text">Strona działa dobrze na telefonie, komputerze i tablecie.</p>
-          </article>
-          <article class="card reveal">
-            <span class="card-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            </span>
-            <h3 class="card-title">Opieka po wdrożeniu</h3>
-            <p class="card-text">Po publikacji możesz liczyć na pomoc, poprawki i dalszy rozwój.</p>
+
+          <article class="project-card reveal">
+            <div class="project-media">
+              <div class="work-thumb thumb-monaco" aria-hidden="true">
+                <div class="thumb-nav">
+                  <span class="thumb-logo"></span>
+                  <span class="thumb-links"><i></i><i></i><i></i></span>
+                </div>
+                <div class="thumb-hero">
+                  <span class="thumb-heading"></span>
+                  <span class="thumb-heading short"></span>
+                  <span class="thumb-sub"></span>
+                  <span class="thumb-cta"></span>
+                </div>
+                <div class="thumb-cards"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-type">Motoryzacja / performance</p>
+              <h3 class="project-title">Monaco Performance</h3>
+              <p class="project-desc">Dynamiczny kierunek graficzny dla studia zajmującego się tuningiem i osiągami samochodów.</p>
+              <div class="project-foot">
+                <span class="project-concept">Projekt koncepcyjny</span>
+                <a href="/realizacje/monaco-performance" class="text-link stretched-link" aria-label="Zobacz projekt Monaco Performance">Zobacz projekt</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ OFERTA ============ -->
-    <section class="offer section section-gray" id="oferta">
+    <!-- ============ OFERTA (skrót) ============ -->
+    <section class="section section-gray" aria-labelledby="oferta-title">
       <div class="container">
-        <header class="section-header reveal">
+        <div class="section-head">
           <p class="eyebrow">Oferta</p>
-          <h2 class="section-title">Co możemy stworzyć dla Twojej firmy?</h2>
-          <p class="section-lead">Od pojedynczego landing page po pełną stronę firmową z opieką techniczną.</p>
-        </header>
+          <h2 class="section-title" id="oferta-title">Czym się zajmujemy</h2>
+          <p class="section-lead">Projektujemy, kodujemy i uruchamiamy strony — a po publikacji pomagamy je rozwijać.</p>
+        </div>
 
-        <div class="cards-grid cards-4">
-          <article class="card card-offer reveal">
-            <span class="card-icon">
+        <div class="services-mini">
+          <div class="service-mini">
+            <span class="service-mini-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/><path d="M6 6.5h.01"/></svg>
             </span>
-            <h3 class="card-title">Landing page</h3>
-            <p class="card-text">Jedna skuteczna strona pod konkretną usługę, kampanię lub wizytówkę firmy.</p>
-          </article>
-          <article class="card card-offer reveal">
-            <span class="card-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
+            <h3>Landing page</h3>
+            <p>Jedna, konkretna strona pod usługę, produkt lub kampanię — skupiona na kontakcie i konwersji.</p>
+          </div>
+          <div class="service-mini">
+            <span class="service-mini-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01"/></svg>
             </span>
-            <h3 class="card-title">Strona firmowa</h3>
-            <p class="card-text">Profesjonalna strona z ofertą, podstronami, formularzem kontaktowym i podstawowym SEO.</p>
-          </article>
-          <article class="card card-offer reveal">
-            <span class="card-icon">
+            <h3>Strony firmowe</h3>
+            <p>Wielostronicowa strona z ofertą, realizacjami i kontaktem — pełna prezentacja firmy w sieci.</p>
+          </div>
+          <div class="service-mini">
+            <span class="service-mini-icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </span>
-            <h3 class="card-title">Opieka nad stroną</h3>
-            <p class="card-text">Aktualizacje, poprawki, bezpieczeństwo i rozwój strony po wdrożeniu.</p>
-          </article>
-          <article class="card card-offer reveal">
-            <span class="card-icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6M11 8v6"/></svg>
-            </span>
-            <h3 class="card-title">SEO i optymalizacja</h3>
-            <p class="card-text">Podstawowa optymalizacja techniczna, szybkość działania i przygotowanie pod Google.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============ SEO / STRONY INTERNETOWE DLA FIRM ============ -->
-    <section class="seo-section section" id="strony-internetowe-dla-firm">
-      <div class="container">
-        <div class="seo-content reveal">
-          <p class="eyebrow">Strony internetowe dla firm</p>
-          <h2>Tworzenie stron internetowych dla firm z całej Polski</h2>
-          <p>
-            Wertus Digital projektuje i wdraża strony internetowe dla firm — od pojedynczego landing page po rozbudowaną stronę firmową.
-          </p>
-          <p>
-            Tworzymy strony www m.in. dla firm usługowych, marek lokalnych, restauracji, salonów beauty, doradców i branży finansowej.
-          </p>
-          <p>
-            Każda strona jest responsywna i szybka. Dbamy o przejrzysty układ treści, podstawowe SEO oraz prostą drogę do kontaktu z firmą.
-          </p>
-          <p>
-            Działamy z Białegostoku, a cały proces prowadzimy zdalnie — dzięki temu współpracujemy z klientami z całej Polski.
-          </p>
-          <div class="seo-actions">
-            <a href="#kontakt" class="btn btn-primary">Bezpłatna wycena</a>
-            <a href="#realizacje" class="btn btn-secondary">Zobacz realizacje</a>
+            <h3>Opieka i rozwój strony</h3>
+            <p>Aktualizacje, drobne zmiany, pomoc techniczna i dalszy rozwój strony po jej uruchomieniu.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ REALIZACJE ============ -->
-    <section class="portfolio section" id="realizacje">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="eyebrow">Portfolio</p>
-          <h2 class="section-title">Wybrane projekty</h2>
-          <p class="section-lead">Zobacz przykładowe projekty stron dla różnych branż.</p>
-        </header>
-
-        <div class="cards-grid cards-3">
-          <!-- Miniatury realizacji wykonane w czystym CSS -->
-          <article class="work-card reveal">
-            <div class="work-thumb thumb-monaco" aria-hidden="true">
-              <div class="thumb-nav">
-                <span class="thumb-logo"></span>
-                <span class="thumb-links"><i></i><i></i><i></i></span>
-              </div>
-              <div class="thumb-hero">
-                <span class="thumb-heading"></span>
-                <span class="thumb-heading short"></span>
-                <span class="thumb-sub"></span>
-                <span class="thumb-cta"></span>
-              </div>
-              <div class="thumb-cards"><i></i><i></i><i></i></div>
-            </div>
-            <div class="work-info">
-              <h3 class="work-title">Monaco Performance</h3>
-              <p class="work-desc">Strona dla detailingu samochodowego</p>
-              <span class="work-badge">Projekt koncepcyjny</span>
-              <span class="work-tag">Detailing</span>
-            </div>
-          </article>
-
-          <article class="work-card work-card-link reveal">
-            <div class="work-thumb work-thumb-photo">
-              <img src="assets/portfolio/lex-finanse/lex-01.png" alt="Projekt strony internetowej Lex Finanse – strona główna" width="1865" height="925" loading="lazy" decoding="async">
-              <span class="work-overlay" aria-hidden="true"><span class="work-overlay-label">Zobacz projekt</span></span>
-            </div>
-            <div class="work-info">
-              <h3 class="work-title">Lex Finanse</h3>
-              <p class="work-desc">Strona dla doradztwa finansowego</p>
-              <span class="work-badge">Projekt koncepcyjny</span>
-              <span class="work-tag">Finanse</span>
-            </div>
-            <button class="work-card-trigger" type="button" data-gallery="lex-finanse" aria-haspopup="dialog" aria-label="Zobacz projekt Lex Finanse — otwórz galerię"></button>
-          </article>
-
-          <article class="work-card work-card-link reveal">
-            <div class="work-thumb work-thumb-photo">
-              <img src="assets/portfolio/miso-sushi/miso-01.png" alt="Projekt strony internetowej Miso Sushi – strona główna" width="1853" height="933" loading="lazy" decoding="async">
-              <span class="work-overlay" aria-hidden="true"><span class="work-overlay-label">Zobacz projekt</span></span>
-            </div>
-            <div class="work-info">
-              <h3 class="work-title">Miso Sushi</h3>
-              <p class="work-desc">Strona dla restauracji</p>
-              <span class="work-badge">Projekt koncepcyjny</span>
-              <span class="work-tag">Gastronomia</span>
-            </div>
-            <button class="work-card-trigger" type="button" data-gallery="miso-sushi" aria-haspopup="dialog" aria-label="Zobacz projekt Miso Sushi — otwórz galerię"></button>
-          </article>
-
-          <!-- SZABLON: karta prawdziwej realizacji (case study).
-               Aby dodać realizację dla klienta:
-               1. Wgraj screeny do assets/portfolio/<nazwa-projektu>/
-               2. Dodaj wpis w PORTFOLIO_GALLERIES w script.js (można tam też
-                  uzupełnić pola case study: branża, problem, zakres, efekt,
-                  opinia klienta, link do strony — patrz komentarz w script.js)
-               3. Odkomentuj i uzupełnij kartę poniżej (bez badge "Projekt koncepcyjny",
-                  z linkiem do działającej strony klienta)
-
-          <article class="work-card work-card-link reveal">
-            <div class="work-thumb work-thumb-photo">
-              <img src="assets/portfolio/NAZWA/screen-01.png" alt="Strona internetowa NAZWA FIRMY – strona główna" width="1865" height="925" loading="lazy" decoding="async">
-              <span class="work-overlay" aria-hidden="true"><span class="work-overlay-label">Zobacz projekt</span></span>
-            </div>
-            <div class="work-info">
-              <h3 class="work-title">NAZWA FIRMY</h3>
-              <p class="work-desc">Krótki opis: branża + zakres realizacji</p>
-              <span class="work-tag">BRANŻA</span>
-            </div>
-            <button class="work-card-trigger" type="button" data-gallery="NAZWA" aria-haspopup="dialog" aria-label="Zobacz projekt NAZWA FIRMY — otwórz galerię"></button>
-          </article>
-          -->
+        <div class="section-cta">
+          <a href="/oferta" class="btn btn-secondary">Poznaj pełną ofertę</a>
         </div>
       </div>
     </section>
 
-    <!-- SZABLON: sekcja opinii klientów.
-         Odkomentuj dopiero, gdy będą PRAWDZIWE opinie — nie publikować pustej
-         sekcji ani wymyślonych treści. Każda opinia: treść, imię/nazwa firmy.
-
-    <section class="testimonials section" id="opinie">
+    <!-- ============ JAK WYGLĄDA WSPÓŁPRACA ============ -->
+    <section class="section" aria-labelledby="proces-title">
       <div class="container">
-        <header class="section-header reveal">
-          <p class="eyebrow">Opinie</p>
-          <h2 class="section-title">Co mówią klienci</h2>
-        </header>
-        <div class="cards-grid cards-3">
-          <article class="card reveal">
-            <p class="card-text">„Treść prawdziwej opinii klienta.”</p>
-            <h3 class="card-title">Imię i nazwisko, Nazwa firmy</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-    -->
-
-    <!-- ============ CENNIK ============ -->
-    <section class="pricing section section-gray" id="cennik">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="eyebrow">Cennik</p>
-          <h2 class="section-title">Przejrzysty cennik</h2>
-          <p class="section-lead">Ceny „od” znasz od początku. Ostateczna wycena zależy od zakresu projektu.</p>
-        </header>
-
-        <div class="pricing-grid">
-          <article class="price-card reveal">
-            <h3 class="price-name">Landing page</h3>
-            <p class="price-value"><span class="price-from">od</span> 1500 zł</p>
-            <p class="price-desc">Dla jednej usługi, kampanii lub prostej wizytówki.</p>
-            <ul class="price-features">
-              <li>jedna strona</li>
-              <li>responsywny wygląd</li>
-              <li>formularz kontaktowy</li>
-              <li>podstawowe SEO</li>
-              <li>podpięcie domeny</li>
-            </ul>
-            <a href="#kontakt" class="btn btn-secondary btn-block">Bezpłatna wycena</a>
-          </article>
-
-          <article class="price-card price-card-featured reveal">
-            <span class="price-badge">Najczęściej wybierane</span>
-            <h3 class="price-name">Strona firmowa</h3>
-            <p class="price-value"><span class="price-from">od</span> 3000 zł</p>
-            <p class="price-desc">Dla firm, które potrzebują pełnej prezentacji oferty.</p>
-            <ul class="price-features">
-              <li>do 5 podstron</li>
-              <li>oferta firmy</li>
-              <li>formularz kontaktowy</li>
-              <li>mapa Google</li>
-              <li>podstawowe SEO</li>
-              <li>dopasowanie pod telefon</li>
-            </ul>
-            <a href="#kontakt" class="btn btn-primary btn-block">Bezpłatna wycena</a>
-          </article>
-
-          <article class="price-card reveal">
-            <h3 class="price-name">Opieka nad stroną</h3>
-            <p class="price-value"><span class="price-from">od</span> 300 zł <span class="price-period">/ mies.</span></p>
-            <p class="price-desc">Dla firm, które chcą mieć spokój po wdrożeniu.</p>
-            <ul class="price-features">
-              <li>aktualizacje</li>
-              <li>drobne poprawki</li>
-              <li>kopie zapasowe</li>
-              <li>monitorowanie działania</li>
-              <li>wsparcie techniczne</li>
-            </ul>
-            <a href="#kontakt" class="btn btn-secondary btn-block">Bezpłatna wycena</a>
-          </article>
+        <div class="section-head">
+          <p class="eyebrow">Współpraca</p>
+          <h2 class="section-title" id="proces-title">Jak wygląda współpraca</h2>
+          <p class="section-lead">Prosty, uporządkowany proces — od pierwszej rozmowy do uruchomionej strony.</p>
         </div>
 
-        <!-- SEO i widoczność w Google -->
-        <div class="pricing-seo reveal">
-          <div class="pricing-seo-header">
-            <h3 class="pricing-seo-title">SEO i widoczność w Google</h3>
-            <p class="pricing-seo-lead">Podstawowe SEO jest już częścią każdej strony z cennika powyżej. Poniższe usługi to rozszerzona optymalizacja — dla firm, które chcą aktywnie zwiększać widoczność w Google.</p>
-          </div>
-          <div class="pricing-seo-grid">
-            <article class="price-card">
-              <span class="price-mode">Usługa jednorazowa</span>
-              <h3 class="price-name">SEO – Start</h3>
-              <p class="price-value price-value-custom">Wycena indywidualna</p>
-              <p class="price-desc">Techniczne przygotowanie i optymalizacja strony pod wyszukiwarkę Google.</p>
-              <ul class="price-features">
-                <li>optymalizacja techniczna SEO</li>
-                <li>analiza i dobór słów kluczowych</li>
-                <li>optymalizacja nagłówków i meta danych</li>
-                <li>poprawa szybkości i Core Web Vitals</li>
-                <li>konfiguracja Google Search Console</li>
-                <li>przygotowanie strony do prawidłowego indeksowania</li>
-              </ul>
-              <a href="#kontakt" class="btn btn-secondary btn-block">Zapytaj o wycenę</a>
-            </article>
-
-            <article class="price-card">
-              <span class="price-mode">Usługa miesięczna</span>
-              <h3 class="price-name">SEO i rozwój widoczności</h3>
-              <p class="price-value price-value-custom">Wycena indywidualna</p>
-              <p class="price-desc">Regularna optymalizacja, analiza widoczności i rozwój treści strony.</p>
-              <ul class="price-features">
-                <li>regularna optymalizacja strony</li>
-                <li>analiza widoczności i rekomendacje rozwoju</li>
-                <li>rozwój treści pod słowa kluczowe</li>
-                <li>podstawowa optymalizacja lokalnego SEO</li>
-                <li>monitoring najważniejszych elementów SEO</li>
-              </ul>
-              <a href="#kontakt" class="btn btn-secondary btn-block">Zapytaj o wycenę</a>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROCES ============ -->
-    <section class="process section" id="proces">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="eyebrow">Proces</p>
-          <h2 class="section-title">Jak wygląda współpraca?</h2>
-          <p class="section-lead">Prosty, uporządkowany proces — od pierwszej rozmowy do działającej strony.</p>
-        </header>
-
-        <ol class="steps">
+        <ol class="steps steps-4">
           <li class="step reveal">
-            <span class="step-num">1</span>
+            <span class="step-num">01</span>
             <h3 class="step-title">Rozmowa</h3>
-            <p class="step-text">Poznajemy Twoją firmę, ofertę i cel strony.</p>
+            <p class="step-text">Poznajemy firmę, zakres projektu i oczekiwania.</p>
           </li>
           <li class="step reveal">
-            <span class="step-num">2</span>
-            <h3 class="step-title">Plan</h3>
-            <p class="step-text">Ustalamy strukturę strony, treści i najważniejsze elementy.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">3</span>
+            <span class="step-num">02</span>
             <h3 class="step-title">Projekt</h3>
-            <p class="step-text">Tworzymy wygląd strony dopasowany do Twojej marki.</p>
+            <p class="step-text">Przygotowujemy strukturę i wygląd strony.</p>
           </li>
           <li class="step reveal">
-            <span class="step-num">4</span>
+            <span class="step-num">03</span>
             <h3 class="step-title">Wdrożenie</h3>
-            <p class="step-text">Kodujemy stronę, testujemy ją i przygotowujemy do publikacji.</p>
+            <p class="step-text">Kodujemy stronę i dostosowujemy ją do urządzeń mobilnych.</p>
           </li>
           <li class="step reveal">
-            <span class="step-num">5</span>
-            <h3 class="step-title">Start i wsparcie</h3>
-            <p class="step-text">Uruchamiamy stronę, a po wdrożeniu możesz liczyć na nasze wsparcie.</p>
+            <span class="step-num">04</span>
+            <h3 class="step-title">Publikacja</h3>
+            <p class="step-text">Uruchamiamy stronę i pomagamy w dalszej obsłudze.</p>
           </li>
         </ol>
-
-        <!-- Długoterminowa współpraca -->
-        <div class="process-continuity reveal">
-          <div class="process-continuity-text">
-            <h3 class="process-continuity-title">Nie kończymy na publikacji strony.</h3>
-            <p class="process-continuity-desc">Pomagamy również w jej dalszym rozwoju, optymalizacji i zwiększaniu widoczności w Google.</p>
-          </div>
-          <ol class="process-flow" aria-label="Etapy długoterminowej współpracy">
-            <li>Projekt</li>
-            <li>Wdrożenie</li>
-            <li>SEO</li>
-            <li>Opieka</li>
-            <li>Rozwój</li>
-          </ol>
-        </div>
       </div>
     </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="faq section section-gray" id="faq">
-      <div class="container container-narrow">
-        <header class="section-header reveal">
-          <p class="eyebrow">FAQ</p>
-          <h2 class="section-title">Najczęstsze pytania</h2>
-          <p class="section-lead">Wszystko, co warto wiedzieć przed rozpoczęciem współpracy.</p>
-        </header>
-
-        <div class="accordion reveal">
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
-              <span>Jak wygląda rozpoczęcie współpracy?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
-              <p>Zaczynamy od krótkiej rozmowy lub wiadomości — poznajemy Twoją firmę, ofertę i cel strony. Na tej podstawie przygotowujemy zakres, orientacyjny koszt i plan działania, więc od początku wiesz, co i kiedy zostanie wykonane.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
-              <span>Ile trwa wykonanie strony internetowej?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
-              <p>Najczęściej od 7 do 21 dni roboczych. Termin zależy od zakresu projektu, liczby podstron i tempa przekazywania materiałów. Przy większych stronach harmonogram ustalamy indywidualnie.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
-              <span>Ile kosztuje profesjonalna strona internetowa?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
-              <p>Landing page od 1500 zł, strona firmowa od 3000 zł. Ostateczna cena zależy od liczby podstron, funkcji i zakresu prac. Przed startem otrzymujesz jasną wycenę — bez ukrytych kosztów.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
-              <span>Czy strona będzie działać na telefonie?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
-              <p>Tak. Każda strona jest responsywna — działa poprawnie na telefonach, tabletach i komputerach. Dbamy o czytelny układ, szybkie ładowanie i wygodny kontakt z telefonu, bo to stamtąd trafia duża część klientów.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
-              <span>Czy pomagacie w treściach i strukturze strony?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
-              <p>Tak. Nie musisz mieć wszystkiego gotowego od razu. Pomagamy zaplanować strukturę strony, ułożyć sekcje i wskazać potrzebne materiały. Doradzamy też, jak czytelnie przedstawić ofertę.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
-              <span>Czy strona będzie przygotowana pod Google?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6">
-              <p>Tak. W ramach projektu dbamy o podstawy SEO: strukturę nagłówków, meta title i description, szybkość działania oraz responsywność. To solidna baza pod dalsze pozycjonowanie.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
-              <span>Czy po wdrożeniu strony mogę liczyć na wsparcie?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-question-7">
-              <p>Tak. Po publikacji oferujemy opiekę techniczną: aktualizacje, drobne poprawki, kopie zapasowe i rozwój strony. Nie zostajesz sam z technicznymi sprawami.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
-              <span>Czy można później rozbudować stronę?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-8" role="region" aria-labelledby="faq-question-8">
-              <p>Tak. Stronę można rozbudować o kolejne podstrony, realizacje, blog, wersję językową czy integracje. Zaczynamy od solidnej podstawy i rozwijamy stronę wraz z potrzebami firmy.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-9" id="faq-question-9">
-              <span>Czy współpraca może odbywać się zdalnie?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-9" role="region" aria-labelledby="faq-question-9">
-              <p>Tak. Cały proces prowadzimy zdalnie — przez e-mail, telefon lub wiadomości. Dzięki temu współpracujemy z klientami z całej Polski i z zagranicy, a wszystkie ustalenia i etapy przekazujemy w uporządkowany sposób.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-10" id="faq-question-10">
-              <span>Co otrzymuję po zakończeniu projektu?</span>
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer" id="faq-answer-10" role="region" aria-labelledby="faq-question-10">
-              <p>Gotową, opublikowaną stronę dopasowaną do Twojej firmy, urządzeń mobilnych i podstaw SEO. W zależności od zakresu pomagamy też z domeną, hostingiem, narzędziami Google i dalszą opieką techniczną.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ KONTAKT ============ -->
-    <section class="contact section" id="kontakt">
+    <!-- ============ CENY (skrót) ============ -->
+    <section class="section section-gray" aria-labelledby="ceny-title">
       <div class="container">
-        <div class="contact-grid">
-          <div class="contact-info reveal">
-            <p class="eyebrow">Kontakt</p>
-            <h2 class="section-title">Porozmawiajmy o Twoim projekcie</h2>
-            <p class="section-lead">Napisz, czym zajmuje się Twoja firma i czego potrzebujesz. Odpowiemy z bezpłatną wyceną i propozycją zakresu.</p>
+        <div class="section-head">
+          <p class="eyebrow">Ceny</p>
+          <h2 class="section-title" id="ceny-title">Orientacyjne ceny</h2>
+          <p class="section-lead">Wiesz od początku, od jakiej kwoty zaczynamy rozmowę o projekcie.</p>
+        </div>
 
-            <ul class="contact-details">
-              <li>
-                <span class="contact-detail-icon">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-                </span>
-                <a href="mailto:wertusdigital@gmail.com" class="contact-link">wertusdigital@gmail.com</a>
-              </li>
-              <li>
-                <span class="contact-detail-icon">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </span>
-                <a href="tel:+48516950801" class="contact-link">+48 516 950 801</a>
-              </li>
-            </ul>
-
-            <div class="contact-actions">
-              <a href="mailto:wertusdigital@gmail.com" class="btn btn-primary">Napisz e-mail</a>
-              <a href="tel:+48516950801" class="btn btn-secondary">Zadzwoń</a>
-            </div>
+        <div class="price-list">
+          <div class="price-item">
+            <p class="price-item-name">Landing page</p>
+            <p class="price-item-value"><span class="price-from">od</span> 1500 zł</p>
+            <p class="price-item-desc">Jedna strona pod usługę, produkt lub kampanię.</p>
           </div>
+          <div class="price-item">
+            <p class="price-item-name">Strona firmowa</p>
+            <p class="price-item-value"><span class="price-from">od</span> 3000 zł</p>
+            <p class="price-item-desc">Wielostronicowa strona z pełną prezentacją oferty.</p>
+          </div>
+          <div class="price-item">
+            <p class="price-item-name">Opieka nad stroną</p>
+            <p class="price-item-value"><span class="price-from">od</span> 300 zł <span class="price-period">/ mies.</span></p>
+            <p class="price-item-desc">Aktualizacje, poprawki i rozwój po wdrożeniu.</p>
+          </div>
+        </div>
 
-          <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xnjkkjbd" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Wertus Digital">
-            <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <h3 class="form-title">Napisz do nas</h3>
-            <div class="form-field">
-              <label for="form-name">Imię</label>
-              <input type="text" id="form-name" name="name" placeholder="Twoje imię" required autocomplete="name">
-            </div>
-            <div class="form-field">
-              <label for="form-email">E-mail</label>
-              <input type="email" id="form-email" name="email" placeholder="twoj@email.pl" required autocomplete="email">
-            </div>
-            <div class="form-field">
-              <label for="form-message">Wiadomość</label>
-              <textarea id="form-message" name="message" rows="5" placeholder="Opisz krótko swoją firmę i czego potrzebujesz…" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Wyślij wiadomość</button>
-            <p class="form-consent">Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych w celu odpowiedzi na zapytanie. Szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>.</p>
-            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
+        <div class="price-foot">
+          <p class="price-note">Końcowa cena zależy od zakresu i funkcjonalności projektu.</p>
+          <a href="/kontakt" class="btn btn-primary">Poproś o wycenę</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ O WERTUS DIGITAL (skrót) ============ -->
+    <section class="section" aria-labelledby="o-nas-title">
+      <div class="container">
+        <div class="about-band">
+          <h2 class="about-band-title" id="o-nas-title">Wertus Digital</h2>
+          <div class="about-band-body">
+            <p>Tworzymy strony internetowe dla firm, które chcą prezentować swoją ofertę profesjonalnie i przejrzyście. Łączymy projekt, wdrożenie i techniczne uruchomienie strony w jednym procesie.</p>
+            <a href="/o-nas" class="btn btn-secondary">Poznaj Wertus Digital</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA KOŃCOWE ============ -->
+    <section class="section cta-band">
+      <div class="container">
+        <div class="cta-band-inner">
+          <h2 class="cta-band-title">Masz pomysł na stronę?</h2>
+          <p class="cta-band-text">Opisz krótko swoją firmę i to, czego potrzebujesz. Odpowiemy z propozycją zakresu i bezpłatną wyceną.</p>
+          <a href="/kontakt" class="btn btn-primary btn-lg">Porozmawiajmy o projekcie</a>
         </div>
       </div>
     </section>
@@ -758,8 +300,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#start" class="footer-logo-wrap" aria-label="Wertus Digital — strona główna">
-            <img src="assets/logo-horizontal-light.png" alt="Wertus Digital — logo" class="footer-logo">
+          <a href="/" class="footer-logo-wrap" aria-label="Wertus Digital — strona główna">
+            <img src="/assets/logo-horizontal-light.png" alt="Wertus Digital" class="footer-logo" width="710" height="140">
           </a>
           <p class="footer-desc">Wertus Digital projektuje i wdraża strony internetowe dla firm. Działamy z Białegostoku i współpracujemy zdalnie z klientami z całej Polski.</p>
         </div>
@@ -767,13 +309,10 @@
         <nav class="footer-nav" aria-label="Menu w stopce">
           <h3 class="footer-heading">Na skróty</h3>
           <ul>
-            <li><a href="#start">Strona główna</a></li>
-            <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#realizacje">Realizacje</a></li>
-            <li><a href="#cennik">Cennik</a></li>
-            <li><a href="#proces">Proces</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="/oferta">Oferta</a></li>
+            <li><a href="/realizacje">Realizacje</a></li>
+            <li><a href="/o-nas">O nas</a></li>
+            <li><a href="/kontakt">Kontakt</a></li>
           </ul>
         </nav>
 
@@ -794,26 +333,6 @@
     </div>
   </footer>
 
-  <!-- ============ LIGHTBOX GALERII REALIZACJI ============ -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galeria projektu" hidden>
-    <button class="lightbox-close" type="button" aria-label="Zamknij galerię">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-    <button class="lightbox-arrow lightbox-prev" type="button" aria-label="Poprzednie zdjęcie">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div class="lightbox-stage">
-      <img class="lightbox-image" id="lightbox-image" src="" alt="">
-    </div>
-    <button class="lightbox-arrow lightbox-next" type="button" aria-label="Następne zdjęcie">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-    </button>
-    <div class="lightbox-footer">
-      <span class="lightbox-title" id="lightbox-title"></span>
-      <span class="lightbox-counter" id="lightbox-counter" aria-live="polite"></span>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>

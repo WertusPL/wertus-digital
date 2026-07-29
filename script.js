@@ -271,7 +271,7 @@
   const PORTFOLIO_GALLERIES = {
     "miso-sushi": {
       title: "Miso Sushi",
-      path: "assets/portfolio/miso-sushi/",
+      path: "/assets/portfolio/miso-sushi/",
       images: [
         { file: "miso-01.png", alt: { pl: "Projekt strony internetowej Miso Sushi – strona główna", en: "Miso Sushi website design – homepage" } },
         { file: "miso-02.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja menu restauracji", en: "Miso Sushi website design – restaurant menu section" } },
@@ -281,7 +281,7 @@
     },
     "lex-finanse": {
       title: "Lex Finanse",
-      path: "assets/portfolio/lex-finanse/",
+      path: "/assets/portfolio/lex-finanse/",
       images: [
         { file: "lex-01.png", alt: { pl: "Projekt strony internetowej Lex Finanse – strona główna", en: "Lex Finanse website design – homepage" } },
         { file: "lex-02.png", alt: { pl: "Projekt strony Lex Finanse – sekcja usług", en: "Lex Finanse website design – services section" } },
@@ -354,13 +354,13 @@
       if (header) header.style.paddingRight = "";
     }
 
-    function openLightbox(galleryKey, trigger) {
+    function openLightbox(galleryKey, trigger, startIndex) {
       const gallery = PORTFOLIO_GALLERIES[galleryKey];
 
       if (!gallery) return;
 
       activeGallery = gallery;
-      activeIndex = 0;
+      activeIndex = Math.min(Math.max(parseInt(startIndex, 10) || 0, 0), gallery.images.length - 1);
       lastFocusedElement = trigger || document.activeElement;
 
       lightbox.setAttribute("aria-label", t.galleryLabel + " " + gallery.title);
@@ -392,9 +392,13 @@
       renderImage();
     }
 
-    document.querySelectorAll(".work-card-trigger[data-gallery]").forEach(function (trigger) {
+    document.querySelectorAll("[data-gallery]").forEach(function (trigger) {
       trigger.addEventListener("click", function () {
-        openLightbox(trigger.getAttribute("data-gallery"), trigger);
+        openLightbox(
+          trigger.getAttribute("data-gallery"),
+          trigger,
+          trigger.getAttribute("data-index")
+        );
       });
     });
 
