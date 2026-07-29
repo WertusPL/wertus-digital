@@ -16,7 +16,7 @@
         formValidation: "Please fill in all form fields correctly.",
         formSending: "Sending…",
         formSuccess: "Thank you for your message! We will get back to you as soon as possible.",
-        formError: "Your message could not be sent. Please try again or contact us directly at wertusdigital@gmail.com.",
+        formError: "Your message could not be sent. Please try again or contact us directly at kontakt@wertusdigital.pl.",
         galleryLabel: "Project gallery"
       }
     : {
@@ -25,7 +25,7 @@
         formValidation: "Uzupełnij poprawnie wszystkie pola formularza.",
         formSending: "Wysyłanie wiadomości…",
         formSuccess: "Dziękujemy za wiadomość! Odezwiemy się najszybciej, jak to możliwe.",
-        formError: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na wertusdigital@gmail.com.",
+        formError: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na kontakt@wertusdigital.pl.",
         galleryLabel: "Galeria projektu"
       };
 
