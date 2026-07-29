@@ -26,7 +26,16 @@
       "Bash(kill %1)",
       "Bash(taskkill //F //IM python.exe)",
       "PowerShell(Get-Item *)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(git checkout *)",
+      "Bash(npx --version)",
+      "Bash(node .qa-server.js)",
+      "Skill(playwright-cli)",
+      "Bash(playwright-cli close *)",
+      "Bash(rm -f qa-*.png .qa-server.js)",
+      "Bash(rm -rf .playwright-cli)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
