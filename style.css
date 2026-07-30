@@ -4254,7 +4254,15 @@ a.contact-link:hover {
 @media (max-width: 1024px) {
   .lead-hero-grid {
     grid-template-columns: 1fr;
-    gap: 2.75rem;
+    gap: 2.25rem;
+  }
+
+  .hero-statement {
+    align-self: start;
+    padding-left: 0;
+    padding-top: 1.75rem;
+    border-left: none;
+    border-top: 1px solid rgba(143, 176, 255, 0.22);
   }
 
   .hero-shot {
@@ -5001,6 +5009,242 @@ a.contact-link:hover {
 
 .hero-process .reveal:nth-child(2) { transition-delay: 0.08s; }
 .hero-process .reveal:nth-child(3) { transition-delay: 0.16s; }
+
+/* ============================================================
+   HERO — prawa kolumna: redakcyjny statement (nie proces, nie karty)
+   ============================================================ */
+.hero-statement {
+  align-self: center;
+  padding-left: clamp(1.25rem, 2vw, 2.25rem);
+  border-left: 1px solid rgba(143, 176, 255, 0.22);
+}
+
+.hero-statement-kicker {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8fb0ff;
+  margin-bottom: 1.1rem;
+}
+
+.hero-statement-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.1vw, 1.6rem);
+  line-height: 1.42;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #fff;
+  max-width: 24rem;
+  margin-bottom: 1.6rem;
+}
+
+.hero-statement-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 22rem;
+}
+
+.hero-statement-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: rgba(206, 217, 238, 0.94);
+  letter-spacing: 0.01em;
+}
+
+.hero-statement-meta {
+  font-size: 0.9rem;
+  color: rgba(206, 217, 238, 0.7);
+}
+
+/* ============================================================
+   PASEK INFORMACYJNY — redakcyjny (cienkie separatory, numeracja)
+   ============================================================ */
+.trust-strip-band {
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.trust-strip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.trust-strip-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem);
+  border-left: 1px solid var(--color-border);
+}
+
+.trust-strip-item:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.trust-strip-num {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+}
+
+.trust-strip-text {
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+
+@media (max-width: 640px) {
+  .trust-strip { grid-template-columns: 1fr 1fr; }
+  .trust-strip-item { padding: 1rem 0 1rem 1rem; }
+  .trust-strip-item:nth-child(odd) { border-left: none; padding-left: 0; }
+  .trust-strip-item:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+}
+
+/* ============================================================
+   OFERTA (home) — redakcyjne wiersze z numeracją (nie karty)
+   ============================================================ */
+.offer-rows {
+  border-top: 1px solid var(--color-border);
+}
+
+.offer-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(1.4rem, 2.6vw, 2rem) 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.25s ease, padding 0.25s ease;
+}
+
+.offer-row:hover,
+.offer-row:focus-visible {
+  background: var(--color-surface);
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
+  outline: none;
+}
+
+.offer-row:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(6, 85, 254, 0.4);
+  border-radius: var(--radius-sm);
+}
+
+.offer-row-lead::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: -1px;
+  width: 3px;
+  background: var(--color-accent);
+}
+
+.offer-row-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-accent);
+}
+
+.offer-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.offer-row-name {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.offer-row-tag {
+  font-family: var(--font-main);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.offer-row-desc {
+  color: var(--color-ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.offer-row-price {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.offer-row-price .price-from {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.offer-row-arrow {
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--color-accent);
+  transition: transform 0.25s ease;
+}
+
+.offer-row:hover .offer-row-arrow,
+.offer-row:focus-visible .offer-row-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .offer-row {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.35rem 1rem;
+  }
+  .offer-row-num { grid-row: 1; }
+  .offer-row-price {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 0.3rem;
+  }
+  .offer-row-arrow { display: none; }
+  .offer-row:hover,
+  .offer-row:focus-visible { padding-left: 0.25rem; padding-right: 0.25rem; }
+}
 
 /* ============================================================
    PROCES — animowana oś (rysuje się przy wejściu w viewport)
