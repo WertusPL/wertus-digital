@@ -62,7 +62,8 @@
       "Bash(playwright-cli -s=mob eval \"window.scrollTo\\(0, document.querySelector\\('.offer-grid'\\).getBoundingClientRect\\(\\).top + window.scrollY - 10\\)\")",
       "Bash(playwright-cli -s=mob screenshot --filename=wd-m-offer.png)",
       "Bash(playwright-cli run-code *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(node --check portfolio-data.js)"
     ]
   }
 }

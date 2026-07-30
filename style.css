@@ -3162,6 +3162,207 @@ a.contact-link:hover {
   }
 }
 
+/* Status realizacji — wariant dla projektu wykonanego dla klienta */
+.project-concept--client {
+  color: var(--color-accent);
+  border-color: rgba(6, 85, 254, 0.35);
+  background: var(--color-accent-light);
+}
+
+/* Link do działającej strony klienta (nad rozciągniętym linkiem karty) */
+.project-live-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.project-live-link::after { content: "\2197"; font-weight: 700; }
+.project-live-link:hover,
+.project-live-link:focus-visible { text-decoration: underline; }
+
+/* ============================================================
+   REALIZACJE W AKTUALIZACJI — sekcja informacyjna (bez pustych kart)
+   ============================================================ */
+.portfolio-note {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.portfolio-note-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.9rem, 3.6vw, 2.85rem);
+  margin: 0.35rem 0 1rem;
+}
+
+.portfolio-note-lead {
+  color: var(--color-ink-soft);
+  font-size: 1.06rem;
+  line-height: 1.65;
+  max-width: 34rem;
+  margin-bottom: 1.75rem;
+}
+
+.portfolio-note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* Redakcyjna lista 01 / 02 / 03 — linie, nie identyczne karty */
+.portfolio-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.portfolio-step {
+  display: flex;
+  align-items: baseline;
+  gap: 1.1rem;
+  padding: 1.15rem 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.portfolio-step-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-accent);
+  min-width: 2.25rem;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-step-text {
+  font-weight: 600;
+  color: var(--color-ink);
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+/* Lista zakresu przyszłych case studies (podstrona /realizacje) */
+.portfolio-scope-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.portfolio-scope {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.75rem;
+}
+
+.portfolio-scope li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--color-ink);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.portfolio-scope li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+@media (max-width: 860px) {
+  .portfolio-note {
+    grid-template-columns: 1fr;
+    gap: clamp(1.75rem, 6vw, 2.5rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .portfolio-scope { grid-template-columns: 1fr; }
+  .portfolio-note-actions .btn { width: 100%; }
+}
+
+/* Opinia klienta na stronie case study (pokazywana tylko gdy prawdziwa) */
+.case-quote {
+  margin: 0;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.case-quote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 0 0 1rem;
+}
+
+.case-quote cite {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+/* Blok "następna realizacja" na dole case study */
+.case-next {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.case-next:hover,
+.case-next:focus-visible {
+  border-color: rgba(6, 85, 254, 0.3);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.case-next-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.case-next-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
 /* ============================================================
    BLOK "ZOBACZ WSZYSTKIE" / stopka sekcji
    ============================================================ */

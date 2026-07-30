@@ -1,18 +1,33 @@
 <!DOCTYPE html>
+<!-- ============================================================
+     SZABLON CASE STUDY — Wertus Digital
+     ------------------------------------------------------------
+     Jak użyć:
+     1. Skopiuj ten plik jako realizacje/<slug>.html
+     2. Zamień wszystkie pola {{ ... }} na treść projektu.
+     3. Uzupełnij dane projektu w portfolio-data.js (patrz PORTFOLIO-GUIDE.md).
+     4. Sekcje opcjonalne (opinia, link do strony, galeria) usuń, jeśli nie
+        dotyczą projektu — nie zostawiaj pustych bloków.
+     5. PRZY PUBLIKACJI usuń <meta name="robots" content="noindex, nofollow">
+        oraz dodaj adres /realizacje/<slug> do sitemap.xml.
+
+     Dla projektów KONCEPCYJNYCH nie wpisujemy wyników (sprzedaż, konwersja,
+     pozycje w Google) — opisujemy proces i decyzje projektowe.
+     ============================================================ -->
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Lex Finanse — projekt strony dla branży finansowej | Wertus Digital</title>
-  <meta name="description" content="Case study Lex Finanse — koncepcyjny projekt strony internetowej dla marki z branży finansowej. Prezentacja usług, sekcja FAQ i prosta droga do kontaktu.">
-  <link rel="canonical" href="https://www.wertusdigital.pl/realizacje/lex-finanse">
+  <meta name="robots" content="noindex, nofollow"><!-- USUŃ przy publikacji -->
+  <title>{{ seoTitle }}</title>
+  <meta name="description" content="{{ seoDescription }}">
+  <link rel="canonical" href="https://www.wertusdigital.pl/realizacje/{{ slug }}">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Lex Finanse — projekt strony dla branży finansowej | Wertus Digital">
-  <meta property="og:description" content="Koncepcyjny projekt strony internetowej dla marki z branży finansowej.">
-  <meta property="og:url" content="https://www.wertusdigital.pl/realizacje/lex-finanse">
+  <meta property="og:title" content="{{ seoTitle }}">
+  <meta property="og:description" content="{{ seoDescription }}">
+  <meta property="og:url" content="https://www.wertusdigital.pl/realizacje/{{ slug }}">
   <meta property="og:locale" content="pl_PL">
-  <meta property="og:image" content="https://www.wertusdigital.pl/assets/portfolio/lex-finanse/lex-01.png">
+  <meta property="og:image" content="https://www.wertusdigital.pl{{ coverImage }}">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
   <link rel="stylesheet" href="/style.css">
@@ -22,7 +37,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Realizacje", "item": "https://www.wertusdigital.pl/realizacje" },
-      { "@type": "ListItem", "position": 2, "name": "Lex Finanse", "item": "https://www.wertusdigital.pl/realizacje/lex-finanse" }
+      { "@type": "ListItem", "position": 2, "name": "{{ title }}", "item": "https://www.wertusdigital.pl/realizacje/{{ slug }}" }
     ]
   }
   </script>
@@ -54,85 +69,96 @@
 
   <main>
 
-    <!-- ============ CASE HERO ============ -->
+    <!-- ============ 1–5. HERO: nazwa, branża, typ, rok, główna prezentacja ============ -->
     <section class="case-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="Ścieżka nawigacji">
           <a href="/realizacje">Realizacje</a>
           <span class="breadcrumb-sep" aria-hidden="true">/</span>
-          <span aria-current="page">Lex Finanse</span>
+          <span aria-current="page">{{ title }}</span>
         </nav>
-        <span class="case-badge">Projekt koncepcyjny</span>
-        <h1 class="case-title">Lex Finanse</h1>
-        <p class="case-subtitle">Projekt strony internetowej dla marki z branży finansowej.</p>
+        <!-- Typ: "Projekt koncepcyjny" LUB "Realizacja dla klienta" -->
+        <span class="case-badge">{{ Projekt koncepcyjny | Realizacja dla klienta }}</span>
+        <h1 class="case-title">{{ title }}</h1>
+        <p class="case-subtitle">{{ branża }} · {{ rok }} — {{ jednozdaniowy opis }}</p>
 
         <div class="case-shot">
-          <img src="/assets/portfolio/lex-finanse/lex-01.png" alt="Projekt strony internetowej Lex Finanse — strona główna" width="1865" height="925" fetchpriority="high" decoding="async">
+          <img src="{{ coverImage }}" alt="{{ coverAlt }}" width="1865" height="925" fetchpriority="high" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- ============ OPIS ============ -->
+    <!-- ============ 6–8. Cel, problem, zakres ============ -->
     <section class="section">
       <div class="container">
         <div class="case-body">
           <div class="case-main">
-            <h2>O projekcie</h2>
-            <p>Lex Finanse to koncepcyjny projekt strony dla marki z branży finansowej. Założeniem było stworzenie serwisu, który wygląda poważnie i wzbudza zaufanie, a jednocześnie pozostaje czytelny dla klienta, który nie zna finansowej terminologii.</p>
-            <p>Układ prowadzi odwiedzającego od krótkiego przedstawienia oferty, przez konkretne usługi i najczęstsze pytania, aż do sekcji kontaktu — bez zbędnych elementów rozpraszających uwagę.</p>
-
             <h2>Cel projektu</h2>
-            <p>Celem było stworzenie profesjonalnego i uporządkowanego serwisu, który jasno przedstawia ofertę finansową oraz prowadzi użytkownika do kontaktu. Priorytetem była czytelność i wiarygodność, a nie efektowne, ale rozpraszające dodatki.</p>
+            <p>{{ Co miała osiągnąć strona i dla kogo. }}</p>
+
+            <h2>Problem do rozwiązania</h2>
+            <p>{{ Jakie wyzwanie / potrzebę adresuje projekt. }}</p>
+
+            <!-- 9. Struktura strony -->
+            <h2>Struktura strony</h2>
+            <p>{{ Jak ułożona jest treść i dlaczego (architektura informacji). }}</p>
+
+            <!-- 10. Decyzje UX/UI -->
+            <h2>Decyzje UX/UI</h2>
+            <p>{{ Najważniejsze decyzje projektowe: hierarchia, typografia, kolor, ścieżka do kontaktu. }}</p>
           </div>
 
           <aside class="case-aside">
             <h2>Zakres</h2>
             <ul class="scope-list">
-              <li>Projekt UX/UI</li>
-              <li>Strona responsywna</li>
-              <li>Prezentacja usług</li>
-              <li>Formularz kontaktowy</li>
-              <li>Sekcja FAQ</li>
-              <li>Optymalizacja podstaw technicznych</li>
+              <li>{{ zakres 1 }}</li>
+              <li>{{ zakres 2 }}</li>
+              <li>{{ zakres 3 }}</li>
             </ul>
+
+            <!-- 14. Link do wdrożonej strony (usuń, jeśli brak) -->
+            <p style="margin-top:1.25rem;">
+              <a class="text-link" href="{{ liveUrl }}" target="_blank" rel="noopener">Zobacz działającą stronę</a>
+            </p>
           </aside>
         </div>
       </div>
     </section>
 
-    <!-- ============ GALERIA ============ -->
+    <!-- ============ 11–13. Widok desktop, mobile i galeria ============ -->
     <section class="section section-gray">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Galeria</p>
           <h2 class="section-title">Zobacz projekt z bliska</h2>
-          <p class="section-lead">Kliknij zrzut, aby powiększyć go w galerii.</p>
+          <p class="section-lead">Kliknij zrzut, aby powiększyć go w galerii. Pokaż zarówno widok desktopowy, jak i mobilny.</p>
         </div>
 
+        <!-- data-gallery = slug projektu (zgodny z portfolio-data.js),
+             data-index = pozycja zdjęcia w tablicy gallery (od 0) -->
         <div class="gallery-grid">
-          <button class="gallery-item" type="button" data-gallery="lex-finanse" data-index="0" aria-haspopup="dialog" aria-label="Powiększ: strona główna">
-            <img src="/assets/portfolio/lex-finanse/lex-01.png" alt="Projekt strony internetowej Lex Finanse — strona główna" width="1865" height="925" loading="lazy" decoding="async">
+          <button class="gallery-item" type="button" data-gallery="{{ slug }}" data-index="0" aria-haspopup="dialog" aria-label="Powiększ: widok desktopowy">
+            <img src="{{ galleryPath }}screen-01.png" alt="{{ opis alt }}" width="1865" height="925" loading="lazy" decoding="async">
           </button>
-          <button class="gallery-item" type="button" data-gallery="lex-finanse" data-index="1" aria-haspopup="dialog" aria-label="Powiększ: sekcja usług">
-            <img src="/assets/portfolio/lex-finanse/lex-02.png" alt="Projekt strony Lex Finanse — sekcja usług" width="1869" height="936" loading="lazy" decoding="async">
+          <button class="gallery-item" type="button" data-gallery="{{ slug }}" data-index="1" aria-haspopup="dialog" aria-label="Powiększ: widok mobilny">
+            <img src="{{ galleryPath }}screen-02.png" alt="{{ opis alt }}" width="1865" height="925" loading="lazy" decoding="async">
           </button>
-          <button class="gallery-item" type="button" data-gallery="lex-finanse" data-index="2" aria-haspopup="dialog" aria-label="Powiększ: sekcja Dlaczego my">
-            <img src="/assets/portfolio/lex-finanse/lex-03.png" alt="Projekt strony Lex Finanse — sekcja Dlaczego my" width="1866" height="936" loading="lazy" decoding="async">
-          </button>
-          <button class="gallery-item" type="button" data-gallery="lex-finanse" data-index="3" aria-haspopup="dialog" aria-label="Powiększ: opinie klientów">
-            <img src="/assets/portfolio/lex-finanse/lex-04.png" alt="Projekt strony Lex Finanse — opinie klientów" width="1865" height="933" loading="lazy" decoding="async">
-          </button>
-          <button class="gallery-item" type="button" data-gallery="lex-finanse" data-index="4" aria-haspopup="dialog" aria-label="Powiększ: sekcja FAQ">
-            <img src="/assets/portfolio/lex-finanse/lex-05.png" alt="Projekt strony Lex Finanse — sekcja FAQ" width="1864" height="917" loading="lazy" decoding="async">
-          </button>
-          <button class="gallery-item" type="button" data-gallery="lex-finanse" data-index="5" aria-haspopup="dialog" aria-label="Powiększ: sekcja kontaktu">
-            <img src="/assets/portfolio/lex-finanse/lex-06.png" alt="Projekt strony Lex Finanse — sekcja kontaktu" width="1865" height="905" loading="lazy" decoding="async">
-          </button>
+          <!-- kolejne zrzuty: data-index rośnie o 1 -->
         </div>
       </div>
     </section>
 
-    <!-- ============ CTA KOŃCOWE ============ -->
+    <!-- ============ 15. Prawdziwa opinia klienta (USUŃ, jeśli brak) ============ -->
+    <section class="section">
+      <div class="container container-narrow">
+        <blockquote class="case-quote">
+          <p>„{{ Prawdziwa opinia klienta — tylko jeśli faktycznie istnieje. }}”</p>
+          <cite>{{ Imię Nazwisko, Firma }}</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ 16. Końcowe CTA ============ -->
     <section class="section cta-band">
       <div class="container">
         <div class="cta-band-inner reveal">
@@ -141,6 +167,16 @@
           <p class="cta-band-text">Opisz krótko swoją firmę i czego potrzebujesz — przygotujemy propozycję zakresu i bezpłatną wycenę.</p>
           <a href="/kontakt" class="btn btn-primary btn-lg btn-arrow">Porozmawiajmy o projekcie</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ 17. Następna realizacja (USUŃ, jeśli brak kolejnej) ============ -->
+    <section class="section">
+      <div class="container">
+        <a class="case-next" href="/realizacje/{{ nextSlug }}">
+          <span class="case-next-label">Następna realizacja</span>
+          <span class="case-next-title">{{ nextTitle }}</span>
+        </a>
       </div>
     </section>
 

@@ -272,51 +272,23 @@
   }
 
   /* ---------- 7. Galeria realizacji (lightbox) ----------
-     Konfiguracja obrazów portfolio. Aby dodać nową realizację:
-     1. Wgraj screenshoty do assets/portfolio/<nazwa-projektu>/
-     2. Dodaj wpis poniżej (klucz = nazwa folderu) z listą plików i opisami alt
-     3. W index.html i en.html dodaj kartę .work-card-link z przyciskiem
-        <button class="work-card-trigger" data-gallery="<nazwa-projektu>">
-        (gotowy szablon karty znajduje się w komentarzu w sekcji portfolio)
-     Galeria nie zmienia adresu URL — działa wyłącznie na stanie JS.
+     Dane galerii budują się automatycznie z centralnego pliku
+     portfolio-data.js (window.WERTUS_PORTFOLIO). Aby dodać / zmienić
+     zdjęcia projektu, edytuj wyłącznie tamten plik — patrz PORTFOLIO-GUIDE.md.
+     Galeria nie zmienia adresu URL — działa wyłącznie na stanie JS. */
+  const PORTFOLIO_DATA = Array.isArray(window.WERTUS_PORTFOLIO)
+    ? window.WERTUS_PORTFOLIO
+    : [];
 
-     Prawdziwe realizacje (case studies): każdy wpis może dodatkowo zawierać
-     pola opisujące projekt dla klienta — na razie nieużywane w UI, ale
-     przygotowane pod przyszłą rozbudowę portfolio:
-       caseStudy: {
-         client:  "Nazwa firmy",
-         industry:{ pl: "Branża", en: "Industry" },
-         problem: { pl: "Krótki opis problemu klienta", en: "..." },
-         scope:   { pl: "Zakres realizacji", en: "..." },
-         result:  { pl: "Efekt wdrożenia", en: "..." },
-         testimonial: { text: "Prawdziwa opinia klienta", author: "Imię, firma" },
-         url:     "https://adres-strony-klienta.pl"
-       }
-     Uzupełniaj wyłącznie prawdziwymi danymi. */
-  const PORTFOLIO_GALLERIES = {
-    "miso-sushi": {
-      title: "Miso Sushi",
-      path: "/assets/portfolio/miso-sushi/",
-      images: [
-        { file: "miso-01.png", alt: { pl: "Projekt strony internetowej Miso Sushi – strona główna", en: "Miso Sushi website design – homepage" } },
-        { file: "miso-02.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja menu restauracji", en: "Miso Sushi website design – restaurant menu section" } },
-        { file: "miso-03.png", alt: { pl: "Projekt strony internetowej Miso Sushi – sekcja o restauracji i galeria", en: "Miso Sushi website design – about section and photo gallery" } },
-        { file: "miso-04.png", alt: { pl: "Projekt strony internetowej Miso Sushi – opinie gości i sekcja rezerwacji", en: "Miso Sushi website design – guest reviews and booking section" } }
-      ]
-    },
-    "lex-finanse": {
-      title: "Lex Finanse",
-      path: "/assets/portfolio/lex-finanse/",
-      images: [
-        { file: "lex-01.png", alt: { pl: "Projekt strony internetowej Lex Finanse – strona główna", en: "Lex Finanse website design – homepage" } },
-        { file: "lex-02.png", alt: { pl: "Projekt strony Lex Finanse – sekcja usług", en: "Lex Finanse website design – services section" } },
-        { file: "lex-03.png", alt: { pl: "Projekt strony Lex Finanse – sekcja Dlaczego my", en: "Lex Finanse website design – Why us section" } },
-        { file: "lex-04.png", alt: { pl: "Projekt strony Lex Finanse – opinie klientów", en: "Lex Finanse website design – client testimonials" } },
-        { file: "lex-05.png", alt: { pl: "Projekt strony Lex Finanse – sekcja FAQ", en: "Lex Finanse website design – FAQ section" } },
-        { file: "lex-06.png", alt: { pl: "Projekt strony Lex Finanse – sekcja kontaktu", en: "Lex Finanse website design – contact section" } }
-      ]
-    }
-  };
+  const PORTFOLIO_GALLERIES = {};
+  PORTFOLIO_DATA.forEach(function (project) {
+    if (!project.gallery || !project.gallery.length) return;
+    PORTFOLIO_GALLERIES[project.slug] = {
+      title: project.title,
+      path: project.galleryPath || "",
+      images: project.gallery
+    };
+  });
 
   const lightbox = document.getElementById("lightbox");
 
@@ -496,4 +468,149 @@
       }
     }, { passive: true });
   }
+
+  /* ---------- 8. Renderowanie listy realizacji ----------
+     Buduje editorialną listę opublikowanych projektów w kontenerze
+     [data-portfolio-grid]. Gdy nie ma żadnego opublikowanego projektu,
+     kontener zostaje pusty (ukryty), a widoczna pozostaje statyczna sekcja
+     "portfolio w aktualizacji" — dzięki temu strona działa też bez JS. */
+  function statusLabel(project) {
+    return project.projectType === "client"
+      ? "Realizacja dla klienta"
+      : "Projekt koncepcyjny";
+  }
+
+  function buildProjectCard(project, isFeature) {
+    const article = document.createElement("article");
+    article.className = "project-card reveal" + (isFeature ? " project-card-feature" : "");
+
+    if (project.coverImage) {
+      const media = document.createElement("div");
+      media.className = "project-media";
+      const img = document.createElement("img");
+      img.src = project.coverImage;
+      img.alt = project.coverAlt || (project.title + " — projekt strony internetowej");
+      img.loading = "lazy";
+      img.decoding = "async";
+      media.appendChild(img);
+      article.appendChild(media);
+    }
+
+    const body = document.createElement("div");
+    body.className = "project-body";
+
+    const type = document.createElement("p");
+    type.className = "project-type";
+    type.textContent = project.category;
+
+    const title = document.createElement("h3");
+    title.className = "project-title";
+    title.textContent = project.title;
+
+    const desc = document.createElement("p");
+    desc.className = "project-desc";
+    desc.textContent = project.shortDescription;
+
+    const foot = document.createElement("div");
+    foot.className = "project-foot";
+
+    const status = document.createElement("span");
+    status.className =
+      "project-concept" + (project.projectType === "client" ? " project-concept--client" : "");
+    status.textContent = statusLabel(project);
+
+    const link = document.createElement("a");
+    link.className = "text-link stretched-link";
+    link.href = "/realizacje/" + project.slug;
+    link.setAttribute("aria-label", "Zobacz projekt " + project.title);
+    link.textContent = "Zobacz projekt";
+
+    foot.appendChild(status);
+    foot.appendChild(link);
+
+    body.appendChild(type);
+    body.appendChild(title);
+    body.appendChild(desc);
+
+    if (project.liveUrl) {
+      const live = document.createElement("a");
+      live.className = "project-live-link";
+      live.href = project.liveUrl;
+      live.target = "_blank";
+      live.rel = "noopener";
+      live.textContent = "Zobacz działającą stronę";
+      body.appendChild(live);
+    }
+
+    body.appendChild(foot);
+    article.appendChild(body);
+    return article;
+  }
+
+  function renderPortfolio() {
+    const grids = document.querySelectorAll("[data-portfolio-grid]");
+    if (!grids.length) return;
+
+    const published = PORTFOLIO_DATA.filter(function (p) {
+      return p.isPublished === true;
+    });
+    if (!published.length) return;
+
+    const featured = published.filter(function (p) { return p.featured; });
+    const rest = published.filter(function (p) { return !p.featured; });
+
+    grids.forEach(function (grid) {
+      const editorial = document.createElement("div");
+      editorial.className = "portfolio-editorial";
+
+      const queue = rest.slice();
+      // Pierwszy wyróżniony projekt — duża prezentacja
+      if (featured.length) {
+        editorial.appendChild(buildProjectCard(featured[0], true));
+        // Ewentualne kolejne wyróżnione trafiają do dalszej kolejki
+        featured.slice(1).forEach(function (p) { queue.unshift(p); });
+      }
+
+      for (let i = 0; i < queue.length; i += 2) {
+        const pair = queue.slice(i, i + 2);
+        // Pojedynczy projekt na końcu — pełna szerokość (duża prezentacja)
+        if (pair.length === 1) {
+          editorial.appendChild(buildProjectCard(pair[0], true));
+        } else {
+          const row = document.createElement("div");
+          row.className = "portfolio-row";
+          pair.forEach(function (p) { row.appendChild(buildProjectCard(p, false)); });
+          editorial.appendChild(row);
+        }
+      }
+
+      grid.innerHTML = "";
+      grid.appendChild(editorial);
+      grid.hidden = false;
+
+      const emptyId = grid.getAttribute("data-portfolio-empty");
+      if (emptyId) {
+        const emptyEl = document.getElementById(emptyId);
+        if (emptyEl) emptyEl.hidden = true;
+      }
+    });
+
+    // Delikatne pojawienie się nowo dodanych kart
+    const newReveals = document.querySelectorAll("[data-portfolio-grid] .reveal");
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+      newReveals.forEach(function (el) { obs.observe(el); });
+    } else {
+      newReveals.forEach(function (el) { el.classList.add("visible"); });
+    }
+  }
+
+  renderPortfolio();
 })();
