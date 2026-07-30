@@ -1,7 +1,10 @@
 /* ============================================================
    Wertus Digital — style.css
-   Czysty CSS, bez frameworków i zewnętrznych zasobów.
+   Czysty CSS, bez frameworków. Jedyny zasób zewnętrzny:
+   display font (Sora) na nagłówki — body zostaje systemowe.
    ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&display=swap');
 
 /* ---------- Zmienne ---------- */
 :root {
@@ -19,14 +22,14 @@
   /* Warianty tła sekcji — budują rytm kolorystyczny strony */
   --color-bg-soft: #f4f7fc;   /* bardzo jasny chłodny szary */
   --color-bg-blue: #eef3fd;   /* delikatny niebiesko-szary */
-  --color-dark: #0a1020;      /* granat brandowy (primary) */
+  --color-dark: #070c18;      /* granat brandowy (primary) — głębszy dla kontrastu */
   --color-dark-2: #0f1c3a;    /* jaśniejszy granat do gradientów */
 
-  /* Cienie */
+  /* Cienie — bogatsza głębia dla premium */
   --shadow-sm: 0 1px 3px rgba(11, 18, 32, 0.06), 0 1px 2px rgba(11, 18, 32, 0.04);
-  --shadow-md: 0 6px 20px rgba(11, 18, 32, 0.08);
-  --shadow-lg: 0 18px 45px rgba(11, 18, 32, 0.14);
-  --shadow-accent: 0 8px 24px rgba(6, 85, 254, 0.28);
+  --shadow-md: 0 8px 24px rgba(11, 18, 32, 0.09);
+  --shadow-lg: 0 24px 60px rgba(11, 18, 32, 0.16);
+  --shadow-accent: 0 10px 26px rgba(6, 85, 254, 0.3);
 
   /* Kształty i rytm */
   --radius-sm: 10px;
@@ -35,9 +38,28 @@
   --header-height: 76px;
 
   /* Skala odstępów sekcji — bogato, ale kontrolowanie */
-  --space-section: clamp(3.25rem, 6vw, 5rem);
+  --space-section: clamp(3.5rem, 6.5vw, 5.75rem);
 
   --font-main: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Typografia display — nagłówki na Sora ---------- */
+.hero-title,
+.lead-hero-title,
+.section-title,
+.page-hero-title,
+.case-title,
+.cta-band-title,
+.about-band-title,
+.service-block-title,
+.project-title,
+.price-value,
+.price-item-value,
+.legal-title,
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01" 1;
 }
 
 /* ---------- Reset ---------- */
@@ -2831,29 +2853,99 @@ a.contact-link:hover {
    HERO PODSTRON (jasny)
    ============================================================ */
 .page-hero {
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  padding: calc(var(--header-height) + clamp(2.5rem, 5vw, 3.75rem)) 0 clamp(2.5rem, 5vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 55% 60% at 90% 8%, rgba(6, 85, 254, 0.24), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 2% 100%, rgba(6, 85, 254, 0.1), transparent 62%),
+    linear-gradient(165deg, var(--color-dark) 0%, #0d1830 58%, #0f1e3d 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: calc(var(--header-height) + clamp(2.75rem, 5.5vw, 4.25rem)) 0 clamp(2.75rem, 5.5vw, 4rem);
 }
 
+/* Ukośne linie brandowe — subtelny detal z logo „W" */
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(143, 176, 255, 0.06) 0 1px,
+    transparent 1px 30px
+  );
+  -webkit-mask-image: radial-gradient(ellipse 75% 90% at 82% 20%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 75% 90% at 82% 20%, #000 0%, transparent 72%);
+}
+
+.page-hero .container { position: relative; z-index: 1; }
+
+.page-hero .eyebrow { color: #8fb0ff; }
+
 .page-hero-inner {
-  max-width: 720px;
+  max-width: 760px;
 }
 
 .page-hero-title {
-  font-size: clamp(1.9rem, 4vw, 2.9rem);
-  line-height: 1.14;
+  font-size: clamp(1.95rem, 4.2vw, 3rem);
+  line-height: 1.12;
   font-weight: 800;
-  letter-spacing: -0.025em;
-  margin-bottom: 1rem;
+  letter-spacing: -0.028em;
+  color: #fff;
+  margin-bottom: 1.1rem;
+  text-wrap: balance;
 }
 
 .page-hero-lead {
-  font-size: 1.1rem;
-  line-height: 1.65;
-  color: var(--color-ink-soft);
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: rgba(206, 217, 238, 0.92);
   max-width: 44rem;
 }
+
+.page-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.9rem;
+}
+
+.page-hero .btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.page-hero .btn-secondary:hover,
+.page-hero .btn-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(143, 176, 255, 0.6);
+  color: #fff;
+}
+
+/* Meta-informacje pod leadem (np. na realizacjach / o nas) */
+.page-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.7rem;
+  margin-top: 1.9rem;
+}
+
+.page-hero-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(206, 217, 238, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+}
+
+.page-hero-meta .icon { width: 1.05em; height: 1.05em; color: #8fb0ff; }
 
 /* Okruszki (breadcrumb) */
 .breadcrumb {
@@ -4065,4 +4157,561 @@ a.contact-link:hover {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ============================================================
+   REDESIGN 2026 — WARSTWA PREMIUM (home + wspólne)
+   Nowe komponenty i wzmocnienia rytmu wizualnego. Klasy dodane,
+   nie nadpisują starego one-pagera (en.html).
+   ============================================================ */
+
+/* ---- Eyebrow jako chip (hero) ---- */
+.eyebrow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(143, 176, 255, 0.1);
+  border: 1px solid rgba(143, 176, 255, 0.24);
+}
+
+/* ---- Hero: wyróżniki zaufania pod CTA ---- */
+.lead-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.lead-hero-trust li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(206, 217, 238, 0.9);
+}
+
+.lead-hero-trust .icon {
+  width: 1.15em;
+  height: 1.15em;
+  color: #5b8cff;
+}
+
+/* ---- Hero: warstwowy drugi ekran (realny projekt) zamiast pustej ramki ---- */
+.hero-stage::after { display: none; }
+
+.hero-shot-2 {
+  position: absolute;
+  z-index: 0;
+  top: -20px;
+  right: -14px;
+  width: 56%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(143, 176, 255, 0.22);
+  box-shadow: 0 18px 45px rgba(2, 8, 23, 0.45);
+  transform: rotate(3deg);
+  opacity: 0.92;
+  transition: transform 0.45s ease;
+}
+
+.hero-shot-2 img { display: block; width: 100%; height: auto; }
+
+.hero-stage:hover .hero-shot-2 {
+  transform: rotate(1.5deg) translateY(-4px);
+}
+
+/* ---- Pasek wiarygodności (dwuwierszowy, do lewej) ---- */
+.trust-bar .trust-item {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.trust-text { line-height: 1.32; }
+
+.trust-sub {
+  display: block;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+}
+
+/* ---- Nagłówek sekcji wyśrodkowany (wariant) ---- */
+.section-head-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ============================================================
+   OFERTA — wyróżniona usługa główna (home)
+   ============================================================ */
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+}
+
+.offer-feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.9rem, 3.2vw, 2.6rem);
+  border-radius: var(--radius-lg);
+  color: #fff;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 60% at 88% 6%, rgba(6, 85, 254, 0.34), transparent 60%),
+    linear-gradient(155deg, var(--color-dark) 0%, #10203f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-lg);
+}
+
+.offer-tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8fb0ff;
+  background: rgba(143, 176, 255, 0.14);
+  border: 1px solid rgba(143, 176, 255, 0.28);
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.35rem;
+}
+
+.offer-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(6, 85, 254, 0.2);
+  color: #8fb0ff;
+  margin-bottom: 1.1rem;
+}
+
+.offer-feature-icon .icon { width: 26px; height: 26px; }
+
+.offer-feature-title {
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.offer-feature-desc {
+  color: rgba(206, 217, 238, 0.9);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  max-width: 34rem;
+}
+
+.offer-feature-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.offer-feature-list li {
+  position: relative;
+  padding-left: 1.7rem;
+  color: rgba(206, 217, 238, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.offer-feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  background: rgba(6, 85, 254, 0.22);
+}
+
+.offer-feature-list li::after {
+  content: "";
+  position: absolute;
+  left: 0.34em;
+  top: 0.42em;
+  width: 0.5em;
+  height: 0.28em;
+  border-left: 2px solid #8fb0ff;
+  border-bottom: 2px solid #8fb0ff;
+  transform: rotate(-45deg);
+}
+
+.offer-feature-foot {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.offer-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.offer-price .price-from {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(206, 217, 238, 0.7);
+}
+
+.offer-side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.6rem);
+}
+
+.offer-card {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  flex: 1;
+  padding: 1.5rem 1.6rem;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(6, 85, 254, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+.offer-card-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.offer-card-icon .icon { width: 22px; height: 22px; }
+
+.offer-card-body h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.6rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.offer-card-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.offer-card-body p {
+  color: var(--color-ink-soft);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.offer-side-link { align-self: flex-start; }
+
+/* ============================================================
+   PROCES — timeline (home)
+   ============================================================ */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(6, 85, 254, 0.35) 12%, rgba(6, 85, 254, 0.35) 88%, transparent);
+  z-index: 0;
+}
+
+.timeline-step {
+  position: relative;
+  z-index: 1;
+  padding-right: 0.5rem;
+}
+
+.timeline-num {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(150deg, var(--color-accent), #3f7bff);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  box-shadow: 0 10px 22px rgba(6, 85, 254, 0.28), 0 0 0 6px #fff;
+  margin-bottom: 1.15rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-step:hover .timeline-num {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(6, 85, 254, 0.35), 0 0 0 6px #fff;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.timeline-text {
+  color: var(--color-ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.timeline .reveal:nth-child(2) { transition-delay: 0.08s; }
+.timeline .reveal:nth-child(3) { transition-delay: 0.16s; }
+.timeline .reveal:nth-child(4) { transition-delay: 0.24s; }
+
+/* ============================================================
+   O NAS — ciemne pasmo (home)
+   ============================================================ */
+.about-feature {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.about-feature-lead {
+  color: rgba(206, 217, 238, 0.9) !important;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  margin: 1.1rem 0 1.75rem;
+  max-width: 34rem;
+}
+
+.about-feature-points {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-feature-points li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-md);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.about-feature-points li:hover {
+  border-color: rgba(143, 176, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.about-point-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(6, 85, 254, 0.18);
+  color: #8fb0ff;
+  flex-shrink: 0;
+}
+
+.about-point-icon .icon { width: 20px; height: 20px; }
+
+.about-feature-points h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.about-feature-points p {
+  color: rgba(206, 217, 238, 0.85) !important;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ============================================================
+   CENNIK — premium (home): featured wyrównany, nota wyśrodkowana
+   ============================================================ */
+.pricing-grid { align-items: stretch; }
+
+.price-note-center {
+  text-align: center;
+  margin-top: 1.9rem;
+}
+
+/* ============================================================
+   CTA — dwa przyciski + wariant ghost
+   ============================================================ */
+.cta-band-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem 1.1rem;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(143, 176, 255, 0.6);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESPONSYWNOŚĆ — warstwa premium
+   ============================================================ */
+@media (max-width: 1024px) {
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.25rem 1.4rem;
+  }
+
+  .timeline::before { display: none; }
+
+  .about-feature {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-shot-2 { display: none; }
+
+  .trust-list .trust-item { justify-content: center; text-align: left; }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 460px;
+    margin-inline: auto;
+  }
+
+  .timeline-step {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    column-gap: 1.1rem;
+    row-gap: 0.15rem;
+    padding: 0 0 1.9rem;
+  }
+
+  .timeline-step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 26px;
+    top: 60px;
+    bottom: 2px;
+    width: 2px;
+    background: var(--color-accent-light);
+  }
+
+  .timeline-num {
+    grid-row: 1 / 3;
+    margin: 0;
+  }
+
+  .timeline-title {
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .timeline-text { grid-column: 2; }
+}
+
+@media (max-width: 480px) {
+  .cta-band-actions .btn { width: 100%; }
+  .offer-feature-foot { flex-direction: column; align-items: flex-start; }
+  .page-hero-actions { flex-direction: column; align-items: stretch; }
+  .page-hero-actions .btn { width: 100%; }
+}
+
+/* ============================================================
+   CASE STUDY — ciemny hero (spójny z podstronami)
+   ============================================================ */
+.case-hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 55% 60% at 88% 6%, rgba(6, 85, 254, 0.22), transparent 60%),
+    linear-gradient(165deg, var(--color-dark) 0%, #0d1830 60%, #0f1e3d 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.case-hero .container { position: relative; z-index: 1; }
+
+.case-hero .breadcrumb,
+.case-hero .breadcrumb a {
+  color: rgba(206, 217, 238, 0.72);
+}
+
+.case-hero .breadcrumb a:hover { color: #8fb0ff; }
+
+.case-hero .breadcrumb span[aria-current] { color: #fff; }
+
+.case-hero .case-badge {
+  color: #8fb0ff;
+  background: rgba(6, 85, 254, 0.2);
+  border: 1px solid rgba(143, 176, 255, 0.28);
+}
+
+.case-hero .case-title { color: #fff; }
+
+.case-hero .case-subtitle { color: rgba(206, 217, 238, 0.9); }
+
+.case-hero .case-shot {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 70px rgba(2, 8, 23, 0.5);
+}
+
+.case-hero .case-concept-visual {
+  border-color: rgba(143, 176, 255, 0.22);
+  box-shadow: 0 30px 70px rgba(2, 8, 23, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }

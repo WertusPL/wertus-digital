@@ -52,7 +52,15 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8799/realizacje)",
       "Bash(curl -s \"http://127.0.0.1:8799/__shutdown\")",
       "Bash(playwright-cli click *)",
-      "Bash(playwright-cli --raw eval \"window.scrollTo\\(0, 1200\\)\")"
+      "Bash(playwright-cli --raw eval \"window.scrollTo\\(0, 1200\\)\")",
+      "Read(//c/Users/kacpe/.claude/skills/playwright-cli/**)",
+      "Read(//c/Users/kacpe/.claude/skills/playwright-cli/.playwright-cli/**)",
+      "Bash(playwright-cli eval *)",
+      "Bash(playwright-cli -s=mob open --mobile)",
+      "Bash(playwright-cli -s=mob goto \"http://localhost:8123/index.html\")",
+      "Bash(playwright-cli -s=mob screenshot --filename=wd-m-hero.png)",
+      "Bash(playwright-cli -s=mob eval \"window.scrollTo\\(0, document.querySelector\\('.offer-grid'\\).getBoundingClientRect\\(\\).top + window.scrollY - 10\\)\")",
+      "Bash(playwright-cli -s=mob screenshot --filename=wd-m-offer.png)"
     ]
   }
 }
