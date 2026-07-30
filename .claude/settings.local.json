@@ -60,7 +60,9 @@
       "Bash(playwright-cli -s=mob goto \"http://localhost:8123/index.html\")",
       "Bash(playwright-cli -s=mob screenshot --filename=wd-m-hero.png)",
       "Bash(playwright-cli -s=mob eval \"window.scrollTo\\(0, document.querySelector\\('.offer-grid'\\).getBoundingClientRect\\(\\).top + window.scrollY - 10\\)\")",
-      "Bash(playwright-cli -s=mob screenshot --filename=wd-m-offer.png)"
+      "Bash(playwright-cli -s=mob screenshot --filename=wd-m-offer.png)",
+      "Bash(playwright-cli run-code *)",
+      "Bash(git *)"
     ]
   }
 }

@@ -167,6 +167,31 @@
     });
   }
 
+  /* ---------- 5b. Oś procesu — rysowanie linii przy wejściu w viewport ---------- */
+  const timelines = document.querySelectorAll("[data-timeline]");
+
+  if ("IntersectionObserver" in window && timelines.length) {
+    const timelineObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            timelineObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    timelines.forEach(function (el) {
+      timelineObserver.observe(el);
+    });
+  } else {
+    timelines.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
   /* ---------- 6. Formularz kontaktowy (Formspree) ---------- */
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
