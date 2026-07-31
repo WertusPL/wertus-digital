@@ -158,6 +158,67 @@ button {
 
 .section-dark .eyebrow { color: #8fb0ff; }
 
+/* Sekcja kontrastowa — mocne, głębokie królewskie niebo (inspiracja: Harajuku).
+   Jasna treść na nasyconym granatowo-niebieskim tle. Nie neon. */
+.section-accent {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 60% 70% at 12% 0%, rgba(255, 255, 255, 0.1), transparent 55%),
+    linear-gradient(150deg, #06308f 0%, #0a46d6 52%, #0655fe 100%);
+}
+
+.section-accent .section-title { color: #fff; }
+.section-accent .section-lead,
+.section-accent p { color: rgba(226, 234, 255, 0.92); }
+.section-accent .eyebrow { color: #bcd0ff; }
+
+/* Subtelna siatka w tle pasma kontrastowego */
+.section-accent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, #000, transparent 78%);
+}
+
+.section-accent .container { position: relative; z-index: 1; }
+
+/* Timeline na tle kontrastowym */
+.section-accent .timeline::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35) 12%, rgba(255, 255, 255, 0.35) 88%, transparent);
+}
+
+.section-accent .timeline-num {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 22px rgba(3, 20, 70, 0.35), 0 0 0 6px #0a46d6;
+  color: #fff;
+}
+
+.section-accent .timeline-step:hover .timeline-num {
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 30px rgba(3, 20, 70, 0.4), 0 0 0 6px #0a46d6;
+}
+
+.section-accent .timeline-title { color: #fff; }
+.section-accent .timeline-text { color: rgba(226, 234, 255, 0.85); }
+
+/* Animowana linia i pionowy łącznik na mobile — jasne na tle kontrastowym */
+.section-accent .timeline-line {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.85));
+}
+
+.section-accent .timeline-step:not(:last-child)::before {
+  background: rgba(255, 255, 255, 0.28);
+}
+
 /* Detal brandowy Wertus — subtelne ukośne linie z logo "W".
    Reużywalne tło; nakładane tylko tam, gdzie ma sens kompozycyjny. */
 .brand-lines {
@@ -1171,57 +1232,63 @@ button {
 /* ============================================================
    CENNIK
    ============================================================ */
+/* Cennik redakcyjny — płaskie kolumny z cienkim akcentem u góry,
+   jedna wyróżniona usługa. Bez tabeli SaaS, bez ciężkich kart. */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
-  align-items: center;
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: stretch;
 }
 
 .price-card {
   position: relative;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 2.1rem 1.8rem;
-  box-shadow: var(--shadow-sm);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 2.2rem 0 0;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border-top: 2px solid var(--color-border);
+  transition: border-color 0.25s ease;
 }
 
 .price-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  border-top-color: rgba(6, 85, 254, 0.4);
 }
 
 .price-card-featured {
-  border: 2px solid var(--color-accent);
-  box-shadow: 0 22px 55px rgba(6, 85, 254, 0.18);
-  padding-top: 2.7rem;
-  padding-bottom: 2.6rem;
-  background: linear-gradient(180deg, #fff 0%, #f7faff 100%);
+  border-top: 2px solid var(--color-accent);
+}
+
+/* Delikatny słup akcentu za wyróżnioną usługą — prowadzi wzrok do CTA */
+.price-card-featured::before {
+  content: "";
+  position: absolute;
+  inset: 0 -1.6rem -1.4rem -1.6rem;
+  background: linear-gradient(180deg, rgba(6, 85, 254, 0.05), rgba(6, 85, 254, 0.02));
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.price-card-featured > * {
+  position: relative;
   z-index: 1;
 }
 
-.price-card-featured:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 28px 65px rgba(6, 85, 254, 0.24);
-}
-
 .price-badge {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-self: flex-start;
+  display: inline-block;
   background: var(--color-accent);
   color: #fff;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 0.4rem 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  box-shadow: var(--shadow-accent);
+  margin-bottom: 0.9rem;
   white-space: nowrap;
 }
 
@@ -1364,23 +1431,20 @@ button {
 /* ============================================================
    FAQ — accordion
    ============================================================ */
+/* Proste wiersze z separatorami — bez kart, bez ramek, bez cieni */
 .accordion {
   display: grid;
-  gap: 0.9rem;
+  gap: 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .faq-item {
-  background: #fff;
-  border: 1px solid rgba(11, 18, 32, 0.07);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(11, 18, 32, 0.04);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color 0.25s ease;
 }
 
 .faq-item.open {
-  border-color: rgba(6, 85, 254, 0.4);
-  box-shadow: var(--shadow-md);
+  border-bottom-color: rgba(6, 85, 254, 0.35);
 }
 
 .faq-question {
@@ -1388,28 +1452,29 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
   text-align: left;
-  font-size: 1.02rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.9vw, 1.22rem);
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--color-ink);
-  padding: 1.2rem 1.5rem;
+  padding: 1.5rem 0.25rem;
   transition: color 0.2s ease;
 }
 
-.faq-question:hover {
+.faq-question:hover,
+.faq-item.open .faq-question {
   color: var(--color-accent);
 }
 
-/* Ikona plus/minus w czystym CSS */
+/* Ikona plus/minus — cienka, bez tła */
 .faq-icon {
   position: relative;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--color-accent-light);
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
-  transition: background-color 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
 .faq-icon::before,
@@ -1418,29 +1483,21 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 12px;
+  width: 15px;
   height: 2px;
   border-radius: 2px;
-  background: var(--color-accent);
+  background: currentColor;
   transform: translate(-50%, -50%);
-  transition: transform 0.3s ease, background-color 0.25s ease;
+  transition: transform 0.3s ease, opacity 0.25s ease;
 }
 
 .faq-icon::after {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.faq-item.open .faq-icon {
-  background: var(--color-accent);
-}
-
-.faq-item.open .faq-icon::before,
-.faq-item.open .faq-icon::after {
-  background: #fff;
-}
-
 .faq-item.open .faq-icon::after {
   transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
 }
 
 .faq-answer {
@@ -1450,11 +1507,11 @@ button {
 }
 
 .faq-answer p {
-  padding: 0 1.5rem 1.4rem;
+  padding: 0 3rem 1.6rem 0.25rem;
   color: var(--color-ink-soft);
-  font-size: 0.96rem;
+  font-size: 1rem;
   line-height: 1.75;
-  max-width: 75ch;
+  max-width: 72ch;
 }
 
 /* ============================================================
@@ -3191,11 +3248,36 @@ a.contact-link:hover {
    REALIZACJE W AKTUALIZACJI — sekcja informacyjna (bez pustych kart)
    ============================================================ */
 .portfolio-note {
+  position: relative;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
+  align-items: stretch;
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 0%, rgba(6, 85, 254, 0.05), transparent 60%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.9rem, 4vw, 3.25rem);
 }
+
+/* Duża, delikatna liczba w tle — sygnalizuje sześć nadchodzących realizacji */
+.portfolio-note-mark {
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(7rem, 16vw, 13rem);
+  line-height: 1;
+  color: rgba(6, 85, 254, 0.05);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.portfolio-note-content { position: relative; z-index: 1; }
 
 .portfolio-note-title {
   font-family: var(--font-display);
@@ -3218,6 +3300,32 @@ a.contact-link:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+}
+
+/* Prawy panel — wypełnia wysokość, spina sekcję kompozycyjnie */
+.portfolio-note-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--color-border);
+}
+
+.portfolio-panel-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+.portfolio-panel-note {
+  margin-top: 1.4rem;
+  font-size: 0.96rem;
+  color: var(--color-ink-soft);
 }
 
 /* Redakcyjna lista 01 / 02 / 03 — linie, nie identyczne karty */
@@ -3295,11 +3403,19 @@ a.contact-link:hover {
     grid-template-columns: 1fr;
     gap: clamp(1.75rem, 6vw, 2.5rem);
   }
+  .portfolio-note-panel {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-left: 0;
+    padding-top: clamp(1.5rem, 6vw, 2rem);
+  }
+  .portfolio-note-mark { font-size: clamp(6rem, 22vw, 9rem); top: -1rem; }
 }
 
 @media (max-width: 560px) {
   .portfolio-scope { grid-template-columns: 1fr; }
   .portfolio-note-actions .btn { width: 100%; }
+  .price-card-featured::before { inset: 0 -1rem -1rem; }
 }
 
 /* Opinia klienta na stronie case study (pokazywana tylko gdy prawdziwa) */

@@ -63,7 +63,9 @@
       "Bash(playwright-cli -s=mob screenshot --filename=wd-m-offer.png)",
       "Bash(playwright-cli run-code *)",
       "Bash(git *)",
-      "Bash(node --check portfolio-data.js)"
+      "Bash(node --check portfolio-data.js)",
+      "Bash(rm -f F:/wertus-digital/.playwright-cli/*.js F:/wertus-digital/.playwright-cli/*.png)",
+      "Bash(pkill -f \"http.server 8099\")"
     ]
   }
 }
