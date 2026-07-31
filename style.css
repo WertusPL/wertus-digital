@@ -4,7 +4,7 @@
    display font (Sora) na nagłówki — body zostaje systemowe.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap');
 
 /* ---------- Zmienne ---------- */
 :root {
@@ -41,7 +41,8 @@
   --space-section: clamp(3.5rem, 6.5vw, 5.75rem);
 
   --font-main: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", "Georgia", "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", "Cascadia Code", "Consolas", monospace;
 }
 
 /* ---------- Typografia display — nagłówki na Sora ---------- */
@@ -59,7 +60,9 @@
 .legal-title,
 .brand-wordmark {
   font-family: var(--font-display);
-  font-feature-settings: "ss01" 1;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 
 /* ---------- Reset ---------- */
@@ -256,14 +259,29 @@ button {
 
 /* ---------- Typografia sekcji ---------- */
 .eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
+
+/* Wiodąca kreska — edytorski detal etykiet sekcji */
+.eyebrow::before {
+  content: "";
+  width: 1.7rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* Wariant „chip" (podstrony) — bez kreski, zachowuje pigułkę */
+.eyebrow-chip::before { display: none; }
 
 .section-header {
   max-width: 640px;
@@ -2706,21 +2724,65 @@ a.contact-link:hover {
   color: #8fb0ff;
 }
 
+/* Górna linia meta — monospace, edytorska (numer / etykieta / lokalizacja) */
+.hero-topline {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(180, 199, 236, 0.72);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(143, 176, 255, 0.16);
+}
+
+.hero-index { color: #8fb0ff; }
+.hero-topline-loc { margin-left: auto; }
+
 .lead-hero-grid {
   display: grid;
-  grid-template-columns: 1.02fr 1fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(2.5rem, 5vw, 4.5rem);
-  align-items: center;
+  align-items: end;
 }
 
 .lead-hero-title {
-  font-size: clamp(2.05rem, 4.2vw, 3.15rem);
-  line-height: 1.14;
-  font-weight: 800;
-  letter-spacing: -0.028em;
+  font-size: clamp(2.5rem, 5.6vw, 4.4rem);
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   color: #fff;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.6rem;
   text-wrap: balance;
+}
+
+/* Słowo-akcent: szeryfowa kursywa + odręczne podkreślenie (jak Studio Vi) */
+.hero-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: #8fb0ff;
+  position: relative;
+  white-space: nowrap;
+}
+
+.hero-accent::after {
+  content: "";
+  position: absolute;
+  left: -0.03em;
+  right: -0.03em;
+  bottom: -0.14em;
+  height: 0.22em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' fill='none' preserveAspectRatio='none'%3E%3Cpath d='M4 15C58 6 130 4 174 6c44 2 88 6 122 12' stroke='%230655fe' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  animation: heroMarkIn 0.7s ease 0.5s both;
+}
+
+@keyframes heroMarkIn {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
 }
 
 .lead-hero-lead {
@@ -5136,20 +5198,20 @@ a.contact-link:hover {
 }
 
 .hero-statement-kicker {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #8fb0ff;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 .hero-statement-lead {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.1vw, 1.6rem);
-  line-height: 1.42;
-  font-weight: 600;
+  font-size: clamp(1.35rem, 2.1vw, 1.7rem);
+  line-height: 1.34;
+  font-weight: 400;
   letter-spacing: -0.015em;
   color: #fff;
   max-width: 24rem;
@@ -5158,19 +5220,28 @@ a.contact-link:hover {
 
 .hero-statement-list {
   list-style: none;
-  margin: 0 0 1.5rem;
+  margin: 0;
   padding: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   max-width: 22rem;
 }
 
 .hero-statement-list li {
-  padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.72rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 1.02rem;
-  font-weight: 600;
-  color: rgba(206, 217, 238, 0.94);
-  letter-spacing: 0.01em;
+  font-weight: 500;
+  color: rgba(226, 234, 255, 0.94);
+}
+
+.hero-statement-idx {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(143, 176, 255, 0.7);
+  letter-spacing: 0.05em;
 }
 
 .hero-statement-meta {
