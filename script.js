@@ -45,12 +45,16 @@
   const navToggle = document.querySelector(".nav-toggle");
   const siteNav = document.getElementById("site-nav");
 
+  // Blokada przewijania tła, gdy otwarte jest menu mobilne
+  const menuMedia = window.matchMedia("(max-width: 900px)");
+
   function closeMenu() {
     if (!siteNav || !navToggle) return;
 
     siteNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", t.openMenu);
+    document.body.classList.remove("nav-open");
   }
 
   if (navToggle && siteNav) {
@@ -58,6 +62,8 @@
       const isOpen = siteNav.classList.toggle("open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
       navToggle.setAttribute("aria-label", isOpen ? t.closeMenu : t.openMenu);
+      // Blokuj scroll tła tylko na szerokościach z menu mobilnym
+      document.body.classList.toggle("nav-open", isOpen && menuMedia.matches);
     });
 
     siteNav.addEventListener("click", function (event) {
@@ -84,15 +90,19 @@
     });
   }
 
-  /* ---------- 3. Płynne przewijanie bez zostawiania # w adresie ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+  /* ---------- 3. Płynne przewijanie do kotwic (z uwzględnieniem headera) ----------
+     Obsługuje zarówno linki "#sekcja", jak i "/#sekcja" wskazujące bieżącą
+     stronę (np. „Proces" w nagłówku). Sticky header nie zasłania celu dzięki
+     scroll-margin-top / scroll-padding-top w CSS. */
+  document.querySelectorAll('a[href*="#"]').forEach(function (link) {
+    const url = new URL(link.href, window.location.href);
+
+    // Kotwica na tej samej stronie (ten sam pathname) i z hashem
+    const samePage = url.pathname === window.location.pathname;
+    if (!samePage || !url.hash || url.hash === "#") return;
+
     link.addEventListener("click", function (event) {
-      const targetId = link.getAttribute("href");
-
-      if (!targetId || targetId === "#") return;
-
-      const targetElement = document.querySelector(targetId);
-
+      const targetElement = document.querySelector(url.hash);
       if (!targetElement) return;
 
       event.preventDefault();
@@ -102,7 +112,7 @@
         block: "start"
       });
 
-      // Usuwa #start, #oferta, #kontakt itd. z paska adresu
+      // Usuwa #proces, #realizacje itd. z paska adresu
       history.replaceState(null, "", window.location.pathname);
     });
   });

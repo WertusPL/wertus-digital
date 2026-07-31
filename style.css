@@ -3599,7 +3599,7 @@ a.contact-link:hover {
    ============================================================ */
 .price-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -5633,4 +5633,348 @@ a.contact-link:hover {
 
 @media (max-width: 480px) {
   .offer-scope { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   PRZEBUDOWA 2026 — nowe komponenty strony głównej
+   ============================================================ */
+
+/* ---------- Skip link (dostępność) ---------- */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 200;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; }
+
+/* ---------- Kropki paska przeglądarki ---------- */
+.browser-dots { display: inline-flex; gap: 6px; }
+.browser-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); }
+.browser-dots i:nth-child(1) { background: #ff5f57; }
+.browser-dots i:nth-child(2) { background: #febc2e; }
+.browser-dots i:nth-child(3) { background: #28c840; }
+
+.nav-cta { margin-left: 0.25rem; }
+
+/* ---------- Hero wizualny — uklad kolumn ---------- */
+.lead-hero-grid--visual { align-items: center; }
+.lead-hero-grid--visual .hero-stage { margin-top: clamp(0.5rem, 2vw, 1rem); }
+
+/* ============================================================
+   PASEK STANDARDOW (ikony liniowe)
+   ============================================================ */
+.standards-band { background: #fff; border-bottom: 1px solid var(--color-border); }
+.standards { display: grid; grid-template-columns: repeat(4, 1fr); }
+.standard {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: clamp(1.4rem, 2.4vw, 1.9rem) clamp(1.1rem, 2vw, 1.75rem);
+  border-left: 1px solid var(--color-border);
+}
+.standard:first-child { border-left: none; padding-left: 0; }
+.standard-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+.standard-icon svg { width: 22px; height: 22px; }
+.standard-text { display: flex; flex-direction: column; gap: 0.2rem; }
+.standard-title { font-weight: 700; font-size: 1rem; color: var(--color-ink); }
+.standard-desc { font-size: 0.86rem; line-height: 1.45; color: var(--color-ink-soft); }
+@media (max-width: 900px) {
+  .standards { grid-template-columns: 1fr 1fr; }
+  .standard { padding: 1.2rem 1rem; }
+  .standard:nth-child(odd) { border-left: none; padding-left: 0; }
+  .standard:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+}
+@media (max-width: 520px) {
+  .standards { grid-template-columns: 1fr; }
+  .standard { border-left: none; padding: 1rem 0; border-top: 1px solid var(--color-border); }
+  .standard:first-child { border-top: none; }
+}
+
+/* ============================================================
+   REALIZACJE — teaser (elegancki, bez pustego bloku)
+   ============================================================ */
+.work-teaser {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  background: linear-gradient(180deg, #fff, var(--color-surface));
+}
+.work-teaser-title { font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0.5rem 0 0.9rem; line-height: 1.1; }
+.work-teaser-lead { color: var(--color-ink-soft); max-width: 34rem; margin-bottom: 1.6rem; }
+.work-teaser-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.work-teaser-frame {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  box-shadow: var(--shadow-md);
+}
+.work-teaser-skeleton { padding: 1.25rem; display: grid; gap: 0.75rem; }
+.sk {
+  display: block;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eef1f7, #e2e7f0, #eef1f7);
+  background-size: 200% 100%;
+  animation: skShimmer 1.8s ease-in-out infinite;
+}
+.sk-title { height: 16px; width: 55%; }
+.sk-line { height: 10px; width: 100%; }
+.sk-line.short { width: 70%; }
+.sk-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.4rem; }
+.sk-tile { height: 84px; }
+@keyframes skShimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (max-width: 760px) { .work-teaser { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   OFERTA — uklad asymetryczny (usluga glowna wyrozniona)
+   ============================================================ */
+.offer-split { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1.25rem, 2.5vw, 2rem); }
+.offer-lead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, var(--color-dark), var(--color-dark-2));
+  color: #fff;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.offer-lead:hover, .offer-lead:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-lg); outline: none; }
+.offer-lead-tag {
+  align-self: flex-start;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #cfe0ff; background: rgba(6, 85, 254, 0.35); border: 1px solid rgba(143, 176, 255, 0.4);
+  padding: 0.3rem 0.7rem; border-radius: 999px; margin-bottom: 1rem;
+}
+.offer-lead-icon {
+  width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #8fb0ff; margin-bottom: 1rem;
+}
+.offer-lead-icon svg { width: 26px; height: 26px; }
+.offer-lead-name {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: #fff;
+}
+.offer-lead-desc { color: rgba(206, 217, 238, 0.9); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; max-width: 30rem; }
+.offer-lead-more { margin-top: auto; font-weight: 700; color: #8fb0ff; display: inline-flex; gap: 0.5rem; }
+.offer-side { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
+.offer-item {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.25rem;
+  padding: clamp(1.4rem, 2.5vw, 1.9rem);
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: #fff;
+  text-decoration: none; color: inherit;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.offer-item:hover, .offer-item:focus-visible { border-color: rgba(6, 85, 254, 0.35); transform: translateY(-3px); box-shadow: var(--shadow-md); outline: none; }
+.offer-item-icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px; background: var(--color-accent-light); color: var(--color-accent); }
+.offer-item-icon svg { width: 24px; height: 24px; }
+.offer-item-name { display: block; font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.25rem; color: var(--color-ink); }
+.offer-item-desc { color: var(--color-ink-soft); font-size: 0.92rem; line-height: 1.5; }
+.offer-item-arrow { color: var(--color-accent); font-size: 1.2rem; transition: transform 0.25s ease; }
+.offer-item:hover .offer-item-arrow, .offer-item:focus-visible .offer-item-arrow { transform: translateX(4px); }
+@media (max-width: 820px) { .offer-split { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .offer-item { grid-template-columns: auto 1fr; } .offer-item-arrow { display: none; } }
+
+/* ============================================================
+   OPIEKA PO PUBLIKACJI
+   ============================================================ */
+.care-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+.care-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem 1.75rem; margin-top: 1.75rem; }
+.care-price { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--color-ink); }
+.care-price-from { font-size: 0.85rem; font-weight: 600; color: var(--color-ink-soft); margin-right: 0.25rem; }
+.care-price-per { font-size: 0.9rem; font-weight: 500; color: var(--color-ink-soft); }
+.care-list {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.5rem;
+  border-top: 1px solid var(--color-border); padding-top: 1.75rem;
+}
+.care-list li { position: relative; padding-left: 1.9rem; font-size: 0.97rem; color: var(--color-ink); }
+.care-list li::before { content: ""; position: absolute; left: 0; top: 0.05em; width: 1.35em; height: 1.35em; border-radius: 50%; background: var(--color-accent-light); }
+.care-list li::after { content: ""; position: absolute; left: 0.42em; top: 0.4em; width: 0.5em; height: 0.28em; border-left: 2px solid var(--color-accent); border-bottom: 2px solid var(--color-accent); transform: rotate(-45deg); }
+@media (max-width: 820px) { .care-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .care-list { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   PROCES — 5 etapow z mini-wizualizacjami (ciemne pasmo)
+   ============================================================ */
+.process { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(1.25rem, 2vw, 1.75rem); }
+.process-step { position: relative; }
+.process-visual {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(143, 176, 255, 0.18);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.1rem;
+  overflow: hidden;
+}
+.process-visual svg { width: 80%; height: auto; }
+.process-visual .pv-frame { stroke: rgba(143, 176, 255, 0.4); }
+.process-visual .pv-accent { stroke: #8fb0ff; }
+.process-visual .pv-hand { stroke: #cfe0ff; }
+.process-visual .pv-fill { fill: rgba(91, 140, 255, 0.55); stroke: none; }
+.process-num { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; color: #8fb0ff; }
+.process-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: #fff; margin: 0.35rem 0 0.5rem; letter-spacing: -0.01em; }
+.process-text { font-size: 0.9rem; line-height: 1.55; color: rgba(206, 217, 238, 0.85); }
+.process .reveal:nth-child(2) { transition-delay: 0.06s; }
+.process .reveal:nth-child(3) { transition-delay: 0.12s; }
+.process .reveal:nth-child(4) { transition-delay: 0.18s; }
+.process .reveal:nth-child(5) { transition-delay: 0.24s; }
+@media (max-width: 1024px) { .process { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .process { grid-template-columns: 1fr; gap: 1.5rem; }
+  .process-step { display: grid; grid-template-columns: 110px 1fr; gap: 0 1.1rem; align-items: center; }
+  .process-visual { grid-row: 1 / 3; margin-bottom: 0; }
+  .process-num { align-self: end; }
+}
+
+/* ============================================================
+   O STUDIU — wartosci (ciemne pasmo)
+   ============================================================ */
+.about-values { display: grid; gap: 1rem; align-self: center; }
+.about-values li {
+  display: flex; align-items: center; gap: 0.85rem;
+  font-size: 1.05rem; font-weight: 500; color: #fff;
+  padding-bottom: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.about-values li:last-child { border-bottom: none; padding-bottom: 0; }
+.about-value-dot { width: 8px; height: 8px; border-radius: 50%; background: #5b8cff; box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.18); flex-shrink: 0; }
+
+/* ============================================================
+   CENNIK — modul wyrozniony (Strona firmowa) + 3 pozycje
+   ============================================================ */
+.pricing-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  box-shadow: var(--shadow-md);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.pricing-featured-main .price-badge { margin-bottom: 1rem; }
+.pricing-featured-main .price-value { color: var(--color-accent); }
+.pricing-featured-main .btn { margin-top: 1.5rem; }
+.pricing-featured-list { display: grid; gap: 0.85rem; }
+.pricing-featured-list li { position: relative; padding-left: 1.9rem; font-size: 0.98rem; color: var(--color-ink); }
+.pricing-featured-list li::before { content: ""; position: absolute; left: 0; top: 0.05em; width: 1.35em; height: 1.35em; border-radius: 50%; background: var(--color-accent-light); }
+.pricing-featured-list li::after { content: ""; position: absolute; left: 0.42em; top: 0.4em; width: 0.5em; height: 0.28em; border-left: 2px solid var(--color-accent); border-bottom: 2px solid var(--color-accent); transform: rotate(-45deg); }
+.pricing-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); }
+@media (max-width: 820px) {
+  .pricing-featured { grid-template-columns: 1fr; }
+  .pricing-row { grid-template-columns: 1fr; gap: 0; }
+  .pricing-row .price-card { padding-bottom: 2rem; }
+}
+
+/* ============================================================
+   STOPKA — ikony social
+   ============================================================ */
+.footer-social { display: flex; gap: 0.75rem; margin-top: 1.4rem; }
+.social-link {
+  width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(226, 234, 255, 0.9);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.social-link svg { width: 20px; height: 20px; }
+.social-link:hover, .social-link:focus-visible { background: var(--color-accent); border-color: var(--color-accent); color: #fff; outline: none; }
+
+/* ---------- Cennik /oferta: 4 pozycje na tablecie w 2 kolumnach ---------- */
+@media (max-width: 960px) and (min-width: 641px) {
+  .price-list { grid-template-columns: 1fr 1fr; }
+  .price-item:nth-child(2n) { border-right: none; }
+  .price-item:nth-child(-n+2) { border-bottom: 1px solid var(--color-border); }
+}
+
+/* ---------- Blokada scrolla tła przy otwartym menu mobilnym ---------- */
+body.nav-open { overflow: hidden; }
+
+/* ---------- Kontakt: kolejne kroki + social (jasne tło) ---------- */
+.contact-next {
+  margin-top: 2rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+.contact-next-title { font-weight: 700; color: var(--color-ink); margin-bottom: 0.85rem; }
+.contact-steps { counter-reset: cstep; display: grid; gap: 0.6rem; }
+.contact-steps li {
+  position: relative;
+  padding-left: 2.1rem;
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+}
+.contact-steps li::before {
+  counter-increment: cstep;
+  content: counter(cstep);
+  position: absolute;
+  left: 0;
+  top: -0.05em;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.contact-next-note { margin-top: 1rem; font-size: 0.86rem; color: var(--color-ink-soft); }
+.contact-socials { margin-top: 1.75rem; }
+.contact-socials-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.75rem;
+}
+.social-row { display: flex; gap: 0.75rem; }
+.social-link--light {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  color: var(--color-ink-soft);
+}
+.social-link--light:hover, .social-link--light:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ---------- prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .sk { animation: none; }
+  .hero-accent::after { animation: none; clip-path: none; }
 }

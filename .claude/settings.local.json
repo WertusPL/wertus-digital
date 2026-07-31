@@ -65,7 +65,8 @@
       "Bash(git *)",
       "Bash(node --check portfolio-data.js)",
       "Bash(rm -f F:/wertus-digital/.playwright-cli/*.js F:/wertus-digital/.playwright-cli/*.png)",
-      "Bash(pkill -f \"http.server 8099\")"
+      "Bash(pkill -f \"http.server 8099\")",
+      "Bash(cd /c/Users/kacpe/.claude/skills/playwright-cli)"
     ]
   }
 }
