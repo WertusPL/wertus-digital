@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* Real flag emoji on platforms whose system font lacks them (Windows).
+   unicode-range restricts the download to flag/regional-indicator glyphs. */
+@font-face {
+  font-family: "Twemoji Country Flags";
+  unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E007F;
+  src: url("/fonts/TwemojiCountryFlags.woff2") format("woff2");
+  font-display: swap;
+}
+
+.flag-emoji {
+  font-family: "Twemoji Country Flags", "Segoe UI Emoji", "Apple Color Emoji",
+    "Noto Color Emoji", sans-serif;
+  line-height: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Design tokens (Tailwind v4 CSS-first theme)
+ * Edit brand values here — utilities like bg-canvas / text-accent
+ * are generated automatically.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-canvas: #f5f4f0; /* page background — warm off-white */
+  --color-ink: #101114; /* primary text */
+  --color-surface: #0b0d10; /* dark surfaces / featured project */
+  --color-surface-2: #14171c; /* lifted dark layer */
+  --color-muted: #6f7278; /* secondary text */
+  --color-accent: #0655fe; /* Wertus Digital brand blue */
+  --color-accent-ink: #ffffff; /* text on accent */
+
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+}
+
+/* Non-utility design tokens */
+:root {
+  --danger: #c0362c; /* form validation — restrained, not alarming */
+  --border-light: rgba(16, 17, 20, 0.14); /* hairline on light */
+  --border-dark: rgba(255, 255, 255, 0.12); /* hairline on dark */
+  --hair-dark: rgba(255, 255, 255, 0.07);
+  --content-max: 1880px;
+  --nav-height: 78px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Layout helpers
+ * ------------------------------------------------------------------ */
+.wd-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  /* mobile ~20px · tablet ~32px · desktop XL ~40px */
+  padding-inline: clamp(20px, 3.2vw + 7px, 40px);
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  transform: translateY(-160%);
+  background-color: var(--color-ink);
+  color: var(--color-canvas);
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: transform 0.18s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Typography system
+ * ------------------------------------------------------------------ */
+.text-eyebrow {
+  font-size: clamp(11px, 0.35vw + 10px, 12px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.hero-h1 {
+  font-size: clamp(2.75rem, 4.6vw + 0.6rem, 4.25rem); /* 44px → 68px */
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.hero-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+}
+
+.hero-body {
+  font-size: clamp(1rem, 0.55vw + 0.9rem, 1.25rem); /* 16px → 20px */
+  line-height: 1.55;
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+/* Section heading — calmer & clearly smaller than the hero H1 */
+.section-heading {
+  font-size: clamp(2.125rem, 3.1vw + 0.95rem, 4rem); /* 34px → 64px */
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.text-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — keep everything readable & complete
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
