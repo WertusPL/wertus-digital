@@ -1,5 +1,7 @@
 import { Hero } from "@/components/hero/Hero";
 import { StudioSection } from "@/components/studio/StudioSection";
+import { SelectedWork } from "@/components/work/SelectedWork";
+import { publishedWork } from "@/components/work/projects";
 import { ServicesSection } from "@/components/services/ServicesSection";
 import { ProcessSection } from "@/components/process/ProcessSection";
 import { PricingSection } from "@/components/pricing/PricingSection";
@@ -8,20 +10,20 @@ import { FinalCtaSection } from "@/components/contact/FinalCtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { buildMetadata } from "@/lib/i18n/metadata";
 
-// NOTE: `SelectedWork` is intentionally NOT rendered for now — no concept
-// projects on the homepage until real client work is ready. The component,
-// data model and assets remain in components/work for later reuse. Section
-// numbers are contiguous over the *visible* sections (Studio 01 … Contact 06);
-// when Selected Work returns it slots in and the sections renumber.
+// Section numbers are contiguous over the visible sections (Studio 01,
+// Selected work 02 … Contact 07). Selected work lists real client projects
+// only (components/work/projects.ts) and renders nothing if none is published.
 
 export const metadata = buildMetadata("pl", "home");
 
 export default function HomePagePl() {
   const dict = getDictionary("pl");
+  const work = publishedWork(dict.work);
   return (
     <>
-      <Hero locale="pl" hero={dict.hero} featured={dict.featured} />
+      <Hero locale="pl" hero={dict.hero} />
       <StudioSection studio={dict.studio} />
+      <SelectedWork locale="pl" projects={work.projects} work={work.work} />
       <ServicesSection locale="pl" services={dict.services} />
       <ProcessSection locale="pl" process={dict.process} />
       <PricingSection locale="pl" pricing={dict.pricing} />

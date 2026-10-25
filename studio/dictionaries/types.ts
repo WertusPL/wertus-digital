@@ -40,23 +40,14 @@ export type Dictionary = {
     }>;
   };
   hero: {
-    eyebrow: string;
     headline: Headline;
     description: string;
     primaryCta: string;
     secondaryCta: string;
-    capabilitiesLabel: string;
-    capabilities: string[];
-  };
-  featured: {
-    kicker: string; // e.g. "CONCEPT PROJECT / 2026"
-    conceptBadge: string; // e.g. "CONCEPT PROJECT"
-    discipline: string; // e.g. "Architecture / Web Design"
-    projectName: string; // fictional concept brand
-    previewNav: string[]; // abstract nav items inside the preview
-    previewTagline: string; // short neutral tagline in the preview
-    previewCta: string; // small button label inside the preview
-    caption: string; // accessible description of the mockup
+    /** Visually hidden heading for the facts list. */
+    factsLabel: string;
+    /** Short, verifiable studio facts shown under the headline — no stats. */
+    facts: Array<{ label: string; value: string }>;
   };
   studio: {
     kicker: string; // section label, e.g. "STUDIO" (index "01 /" is structural)
@@ -69,17 +60,14 @@ export type Dictionary = {
     }>;
   };
   work: {
-    kicker: string; // "SELECTED WORK"
+    kicker: string; // section label (index "02 /" is structural)
     headline: string[]; // one entry per line
     description: string;
-    viewAll: string; // link to all work
-    counter: string; // "PROJECT" / "PROJEKT" (used as "PROJECT 01 / 03")
-    scope: string; // "WEB DESIGN / DEVELOPMENT"
-    conceptTag: string; // "CONCEPT PROJECT" (year appended in component)
-    conceptShort: string; // "Koncepcja" / "Concept" — list sub-line
-    cta: string; // "Zobacz projekt" / "View project"
-    /** Localised industry label per project id. */
-    industries: Record<string, string>;
+    sectorLabel: string; // "Branża" / "Sector"
+    scopeLabel: string; // "Zakres" / "Scope"
+    cta: string; // link to the full case study
+    /** Localised copy per project id (see components/work/projects.ts). */
+    projects: Record<string, { sector: string; summary: string; scope: string[] }>;
   };
   services: {
     kicker: string; // "SERVICES"

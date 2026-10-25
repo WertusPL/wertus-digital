@@ -12,8 +12,10 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /**
  * Per-service visual — each looks like a real fragment of studio work
  * (wireframe→UI, code editor, CMS editor, maintenance changelog). Pure
- * HTML/CSS/inline SVG, no images/video/deps. Language-neutral except the CMS
- * editor, whose field labels/values are localised via `locale`. Micro-motion
+ * HTML/CSS/inline SVG, no images/video/deps. All visible labels are
+ * localised via `locale`; code in the editor stays as code. The whole visual
+ * is decorative (aria-hidden) — the service copy beside it carries the
+ * meaning. Micro-motion
  * is a small internal stagger on mount (each service switch remounts this);
  * transform+opacity only, so it degrades to a plain fade under reduced motion.
  *
@@ -28,8 +30,12 @@ export function ServiceVisual({
   locale: Locale;
 }) {
   return (
-    <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-white/12 bg-surface">
-      <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-4 py-2.5 text-[11px] uppercase tracking-[0.16em] text-white/40">
+    <div
+      aria-hidden="true"
+      className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-white/12 bg-surface"
+    >
+      {/* Header only on desktop — on touch layouts the service label sits above. */}
+      <div className="hidden shrink-0 items-center justify-between border-b border-white/10 px-4 py-2.5 text-[11px] uppercase tracking-[0.16em] text-white/40 lg:flex">
         <span>{service.name}</span>
         <span className="tabular-nums">{service.index} / 04</span>
       </div>
@@ -43,14 +49,14 @@ export function ServiceVisual({
 function renderVisual(id: string, locale: Locale) {
   switch (id) {
     case "development":
-      return <DevelopmentVisual />;
+      return <DevelopmentVisual locale={locale} />;
     case "cms":
       return <CmsVisual locale={locale} />;
     case "care":
-      return <CareVisual />;
+      return <CareVisual locale={locale} />;
     case "web-design":
     default:
-      return <WebDesignVisual />;
+      return <WebDesignVisual locale={locale} />;
   }
 }
 
@@ -78,7 +84,13 @@ function Reveal({
 /* ------------------------------------------------------------------ *
  * 01 — WEB DESIGN : wireframe → final UI
  * ------------------------------------------------------------------ */
-function WebDesignVisual() {
+const WD = {
+  pl: { wire: "Szkic", grid: "Siatka 12 kolumn", size: "Desktop / 1440", preview: "Podgląd", final: "Projekt" },
+  en: { wire: "Wireframe", grid: "12-column grid", size: "Desktop / 1440", preview: "Preview", final: "Final UI" },
+} as const;
+
+function WebDesignVisual({ locale }: { locale: Locale }) {
+  const t = WD[locale];
   return (
     <div className="flex h-full flex-row gap-2.5 sm:gap-4">
       {/* Wireframe */}
@@ -88,7 +100,7 @@ function WebDesignVisual() {
       >
         <div className="flex items-center justify-between">
           <div className="h-2 w-8 rounded-sm bg-white/30" />
-          <div className="hidden gap-1.5 sm:flex">
+          <div className="hidden gap-1.5 lg:flex">
             <span className="h-1.5 w-4 rounded-sm bg-white/20" />
             <span className="h-1.5 w-4 rounded-sm bg-white/20" />
             <span className="h-1.5 w-4 rounded-sm bg-white/20" />
@@ -114,15 +126,15 @@ function WebDesignVisual() {
             <line x1="100%" y1="0" x2="0" y2="100%" stroke="currentColor" strokeWidth="1" />
           </svg>
         </div>
-        <div className="mt-3 grid grid-cols-3 gap-2">
+        <div className="mt-3 hidden grid-cols-3 gap-2 lg:grid">
           <div className="h-7 rounded border border-white/15" />
           <div className="h-7 rounded border border-white/15" />
           <div className="h-7 rounded border border-white/15" />
         </div>
-        <div className="mt-3 flex items-center justify-between text-[8px] uppercase tracking-[0.18em] text-white/30">
-          <span>Wireframe</span>
-          <span className="hidden lg:inline">12 Column Grid</span>
-          <span>Desktop / 1440</span>
+        <div className="mt-3 hidden items-center justify-between text-[8px] uppercase tracking-[0.18em] text-white/30 lg:flex">
+          <span>{t.wire}</span>
+          <span className="hidden lg:inline">{t.grid}</span>
+          <span className="hidden sm:inline">{t.size}</span>
         </div>
       </Reveal>
 
@@ -138,8 +150,8 @@ function WebDesignVisual() {
             <span className="h-1.5 w-9 rounded bg-white/70" />
           </span>
           <div className="flex items-center gap-2">
-            <span className="hidden h-1.5 w-6 rounded bg-white/22 sm:inline-block" />
-            <span className="hidden h-1.5 w-6 rounded bg-white/22 sm:inline-block" />
+            <span className="hidden h-1.5 w-6 rounded bg-white/22 lg:inline-block" />
+            <span className="hidden h-1.5 w-6 rounded bg-white/22 lg:inline-block" />
             <span className="h-3.5 w-9 rounded-full border border-white/25" />
           </div>
         </div>
@@ -157,9 +169,9 @@ function WebDesignVisual() {
           <span className="h-1 w-8 rounded bg-white/75" />
         </div>
         <div className="mt-3 min-h-[30px] flex-1 rounded bg-[linear-gradient(135deg,#1c2434_0%,#2b3652_60%,#3a4a6e55_100%)] ring-1 ring-inset ring-white/8" />
-        <div className="mt-3 flex items-center justify-between text-[8px] uppercase tracking-[0.18em] text-white/35">
-          <span>Website Preview</span>
-          <span className="text-accent">Final UI</span>
+        <div className="mt-3 hidden items-center justify-between text-[8px] uppercase tracking-[0.18em] text-white/35 lg:flex">
+          <span>{t.preview}</span>
+          <span className="text-accent">{t.final}</span>
         </div>
       </Reveal>
     </div>
@@ -204,7 +216,12 @@ const CODE: Tok[][] = [
 /** Line highlighted as the "active" cursor line (0-based). */
 const ACTIVE_LINE = 7;
 
-function DevelopmentVisual() {
+const DEV_TAGS = {
+  pl: ["Szybkie ładowanie", "Każde urządzenie", "Gotowa pod SEO"],
+  en: ["Fast loading", "Any device", "SEO-ready"],
+} as const;
+
+function DevelopmentVisual({ locale }: { locale: Locale }) {
   return (
     <div className="flex h-full flex-col gap-3">
       <div className="flex min-h-0 flex-1 flex-col gap-3 lg:flex-row">
@@ -254,7 +271,7 @@ function DevelopmentVisual() {
       </div>
 
       <div className="flex shrink-0 flex-wrap items-center gap-1.5 text-[9px] uppercase tracking-[0.14em] text-white/45">
-        {["Next.js", "TypeScript", "React", "Tailwind"].map((tag) => (
+        {DEV_TAGS[locale].map((tag) => (
           <span key={tag} className="rounded border border-white/12 px-2 py-0.5">
             {tag}
           </span>
@@ -269,19 +286,27 @@ function DevelopmentVisual() {
  * ------------------------------------------------------------------ */
 const CMS = {
   pl: {
+    content: "Treści",
+    edit: "Edycja strony",
+    published: "Opublikowano",
+    seo: "Tytuł SEO",
     sidebar: ["Strony", "Realizacje", "Usługi", "FAQ", "Ustawienia"],
     fields: [
-      { label: "Tytuł", value: "Strony dla firm, które chcą wyglądać jak liderzy swojej branży." },
-      { label: "Slug", value: "/" },
-      { label: "CTA", value: "Rozpocznij projekt" },
+      { label: "Nagłówek", value: "Strona, po której klient od razu wie, że trafił do właściwej firmy." },
+      { label: "Adres", value: "/" },
+      { label: "Przycisk", value: "Rozpocznij projekt" },
     ],
   },
   en: {
+    content: "Content",
+    edit: "Edit page",
+    published: "Published",
+    seo: "SEO title",
     sidebar: ["Pages", "Work", "Services", "FAQ", "Settings"],
     fields: [
-      { label: "Title", value: "Websites for businesses that want to look like leaders in their industry." },
-      { label: "Slug", value: "/" },
-      { label: "CTA", value: "Start a project" },
+      { label: "Headline", value: "A website that makes customers feel they've found the right business." },
+      { label: "URL", value: "/" },
+      { label: "Button", value: "Start a project" },
     ],
   },
 } as const;
@@ -296,7 +321,7 @@ function CmsVisual({ locale }: { locale: Locale }) {
         className="flex min-w-0 shrink-0 gap-3 overflow-hidden border-b border-white/10 pb-3 lg:w-[136px] lg:flex-col lg:gap-2.5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-4"
       >
         <span className="hidden text-[9px] uppercase tracking-[0.18em] text-white/30 lg:block">
-          Content
+          {t.content}
         </span>
         {t.sidebar.map((item, i) => (
           <span
@@ -315,17 +340,17 @@ function CmsVisual({ locale }: { locale: Locale }) {
       <Reveal delay={0.08} className="flex min-h-0 min-w-0 flex-1 flex-col">
         <div className="flex items-center justify-between">
           <span className="text-[9px] uppercase tracking-[0.18em] text-white/40">
-            Edit page
+            {t.edit}
           </span>
           <span className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.16em] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Published
+            {t.published}
           </span>
         </div>
 
         <div className="mt-3 space-y-2.5">
-          {t.fields.map((field) => (
-            <div key={field.label}>
+          {t.fields.map((field, i) => (
+            <div key={field.label} className={i > 0 ? "hidden lg:block" : undefined}>
               <span className="text-[9px] uppercase tracking-[0.14em] text-white/35">
                 {field.label}
               </span>
@@ -336,8 +361,8 @@ function CmsVisual({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <div className="mt-auto flex items-center justify-between pt-3 text-[9px] uppercase tracking-[0.16em] text-white/30">
-          <span>SEO Title</span>
+        <div className="mt-auto hidden items-center justify-between pt-3 text-[9px] uppercase tracking-[0.16em] text-white/30 lg:flex">
+          <span>{t.seo}</span>
           <span className="text-white/45">Sanity CMS</span>
         </div>
       </Reveal>
@@ -348,20 +373,38 @@ function CmsVisual({ locale }: { locale: Locale }) {
 /* ------------------------------------------------------------------ *
  * 04 — CARE & GROWTH : maintenance changelog
  * ------------------------------------------------------------------ */
-const CHANGELOG = [
-  { date: "18 AUG 2026", title: "Updated dependencies", tag: "Next.js / security maintenance" },
-  { date: "14 AUG 2026", title: "Improved mobile navigation", tag: "Responsive / UX" },
-  { date: "09 AUG 2026", title: "SEO metadata update", tag: "Search visibility" },
-  { date: "04 AUG 2026", title: "New CMS section", tag: "Content management" },
-];
+// Illustrative change types — deliberately undated (not a real client log).
+const CARE = {
+  pl: {
+    status: "Stan",
+    states: ["Online", "Bezpieczeństwo", "SEO", "Treści"],
+    entries: [
+      { kind: "Technika", title: "Aktualizacja techniczna", note: "Bezpieczeństwo i stabilność" },
+      { kind: "Mobile", title: "Wygodniejsza nawigacja", note: "Wersja na telefon" },
+      { kind: "SEO", title: "Nowe opisy w wyszukiwarce", note: "Widoczność w Google" },
+      { kind: "Treści", title: "Nowa sekcja na stronie", note: "Edycja w CMS" },
+    ],
+  },
+  en: {
+    status: "Status",
+    states: ["Live", "Security", "SEO", "Content"],
+    entries: [
+      { kind: "Tech", title: "Technical update", note: "Security and stability" },
+      { kind: "Mobile", title: "Easier navigation", note: "Mobile version" },
+      { kind: "SEO", title: "New search descriptions", note: "Visibility in Google" },
+      { kind: "Content", title: "New page section", note: "Edited in the CMS" },
+    ],
+  },
+} as const;
 
-function CareVisual() {
+function CareVisual({ locale }: { locale: Locale }) {
+  const t = CARE[locale];
   return (
     <div className="flex h-full flex-col gap-5 lg:flex-row">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center">
-        {CHANGELOG.map((entry, i) => (
+        {t.entries.map((entry, i) => (
           <Reveal
-            key={entry.date}
+            key={entry.title}
             delay={i * 0.06}
             className={
               "flex items-start gap-3 " +
@@ -369,12 +412,12 @@ function CareVisual() {
               (i >= 3 ? "hidden lg:flex" : "")
             }
           >
-            <span className="w-[62px] shrink-0 pt-0.5 text-[10px] tabular-nums tracking-wide text-white/45">
-              {entry.date}
+            <span className="w-[62px] shrink-0 pt-0.5 text-[10px] uppercase tracking-[0.12em] text-white/45">
+              {entry.kind}
             </span>
             <div className="relative flex w-3 shrink-0 justify-center pt-1">
               <span className="z-10 h-2 w-2 rounded-full bg-accent" />
-              {i < CHANGELOG.length - 1 && (
+              {i < t.entries.length - 1 && (
                 <span className="absolute top-2 h-full w-px bg-white/14" />
               )}
             </div>
@@ -382,7 +425,7 @@ function CareVisual() {
               <p className="text-[12px] font-medium leading-tight text-white/85">
                 {entry.title}
               </p>
-              <p className="mt-0.5 text-[10px] text-white/45">{entry.tag}</p>
+              <p className="mt-0.5 text-[10px] text-white/45">{entry.note}</p>
             </div>
           </Reveal>
         ))}
@@ -391,9 +434,9 @@ function CareVisual() {
       {/* Status panel — desktop only */}
       <div className="hidden shrink-0 flex-col gap-2.5 border-l border-white/10 pl-5 lg:flex lg:w-[124px]">
         <span className="text-[9px] uppercase tracking-[0.18em] text-white/30">
-          Status
+          {t.status}
         </span>
-        {["Deployed", "Security", "SEO", "Content"].map((s) => (
+        {t.states.map((s) => (
           <span key={s} className="flex items-center gap-2 text-[11px] text-white/55">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             {s}

@@ -122,6 +122,16 @@
   font-weight: 600;
 }
 
+/* Homepage display headline — typographic hero, full measure. */
+.home-display {
+  font-size: clamp(2.375rem, 5.6vw + 0.5rem, 6rem); /* 38px → 96px */
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
 .hero-accent {
   font-family: var(--font-serif);
   font-style: italic;

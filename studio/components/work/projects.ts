@@ -1,68 +1,92 @@
+import type { Dictionary } from "@/dictionaries/types";
 import type { RouteKey } from "@/lib/i18n/routes";
+import { LECHBUD, type Shot } from "@/lib/work";
 
 export type ProjectType = "concept" | "client";
 
 /**
- * Language-neutral project registry (assets + structural data). Localised
- * strings (industry, section copy) live in the dictionary and are merged in
- * by id, so concept projects can later be swapped for real client work by
- * editing this file + the poster/video assets — no component changes.
+ * Language-neutral project registry (assets + structural data) for the
+ * homepage "Selected work" section. Localised copy (sector, summary, scope)
+ * lives in the dictionary under `work.projects[id]`.
+ *
+ * Only real client work is listed here, and only `published` entries render.
+ * Never add an unpublished project's screenshots to /public before the
+ * client has agreed to publication.
+ *
+ * Server-only by convention: import the registry from server components and
+ * pass `publishedWork()` results down, so unpublished entries (and their
+ * copy) never reach the client bundle or the serialized page payload.
  */
 export type WorkProject = {
   id: string;
-  index: string; // "01"
   title: string; // brand name — not translated
   type: ProjectType;
-  year: string;
-  /** Poster in /public. Undefined → a designed concept placeholder is shown. */
+  /**
+   * Gate for rendering. A real project stays `false` until the client has
+   * approved publication and its screenshots are in /public.
+   */
+  published: boolean;
+  /** Desktop screenshot (~2:1, top-anchored in the frame). */
   poster?: string;
   posterAlt: { pl: string; en: string };
+  /** Optional phone screenshot shown overlapping the desktop frame. */
+  mobile?: Shot;
+  mobileAlt?: { pl: string; en: string };
   /** Optional short loop (WebM/MP4). Absent for now — architecture is ready. */
   video?: string;
-  /** Where the list row / "view project" link points (routes may not exist yet). */
+  /** Internal page with the full case study. */
   linkKey: RouteKey;
 };
 
 export const workProjects: WorkProject[] = [
   {
-    id: "lex-finanse",
-    index: "01",
-    title: "Lex Finanse",
-    type: "concept",
-    year: "2026",
-    poster: "/work/lex-finanse.png",
+    id: "lechbud",
+    title: "Lech-Bud",
+    type: "client",
+    published: true,
+    poster: LECHBUD.main.src,
     posterAlt: {
-      pl: "Koncepcyjny projekt strony Lex Finanse — strona główna",
-      en: "Lex Finanse concept website design — homepage",
+      pl: "Strona główna serwisu Lech-Bud na desktopie — nagłówek o usługach budowlanych i wykończeniowych na tle domu jednorodzinnego.",
+      en: "Lech-Bud homepage on desktop — headline about construction and finishing services over a photo of a detached house.",
+    },
+    mobile: LECHBUD.gallery.homeMobile,
+    mobileAlt: {
+      pl: "Strona główna Lech-Bud w widoku mobilnym.",
+      en: "Lech-Bud homepage on mobile.",
     },
     linkKey: "work",
   },
   {
-    id: "miso-sushi",
-    index: "02",
-    title: "Miso Sushi",
-    type: "concept",
-    year: "2026",
-    poster: "/work/miso-sushi.png",
+    // Pracownia S. — https://pracowniasandra.pl. Real project, NOT published:
+    // waiting for the client's consent. To publish: capture desktop + mobile
+    // screenshots into /public/portfolio/pracownia-s/, fill `poster`/`mobile`
+    // (with real pixel sizes) and the alts, then set `published: true`.
+    id: "pracownia-s",
+    title: "Pracownia S.",
+    type: "client",
+    published: false,
     posterAlt: {
-      pl: "Koncepcyjny projekt strony Miso Sushi — strona główna restauracji",
-      en: "Miso Sushi concept website design — restaurant homepage",
-    },
-    linkKey: "work",
-  },
-  {
-    id: "monaco-performance",
-    index: "03",
-    title: "Monaco Performance",
-    type: "concept",
-    year: "2026",
-    // No screenshot yet — ProjectMedia renders an on-brand concept placeholder.
-    posterAlt: {
-      pl: "Monaco Performance — projekt koncepcyjny w przygotowaniu",
-      en: "Monaco Performance — concept project in preparation",
+      pl: "Strona główna serwisu Pracownia S. na desktopie.",
+      en: "Pracownia S. homepage on desktop.",
     },
     linkKey: "work",
   },
 ];
 
-export type ResolvedProject = WorkProject & { industry: string };
+/**
+ * Published projects plus the dictionary slice trimmed to their copy — the
+ * only data the (client) Selected work section receives.
+ */
+export function publishedWork(work: Dictionary["work"]): {
+  projects: WorkProject[];
+  work: Dictionary["work"];
+} {
+  const projects = workProjects.filter((p) => p.published);
+  return {
+    projects,
+    work: {
+      ...work,
+      projects: Object.fromEntries(projects.map((p) => [p.id, work.projects[p.id]])),
+    },
+  };
+}

@@ -61,7 +61,7 @@ export function FinalCtaSection({
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            <span className="text-label text-accent">06 /</span>
+            <span className="text-label text-accent">07 /</span>
             <span className="text-[13px] font-medium uppercase tracking-[0.18em] text-canvas">
               {contactCta.label}
             </span>

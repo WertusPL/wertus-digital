@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
 import type { Locale } from "@/lib/i18n/config";
@@ -9,7 +9,7 @@ import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 import { InView } from "@/components/motion/InView";
 import { AnimatedGroup } from "@/components/motion/AnimatedGroup";
 import { ServicesNavigation } from "./ServicesNavigation";
-import { ServiceDesktop } from "./ServiceDesktop";
+import { ServiceCopy, ServiceDetail } from "./ServiceDesktop";
 import { ServiceMobile } from "./ServiceMobile";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -48,33 +48,53 @@ export function ServicesSection({
   const items = services.items;
   const href = routes.services[locale];
   const [active, setActive] = useState(0);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const pinnedRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Scroll drives the active step: a 0-height band at viewport centre picks the
-  // step crossing it. No scroll-jacking, no smooth-scroll library — native.
+  // Native scroll drives the active service (no scroll-jacking). The pinned
+  // columns travel `track height − pinned height` while stuck; that distance
+  // is split evenly between the services, so each — the last included — gets
+  // the same dwell. Measured per frame, so it adapts to any viewport.
+  const measure = useCallback(() => {
+    const track = trackRef.current;
+    const pinned = pinnedRefs.current.filter(Boolean) as HTMLElement[];
+    if (!track || !pinned.length) return null;
+    const pinTop = parseFloat(getComputedStyle(pinned[0]).top) || 0;
+    const pinnedHeight = Math.max(...pinned.map((el) => el.offsetHeight));
+    const travel = Math.max(track.offsetHeight - pinnedHeight, 1);
+    return { track, pinTop, travel };
+  }, []);
+
   useEffect(() => {
-    const els = stepRefs.current.filter(Boolean) as HTMLElement[];
-    if (!els.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const idx = Number((entry.target as HTMLElement).dataset.index);
-            if (!Number.isNaN(idx)) setActive(idx);
-          }
-        }
-      },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [items.length]);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const m = measure();
+      if (!m) return;
+      const progress = (m.pinTop - m.track.getBoundingClientRect().top) / m.travel;
+      const next = Math.min(items.length - 1, Math.max(0, Math.floor(progress * items.length)));
+      setActive(next);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [items.length, measure]);
 
+  // List click → scroll to the middle of that service's share of the travel.
   const goToStep = (i: number) => {
-    stepRefs.current[i]?.scrollIntoView({
-      block: "center",
-      behavior: reducedMotion ? "auto" : "smooth",
-    });
+    const m = measure();
+    if (!m) return;
+    const trackTop = m.track.getBoundingClientRect().top + window.scrollY;
+    const target = trackTop - m.pinTop + m.travel * ((i + 0.5) / items.length);
+    window.scrollTo({ top: target, behavior: reducedMotion ? "auto" : "smooth" });
   };
 
   return (
@@ -92,7 +112,7 @@ export function ServicesSection({
           viewOptions={{ once: true, margin: "0px 0px -15% 0px" }}
         >
           <motion.div variants={y10} className="md:col-span-3">
-            <span className="text-label text-accent">02 /</span>
+            <span className="text-label text-accent">03 /</span>
             <span className="mt-1.5 block text-[13px] font-medium uppercase tracking-[0.18em] text-ink">
               {services.kicker}
             </span>
@@ -118,38 +138,43 @@ export function ServicesSection({
           </motion.p>
         </InView>
 
-        {/* Desktop: sticky storytelling. Invisible step-track sets scroll length
-            and drives `active`; the two columns are pinned over it. */}
-        <div className="relative mt-16 hidden lg:block">
-          <div aria-hidden="true" className="pointer-events-none">
-            {items.map((item, i) => (
-              <div
-                key={item.id}
-                ref={(el) => {
-                  stepRefs.current[i] = el;
-                }}
-                data-index={i}
-                className="h-[72vh]"
-              />
-            ))}
-          </div>
-
+        {/* Desktop: sticky storytelling. The track sets the scroll length
+            (48vh per service); both columns are pinned over it. Left: the
+            service list + the active service's copy. Right: its visual,
+            benefits and link. */}
+        <div
+          ref={trackRef}
+          className="relative mt-14 hidden lg:block"
+          style={{ height: `${items.length * 48}vh` }}
+        >
           <div className="absolute inset-0 grid grid-cols-[34fr_66fr] gap-x-16">
             <div>
-              <nav
-                aria-label={services.kicker}
+              <div
+                ref={(el) => {
+                  pinnedRefs.current[0] = el;
+                }}
                 className="sticky top-[calc(var(--nav-height)+2rem)]"
               >
-                <ServicesNavigation
-                  items={items}
-                  active={active}
-                  onSelect={goToStep}
-                />
-              </nav>
+                <nav aria-label={services.kicker}>
+                  <ServicesNavigation
+                    items={items}
+                    active={active}
+                    onSelect={goToStep}
+                  />
+                </nav>
+                <div className="mt-9">
+                  <ServiceCopy service={items[active]} />
+                </div>
+              </div>
             </div>
             <div>
-              <div className="sticky top-[calc(var(--nav-height)+2rem)]">
-                <ServiceDesktop
+              <div
+                ref={(el) => {
+                  pinnedRefs.current[1] = el;
+                }}
+                className="sticky top-[calc(var(--nav-height)+2rem)]"
+              >
+                <ServiceDetail
                   service={items[active]}
                   cta={services.cta}
                   href={href}
@@ -167,7 +192,7 @@ export function ServicesSection({
           inView
           viewOptions={{ once: true, amount: 0.12, margin: "0px 0px -10% 0px" }}
           variants={mobileVariants}
-          className="mt-12 flex flex-col gap-12 lg:hidden"
+          className="mt-10 grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-10 md:gap-y-10 lg:hidden"
         >
           {items.map((item) => (
             <ServiceMobile

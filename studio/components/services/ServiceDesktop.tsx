@@ -10,7 +10,31 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 type ServiceItem = Dictionary["services"]["items"][number];
 
-export function ServiceDesktop({
+const swap = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+  transition: { duration: 0.4, ease: EASE },
+} as const;
+
+/** Left column (under the service list): title + description of the active service. */
+export function ServiceCopy({ service }: { service: ServiceItem }) {
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div key={service.id} {...swap}>
+        <h3 className="text-[clamp(1.5rem,1.8vw,2rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink">
+          {service.title}
+        </h3>
+        <p className="mt-4 max-w-[44ch] text-[1.0625rem] leading-[1.55] text-muted">
+          {service.description}
+        </p>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+/** Right column: the service visual, its benefits and the link to the offer. */
+export function ServiceDetail({
   service,
   cta,
   href,
@@ -22,27 +46,14 @@ export function ServiceDesktop({
   locale: Locale;
 }) {
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={service.id}
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.4, ease: EASE }}
-      >
-        <div className="h-[clamp(280px,38vh,420px)]">
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div key={service.id} {...swap}>
+        <div className="h-[clamp(300px,54vh,520px)]">
           <ServiceVisual service={service} locale={locale} />
         </div>
 
-        <div className="mt-8 max-w-[46ch]">
-          <h3 className="text-[clamp(1.5rem,1.8vw,2rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink">
-            {service.title}
-          </h3>
-          <p className="mt-4 text-[1.0625rem] leading-[1.55] text-muted">
-            {service.description}
-          </p>
-
-          <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
+        <div className="mt-7 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-3">
             {service.benefits.map((benefit) => (
               <li key={benefit} className="flex items-center gap-2.5 text-[15px] text-ink">
                 <Check />
@@ -53,7 +64,7 @@ export function ServiceDesktop({
 
           <Link
             href={href}
-            className="group mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-ink"
+            className="group inline-flex items-center gap-2 text-[15px] font-medium text-ink"
           >
             {cta}
             <span

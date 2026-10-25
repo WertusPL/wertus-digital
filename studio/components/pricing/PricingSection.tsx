@@ -70,7 +70,7 @@ export function PricingSection({
             viewOptions={{ once: true, margin: "0px 0px -15% 0px" }}
           >
             <motion.div variants={y8}>
-              <span className="text-label text-accent">04 /</span>
+              <span className="text-label text-accent">05 /</span>
               <span className="mt-1.5 block text-[13px] font-medium uppercase tracking-[0.18em] text-ink">
                 {pricing.label}
               </span>

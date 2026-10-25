@@ -62,29 +62,22 @@ export const pl: Dictionary = {
     ],
   },
   hero: {
-    eyebrow: "WEB DESIGN & DEVELOPMENT · BIAŁYSTOK / POLSKA",
     headline: [
-      [{ text: "Strony dla firm," }],
-      [{ text: "które chcą wyglądać" }],
-      [{ text: "jak " }, { text: "liderzy", accent: true }, { text: " swojej branży." }],
+      [{ text: "Strona, po której klient" }],
+      [{ text: "od razu wie, że trafił" }],
+      [{ text: "do " }, { text: "właściwej", accent: true }, { text: " firmy." }],
     ],
     description:
-      "Projektujemy i tworzymy nowoczesne strony internetowe, które budują zaufanie, wyróżniają markę i pomagają zdobywać klientów.",
+      "Projektujemy i wdrażamy strony internetowe, które jasno prezentują ofertę, budują zaufanie i ułatwiają klientom kontakt z Twoją firmą.",
     primaryCta: "Rozpocznij projekt",
     secondaryCta: "Zobacz realizacje",
-    capabilitiesLabel: "Kompetencje",
-    capabilities: ["Web Design", "Development", "SEO", "CMS"],
-  },
-  featured: {
-    kicker: "CONCEPT PROJECT / 2026",
-    conceptBadge: "CONCEPT PROJECT",
-    discipline: "Architecture / Web Design",
-    projectName: "Meridian",
-    previewNav: ["Studio", "Projekty", "Kontakt"],
-    previewTagline: "Forma, która wynika z intencji.",
-    previewCta: "Zobacz projekt",
-    caption:
-      "Poglądowa wizualizacja koncepcyjnego projektu strony — demonstracja stylu, nie prawdziwy klient.",
+    factsLabel: "W skrócie",
+    facts: [
+      { label: "Zakres", value: "Projekt, wdrożenie, SEO i CMS" },
+      { label: "Studio", value: "Białystok, Polska" },
+      { label: "Pierwszy krok", value: "Bezpłatna rozmowa i wycena" },
+      { label: "Realizacja", value: "Lech-Bud, branża budowlana" },
+    ],
   },
   studio: {
     kicker: "STUDIO",
@@ -113,24 +106,38 @@ export const pl: Dictionary = {
     ],
   },
   work: {
-    kicker: "SELECTED WORK",
-    headline: ["Wybrane projekty,", "które pokazują nasze podejście."],
+    kicker: "REALIZACJE",
+    headline: ["Strony zaprojektowane", "i wdrożone przez nas."],
     description:
-      "Design najlepiej ocenia się w praktyce. Zobacz wybrane koncepcje i projekty przygotowane przez Wertus Digital.",
-    viewAll: "Zobacz wszystkie realizacje",
-    counter: "PROJEKT",
-    scope: "WEB DESIGN / DEVELOPMENT",
-    conceptTag: "CONCEPT PROJECT",
-    conceptShort: "Koncepcja",
-    cta: "Zobacz projekt",
-    industries: {
-      "lex-finanse": "Doradztwo finansowe",
-      "miso-sushi": "Restauracja",
-      "monaco-performance": "Motoryzacja",
+      "Od struktury i projektu graficznego po wdrożenie — zobacz, jak wygląda to w praktyce.",
+    sectorLabel: "Branża",
+    scopeLabel: "Zakres",
+    cta: "Zobacz case study",
+    projects: {
+      lechbud: {
+        sector: "Budownictwo",
+        summary:
+          "Wielostronicowa strona dla firmy budowlanej z Białegostoku: oferta usług, galeria realizacji z filtrowaniem i formularz zapytania.",
+        scope: ["Projekt graficzny", "Wdrożenie", "Wersja mobilna", "Formularz kontaktowy", "SEO"],
+      },
+      // Not published yet — requires the client's consent (see projects.ts).
+      "pracownia-s": {
+        sector: "Florystyka",
+        summary:
+          "Strona pracowni florystycznej z Białegostoku: oferta ślubna i okolicznościowa, realizacje i formularz kontaktowy.",
+        scope: [
+          "Projekt graficzny",
+          "Wdrożenie",
+          "CMS Sanity",
+          "Formularz kontaktowy z Turnstile",
+          "SEO i opieka",
+          "Konfiguracja domeny i Cloudflare Pages",
+        ],
+      },
     },
   },
   services: {
-    kicker: "SERVICES",
+    kicker: "USŁUGI",
     headline: [
       "Usługi, które pomagają",
       "firmom wyglądać i działać lepiej online.",
@@ -142,55 +149,55 @@ export const pl: Dictionary = {
       {
         id: "web-design",
         index: "01",
-        name: "WEB DESIGN",
-        title: "Strony zaprojektowane dla konkretnej marki",
+        name: "PROJEKT GRAFICZNY",
+        title: "Wygląd, który pasuje do Twojej firmy",
         description:
-          "Tworzymy indywidualne kierunki wizualne i interfejsy, które budują spójny wizerunek firmy i prowadzą użytkownika do celu.",
+          "Projektujemy stronę od podstaw pod Twoją branżę i klientów — tak, żeby od razu było jasne, co oferujesz i jak się z Tobą skontaktować.",
         benefits: [
-          "Indywidualny projekt",
-          "UX i hierarchia treści",
-          "Responsive design",
+          "Projekt od podstaw, bez szablonu",
+          "Czytelna oferta",
+          "Wygodna wersja na telefon",
           "Spójność z marką",
         ],
       },
       {
         id: "development",
         index: "02",
-        name: "DEVELOPMENT",
-        title: "Nowoczesne i solidne wdrożenie",
+        name: "WDROŻENIE",
+        title: "Strona, która działa szybko i bez problemów",
         description:
-          "Budujemy szybkie, responsywne i łatwe w dalszym rozwoju strony oparte na współczesnych technologiach.",
+          "Zamieniamy projekt w szybką, stabilną stronę, która dobrze działa na każdym urządzeniu i jest przygotowana pod wyszukiwarki.",
         benefits: [
-          "Next.js / React",
-          "Szybkość i responsywność",
-          "SEO-ready",
-          "Skalowalna struktura",
+          "Szybkie ładowanie",
+          "Działa na każdym urządzeniu",
+          "Przygotowana pod Google",
+          "Łatwa do rozbudowy",
         ],
       },
       {
         id: "cms",
         index: "03",
-        name: "CMS",
-        title: "Treści pod Twoją kontrolą",
+        name: "EDYCJA TREŚCI (CMS)",
+        title: "Sam zmieniasz treści, bez programisty",
         description:
-          "Integrujemy wygodne systemy CMS, dzięki którym możesz samodzielnie aktualizować wybrane elementy strony bez znajomości kodu.",
+          "Teksty, zdjęcia i realizacje aktualizujesz w prostym panelu — bez znajomości kodu i bez czekania na zmiany.",
         benefits: [
-          "Sanity CMS",
-          "Prosta edycja treści",
+          "Prosty panel edycji",
+          "Zmiany bez programisty",
           "Rozbudowa bez przebudowy strony",
-          "Uprawnienia i struktura danych",
+          "Uporządkowane treści",
         ],
       },
       {
         id: "care",
         index: "04",
-        name: "CARE & GROWTH",
+        name: "OPIEKA I ROZWÓJ",
         title: "Strona, która rozwija się razem z firmą",
         description:
-          "Po wdrożeniu możemy dalej rozwijać stronę, aktualizować ją i reagować na nowe potrzeby biznesu.",
+          "Po starcie dbamy o aktualizacje i drobne zmiany, a stronę rozwijamy, gdy pojawiają się nowe potrzeby firmy.",
         benefits: [
           "Aktualizacje",
-          "Drobne zmiany",
+          "Drobne zmiany na bieżąco",
           "Optymalizacja",
           "Stałe wsparcie",
         ],
@@ -198,40 +205,40 @@ export const pl: Dictionary = {
     ],
   },
   process: {
-    label: "PROCESS",
+    label: "PROCES",
     heading: ["Od pierwszej rozmowy", "do gotowej strony."],
     description:
-      "Przejrzysty proces prowadzi projekt od pierwszej rozmowy, przez ustalenie kierunku i projekt, aż po development i uruchomienie strony.",
+      "Pięć jasnych etapów — na każdym wiesz, co dzieje się z projektem i co będzie dalej.",
     steps: [
       {
         id: "discovery",
-        title: "Rozmowa i poznanie projektu",
+        title: "Rozmowa",
         description:
-          "Zaczynamy od poznania Twojej firmy, celów, odbiorców i problemów, które nowa strona ma rozwiązać.",
+          "Poznajemy Twoją firmę, klientów i cel strony. Wstępna rozmowa i wycena są bezpłatne.",
       },
       {
         id: "direction",
-        title: "Struktura i kierunek",
+        title: "Struktura",
         description:
-          "Układamy architekturę informacji i ustalamy kierunek wizualny, zanim powstanie właściwy interfejs.",
+          "Ustalamy, jakie podstrony i treści są potrzebne oraz jak poprowadzić klienta do kontaktu.",
       },
       {
         id: "design",
-        title: "Projekt interfejsu",
+        title: "Projekt",
         description:
-          "Projektujemy UI i UX, dopracowując hierarchię, typografię, responsywność i wszystkie kluczowe interakcje.",
+          "Projektujemy wygląd strony na komputer i telefon, dopracowując każdy kluczowy ekran.",
       },
       {
         id: "development",
-        title: "Development i optymalizacja",
+        title: "Wdrożenie",
         description:
-          "Przenosimy projekt do kodu, dbając o responsywność, szybkość, SEO i stabilne działanie strony.",
+          "Budujemy szybką, stabilną stronę przygotowaną pod wyszukiwarki.",
       },
       {
         id: "launch",
-        title: "Start i przekazanie strony",
+        title: "Start",
         description:
-          "Testujemy finalną wersję, uruchamiamy stronę i przygotowujemy klienta do korzystania z niej po wdrożeniu.",
+          "Testujemy, uruchamiamy stronę i pokazujemy, jak z niej korzystać na co dzień.",
       },
     ],
   },
@@ -771,9 +778,9 @@ export const pl: Dictionary = {
       metaLabel: "O PROJEKCIE",
       scopeLabel: "ZAKRES",
       scope: [
-        "Web Design",
-        "Development",
-        "Responsywność",
+        "Projekt graficzny",
+        "Wdrożenie",
+        "Wersja mobilna",
         "Formularz kontaktowy",
         "SEO",
       ],
@@ -800,11 +807,11 @@ export const pl: Dictionary = {
       solutionLabel: "ZAKRES WYKONANIA",
       solution: [
         {
-          area: "Projekt",
+          area: "Projekt graficzny",
           text: "Czytelna hierarchia informacji i identyfikacja dopasowana do branży budowlanej.",
         },
         {
-          area: "Development",
+          area: "Wdrożenie",
           text: "Responsywna implementacja wielostronicowego serwisu wraz z formularzem kontaktowym i galerią realizacji.",
         },
         {

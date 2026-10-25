@@ -63,29 +63,22 @@ export const en: Dictionary = {
     ],
   },
   hero: {
-    eyebrow: "WEB DESIGN & DEVELOPMENT · BIAŁYSTOK / POLAND",
     headline: [
-      [{ text: "Websites for businesses" }],
-      [{ text: "that want to look like" }],
-      [{ text: "leaders", accent: true }, { text: " in their industry." }],
+      [{ text: "A website that makes" }],
+      [{ text: "customers feel they've" }],
+      [{ text: "found the " }, { text: "right", accent: true }, { text: " business." }],
     ],
     description:
-      "We design and build modern websites that strengthen brands, build trust and help businesses win new customers.",
+      "We design and build websites that clearly present your services, build trust, and make it easier for customers to get in touch.",
     primaryCta: "Start a project",
     secondaryCta: "View our work",
-    capabilitiesLabel: "Capabilities",
-    capabilities: ["Web Design", "Development", "SEO", "CMS"],
-  },
-  featured: {
-    kicker: "CONCEPT PROJECT / 2026",
-    conceptBadge: "CONCEPT PROJECT",
-    discipline: "Architecture / Web Design",
-    projectName: "Meridian",
-    previewNav: ["Studio", "Projects", "Contact"],
-    previewTagline: "Form that follows intention.",
-    previewCta: "View project",
-    caption:
-      "Illustrative concept mock-up of a website design — a demonstration of style, not a real client.",
+    factsLabel: "At a glance",
+    facts: [
+      { label: "Scope", value: "Design, development, SEO and CMS" },
+      { label: "Studio", value: "Białystok, Poland" },
+      { label: "First step", value: "Free consultation and quote" },
+      { label: "Recent work", value: "Lech-Bud, construction" },
+    ],
   },
   studio: {
     kicker: "STUDIO",
@@ -115,19 +108,33 @@ export const en: Dictionary = {
   },
   work: {
     kicker: "SELECTED WORK",
-    headline: ["Selected work,", "showing how we think."],
+    headline: ["Websites we designed", "and built."],
     description:
-      "Design is best judged in practice. Explore selected concepts and projects created by Wertus Digital.",
-    viewAll: "View all work",
-    counter: "PROJECT",
-    scope: "WEB DESIGN / DEVELOPMENT",
-    conceptTag: "CONCEPT PROJECT",
-    conceptShort: "Concept",
-    cta: "View project",
-    industries: {
-      "lex-finanse": "Financial advisory",
-      "miso-sushi": "Restaurant",
-      "monaco-performance": "Automotive",
+      "From structure and visual design to development — see what that looks like in practice.",
+    sectorLabel: "Sector",
+    scopeLabel: "Scope",
+    cta: "View case study",
+    projects: {
+      lechbud: {
+        sector: "Construction",
+        summary:
+          "A multi-page website for a Białystok construction company: a services offer, a filterable project gallery and an enquiry form.",
+        scope: ["Visual design", "Development", "Mobile version", "Contact form", "SEO"],
+      },
+      // Not published yet — requires the client's consent (see projects.ts).
+      "pracownia-s": {
+        sector: "Floristry",
+        summary:
+          "A website for a Białystok floristry studio: wedding and event offer, portfolio and a contact form.",
+        scope: [
+          "Visual design",
+          "Development",
+          "Sanity CMS",
+          "Contact form with Turnstile",
+          "SEO and maintenance",
+          "Domain setup and Cloudflare Pages",
+        ],
+      },
     },
   },
   services: {
@@ -143,43 +150,43 @@ export const en: Dictionary = {
       {
         id: "web-design",
         index: "01",
-        name: "WEB DESIGN",
-        title: "Designed around the brand",
+        name: "VISUAL DESIGN",
+        title: "A look that fits your business",
         description:
-          "We create tailored visual directions and interfaces that strengthen the brand and guide users towards the right action.",
+          "We design the website from scratch for your industry and customers — so it is instantly clear what you offer and how to get in touch.",
         benefits: [
-          "Bespoke design",
-          "UX and content hierarchy",
-          "Responsive design",
-          "Brand consistency",
+          "Designed from scratch, no template",
+          "A clear offer",
+          "Comfortable on mobile",
+          "Consistent with your brand",
         ],
       },
       {
         id: "development",
         index: "02",
         name: "DEVELOPMENT",
-        title: "Modern, reliable development",
+        title: "A website that runs fast and smoothly",
         description:
-          "We build fast, responsive and maintainable websites using modern web technologies.",
+          "We turn the design into a fast, stable website that works well on every device and is ready for search engines.",
         benefits: [
-          "Next.js / React",
-          "Performance",
-          "SEO-ready",
-          "Scalable structure",
+          "Fast loading",
+          "Works on every device",
+          "Ready for Google",
+          "Easy to extend",
         ],
       },
       {
         id: "cms",
         index: "03",
-        name: "CMS",
-        title: "Content under your control",
+        name: "CONTENT EDITING (CMS)",
+        title: "Update content without a developer",
         description:
-          "We integrate practical content management systems that let you update selected parts of the website without touching the code.",
+          "Edit texts, photos and projects in a simple panel — no code and no waiting for changes.",
         benefits: [
-          "Sanity CMS",
-          "Simple content editing",
-          "Structured content",
-          "Easy future expansion",
+          "Simple editing panel",
+          "Changes without a developer",
+          "Grows without a rebuild",
+          "Well-organised content",
         ],
       },
       {
@@ -188,10 +195,10 @@ export const en: Dictionary = {
         name: "CARE & GROWTH",
         title: "Built to evolve with the business",
         description:
-          "After launch, we can continue improving the website, keeping it up to date and supporting new business needs.",
+          "After launch we handle updates and small changes, and develop the website further as the business needs grow.",
         benefits: [
           "Updates",
-          "Small improvements",
+          "Small changes as you go",
           "Optimisation",
           "Ongoing support",
         ],
@@ -202,37 +209,37 @@ export const en: Dictionary = {
     label: "PROCESS",
     heading: ["From the first conversation", "to a finished website."],
     description:
-      "A clear process that takes the project from initial direction through design and development to launch.",
+      "Five clear stages — at each one you know where the project stands and what comes next.",
     steps: [
       {
         id: "discovery",
-        title: "Understanding the project",
+        title: "Conversation",
         description:
-          "We start by learning about your business, goals, audience and the problems the new website needs to solve.",
+          "We get to know your business, customers and what the website should achieve. The initial conversation and quote are free.",
       },
       {
         id: "direction",
-        title: "Structure and direction",
+        title: "Structure",
         description:
-          "We define the information architecture and visual direction before moving into the full interface design.",
+          "We decide which pages and content are needed and how to guide visitors towards getting in touch.",
       },
       {
         id: "design",
-        title: "Interface design",
+        title: "Design",
         description:
-          "We design the UI and UX, refining hierarchy, typography, responsiveness and the interactions that matter.",
+          "We design how the website looks on desktop and mobile, refining every key screen.",
       },
       {
         id: "development",
-        title: "Development and optimisation",
+        title: "Development",
         description:
-          "We turn the design into a fast, responsive and maintainable website with solid technical foundations.",
+          "We build a fast, stable website that is ready for search engines.",
       },
       {
         id: "launch",
-        title: "Launch and handover",
+        title: "Launch",
         description:
-          "We test the final website, deploy it and make sure everything is ready for day-to-day use.",
+          "We test, launch the website and show you how to use it day to day.",
       },
     ],
   },
@@ -772,10 +779,10 @@ export const en: Dictionary = {
       metaLabel: "ABOUT THE PROJECT",
       scopeLabel: "SCOPE",
       scope: [
-        "Web Design",
+        "Visual design",
         "Development",
-        "Responsive",
-        "Contact Form",
+        "Mobile version",
+        "Contact form",
         "SEO",
       ],
       sectorLabel: "SECTOR",
@@ -801,7 +808,7 @@ export const en: Dictionary = {
       solutionLabel: "WHAT WE DELIVERED",
       solution: [
         {
-          area: "Design",
+          area: "Visual design",
           text: "A clear information hierarchy and an identity tailored to the construction sector.",
         },
         {
@@ -809,7 +816,7 @@ export const en: Dictionary = {
           text: "A responsive build of a multi-page site, complete with a contact form and a project gallery.",
         },
         {
-          area: "Mobile",
+          area: "Mobile version",
           text: "An interface adapted to phones without cutting back on the functionality of the desktop version.",
         },
       ],
