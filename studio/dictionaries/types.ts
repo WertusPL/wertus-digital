@@ -106,7 +106,7 @@ export type Dictionary = {
     tiers: Array<{
       id: "landing" | "business" | "advanced" | "care";
       name: string; // uppercase tier name
-      price: string; // starting price, kept in PLN in both languages
+      price: string; // starting price — PLN on the PL site, USD on the EN (US) site
       description: string;
     }>;
   };
@@ -226,7 +226,7 @@ export type Dictionary = {
         description: string;
         bestFor: string;
         includes: string[];
-        price: string; // kept in PLN in both languages
+        price: string; // PLN on the PL site, USD on the EN (US) site
         // Preview meta (values localized; the diagram itself is id-driven)
         pages: string;
         cms: string;

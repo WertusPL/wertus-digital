@@ -257,29 +257,29 @@ export const en: Dictionary = {
     tiers: [
       {
         id: "landing",
-        name: "Landing page",
-        price: "from PLN 1,200",
+        name: "Landing Page",
+        price: "starting at $900",
         description:
           "A focused single-page website built around a specific service, campaign or offer.",
       },
       {
         id: "business",
-        name: "Business website",
-        price: "from PLN 2,500",
+        name: "Business Website",
+        price: "starting at $2,400",
         description:
           "A complete website for businesses that want to present their brand and services professionally.",
       },
       {
         id: "advanced",
-        name: "Advanced website",
-        price: "from PLN 4,000",
+        name: "Business Pro",
+        price: "starting at $4,400",
         description:
           "A larger website with a broader structure, CMS, integrations or custom functionality.",
       },
       {
         id: "care",
         name: "Care & growth",
-        price: "from PLN 249 / month",
+        price: "Quoted individually",
         description:
           "Updates, small improvements, optimization and continued development after launch.",
       },
@@ -396,10 +396,10 @@ export const en: Dictionary = {
         { value: "other", label: "Other" },
       ],
       budgetOptions: [
-        { value: "lt-2500", label: "up to PLN 2,500" },
-        { value: "2500-4000", label: "PLN 2,500 – 4,000" },
-        { value: "4000-7000", label: "PLN 4,000 – 7,000" },
-        { value: "gt-7000", label: "above PLN 7,000" },
+        { value: "usd-lt-2400", label: "under $2,400" },
+        { value: "usd-2400-4400", label: "$2,400 – $4,400" },
+        { value: "usd-4400-7000", label: "$4,400 – $7,000" },
+        { value: "usd-gt-7000", label: "over $7,000" },
         { value: "unsure", label: "not sure yet" },
       ],
       privacy: {
@@ -512,7 +512,7 @@ export const en: Dictionary = {
             "Speed optimization",
             "Deployment",
           ],
-          price: "from PLN 1,200",
+          price: "starting at $900",
           pages: "Single page",
           cms: "Usually not needed",
           scope: "One offer, one clear goal",
@@ -535,7 +535,7 @@ export const en: Dictionary = {
             "Technical SEO and performance",
             "CMS depending on scope",
           ],
-          price: "from PLN 2,500",
+          price: "starting at $2,400",
           pages: "Several pages",
           cms: "Optional",
           scope: "Brand, services, contact",
@@ -543,7 +543,7 @@ export const en: Dictionary = {
         {
           id: "advanced",
           index: "03",
-          name: "ADVANCED WEBSITE",
+          name: "BUSINESS PRO",
           headline: "More content, functionality and room to grow.",
           description:
             "A larger website for projects that require a broader structure, CMS, multiple languages, integrations or custom functionality.",
@@ -558,7 +558,7 @@ export const en: Dictionary = {
             "More content",
             "Ongoing development",
           ],
-          price: "from PLN 4,000",
+          price: "starting at $4,400",
           pages: "Many pages",
           cms: "Included",
           scope: "Structure, features, growth",
@@ -635,7 +635,7 @@ export const en: Dictionary = {
             "Development",
             "Technical support",
           ],
-          price: "from PLN 249 / month",
+          price: "Quoted individually",
         },
       ],
     },
@@ -667,20 +667,20 @@ export const en: Dictionary = {
         {
           id: "one-offer",
           label: "One specific offer",
-          result: "Landing page",
-          price: "from PLN 1,200",
+          result: "Landing Page",
+          price: "starting at $900",
         },
         {
           id: "full-company",
           label: "A full company presence",
-          result: "Business website",
-          price: "from PLN 2,500",
+          result: "Business Website",
+          price: "starting at $2,400",
         },
         {
           id: "larger",
           label: "A larger site / more features",
-          result: "Advanced website",
-          price: "from PLN 4,000",
+          result: "Business Pro",
+          price: "starting at $4,400",
         },
       ],
       resultLead: "Closest scope",
@@ -694,10 +694,10 @@ export const en: Dictionary = {
       note: "Every project is quoted individually once we understand the scope.",
       cta: "Request a detailed quote",
       rows: [
-        { name: "Landing page", price: "from PLN 1,200" },
-        { name: "Business website", price: "from PLN 2,500" },
-        { name: "Advanced website", price: "from PLN 4,000" },
-        { name: "Care & growth", price: "from PLN 249 / month" },
+        { name: "Landing Page", price: "starting at $900" },
+        { name: "Business Website", price: "starting at $2,400" },
+        { name: "Business Pro", price: "starting at $4,400" },
+        { name: "Care & growth", price: "Quoted individually" },
       ],
       factorsLabel: "What affects the price",
       factors: [

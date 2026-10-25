@@ -38,10 +38,14 @@ const tierVariants = {
   },
 };
 
-/** Split "od 1200 zł" → ["od", "1200 zł"] so the qualifier can be de-emphasised. */
+/**
+ * Split "od 1 500 zł" → ["od", "1 500 zł"] / "starting at $900" →
+ * ["starting at", "$900"] so the qualifier can be de-emphasised. A price with
+ * no amount ("Quoted individually") renders entirely as the small qualifier.
+ */
 function splitPrice(price: string): [string, string] {
-  const [qualifier, ...rest] = price.split(" ");
-  return [qualifier, rest.join(" ")];
+  const m = price.match(/^(.*?)\s*([$\d].*)$/);
+  return m ? [m[1], m[2]] : [price, ""];
 }
 
 export function PricingSection({

@@ -11,14 +11,16 @@ import type { Locale } from "@/lib/i18n/config";
 export const SERVICE_IDS = ["business", "landing", "cms", "care", "other"] as const;
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
-export const BUDGET_IDS = [
-  "lt-2500",
-  "2500-4000",
-  "4000-7000",
-  "gt-7000",
-  "unsure",
-] as const;
-export type BudgetId = (typeof BUDGET_IDS)[number];
+/**
+ * Budget ranges are market-specific: the PL form quotes PLN, the EN (US) form
+ * USD. They are two independent price lists, not a currency conversion, so
+ * each locale accepts only its own IDs (plus "unsure").
+ */
+export const BUDGET_IDS_BY_LOCALE = {
+  pl: ["pln-lt-3000", "pln-3000-4500", "pln-4500-7000", "pln-gt-7000", "unsure"],
+  en: ["usd-lt-2400", "usd-2400-4400", "usd-4400-7000", "usd-gt-7000", "unsure"],
+} as const satisfies Record<Locale, readonly string[]>;
+export type BudgetId = (typeof BUDGET_IDS_BY_LOCALE)[Locale][number];
 
 /** Reasonable length caps — reject oversized / abusive payloads. */
 export const LIMITS = { name: 100, email: 254, company: 120, message: 5000 } as const;
@@ -32,19 +34,24 @@ const SERVICE_LABELS: Record<ServiceId, Record<Locale, string>> = {
   other: { pl: "Inne", en: "Other" },
 };
 
-const BUDGET_LABELS: Record<BudgetId, Record<Locale, string>> = {
-  "lt-2500": { pl: "do 2 500 zł", en: "up to PLN 2,500" },
-  "2500-4000": { pl: "2 500 – 4 000 zł", en: "PLN 2,500 – 4,000" },
-  "4000-7000": { pl: "4 000 – 7 000 zł", en: "PLN 4,000 – 7,000" },
-  "gt-7000": { pl: "powyżej 7 000 zł", en: "above PLN 7,000" },
-  unsure: { pl: "jeszcze nie wiem", en: "not sure yet" },
+const BUDGET_LABELS: Record<BudgetId, string> = {
+  "pln-lt-3000": "do 3 000 zł",
+  "pln-3000-4500": "3 000 – 4 500 zł",
+  "pln-4500-7000": "4 500 – 7 000 zł",
+  "pln-gt-7000": "powyżej 7 000 zł",
+  "usd-lt-2400": "under $2,400",
+  "usd-2400-4400": "$2,400 – $4,400",
+  "usd-4400-7000": "$4,400 – $7,000",
+  "usd-gt-7000": "over $7,000",
+  unsure: "",
 };
+const UNSURE_LABEL: Record<Locale, string> = { pl: "jeszcze nie wiem", en: "not sure yet" };
 
 export function serviceLabel(id: ServiceId, locale: Locale): string {
   return SERVICE_LABELS[id][locale];
 }
 export function budgetLabel(id: BudgetId, locale: Locale): string {
-  return BUDGET_LABELS[id][locale];
+  return id === "unsure" ? UNSURE_LABEL[locale] : BUDGET_LABELS[id];
 }
 
 export type ContactData = {
@@ -93,10 +100,13 @@ export function validateContact(raw: unknown): ValidationResult {
   if (!service) errors.service = "required";
   else if (!(SERVICE_IDS as readonly string[]).includes(service)) errors.service = "invalid";
 
+  // Locale first: the budget allowlist depends on the market (PLN vs USD).
+  const locale: Locale = str(input.locale) === "en" ? "en" : "pl";
+
   const budgetRaw = str(input.budget);
   let budget: BudgetId | null = null;
   if (budgetRaw) {
-    if (!(BUDGET_IDS as readonly string[]).includes(budgetRaw)) errors.budget = "invalid";
+    if (!(BUDGET_IDS_BY_LOCALE[locale] as readonly string[]).includes(budgetRaw)) errors.budget = "invalid";
     else budget = budgetRaw as BudgetId;
   }
 
@@ -105,7 +115,6 @@ export function validateContact(raw: unknown): ValidationResult {
   else if (message.length < MESSAGE_MIN) errors.message = "too_short";
   else if (message.length > LIMITS.message) errors.message = "too_long";
 
-  const locale: Locale = str(input.locale) === "en" ? "en" : "pl";
   const honeypot = str(input.company_url).length > 0;
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };

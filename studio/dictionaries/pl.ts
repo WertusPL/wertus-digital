@@ -256,22 +256,22 @@ export const pl: Dictionary = {
     tiers: [
       {
         id: "landing",
-        name: "Landing page",
-        price: "od 1200 zł",
+        name: "Landing Page",
+        price: "od 1\u00a0500 zł",
         description:
           "Jedna dopracowana strona skupiona na konkretnej usłudze, kampanii lub ofercie.",
       },
       {
         id: "business",
         name: "Strona firmowa",
-        price: "od 2500 zł",
+        price: "od 3\u00a0000 zł",
         description:
           "Kompletna strona dla firmy, która chce profesjonalnie prezentować swoją markę i ofertę.",
       },
       {
         id: "advanced",
-        name: "Rozbudowana strona",
-        price: "od 4000 zł",
+        name: "Rozbudowana strona firmowa",
+        price: "od 4\u00a0500 zł",
         description:
           "Większy serwis z bardziej rozbudowaną strukturą, CMS, integracjami lub niestandardowymi funkcjami.",
       },
@@ -395,10 +395,10 @@ export const pl: Dictionary = {
         { value: "other", label: "Inne" },
       ],
       budgetOptions: [
-        { value: "lt-2500", label: "do 2 500 zł" },
-        { value: "2500-4000", label: "2 500 – 4 000 zł" },
-        { value: "4000-7000", label: "4 000 – 7 000 zł" },
-        { value: "gt-7000", label: "powyżej 7 000 zł" },
+        { value: "pln-lt-3000", label: "do 3\u00a0000 zł" },
+        { value: "pln-3000-4500", label: "3\u00a0000 – 4\u00a0500 zł" },
+        { value: "pln-4500-7000", label: "4\u00a0500 – 7\u00a0000 zł" },
+        { value: "pln-gt-7000", label: "powyżej 7\u00a0000 zł" },
         { value: "unsure", label: "jeszcze nie wiem" },
       ],
       privacy: {
@@ -461,7 +461,7 @@ export const pl: Dictionary = {
     meta: {
       title: "Projektowanie stron internetowych dla firm | Wertus Digital",
       description:
-        "Landing page od 1200 zł, strona firmowa od 2500 zł, rozbudowana strona od 4000 zł. Indywidualny projekt, wdrożenie i techniczne SEO, CMS zależnie od zakresu. Bezpłatna wycena.",
+        "Landing page od 1500 zł, strona firmowa od 3000 zł, rozbudowana strona firmowa od 4500 zł. Indywidualny projekt, wdrożenie i techniczne SEO, CMS zależnie od zakresu. Bezpłatna wycena.",
     },
     hero: {
       label: "OFERTA / PROJEKTOWANIE STRON INTERNETOWYCH",
@@ -511,7 +511,7 @@ export const pl: Dictionary = {
             "Optymalizacja szybkości",
             "Wdrożenie",
           ],
-          price: "od 1200 zł",
+          price: "od 1\u00a0500 zł",
           pages: "Jedna strona",
           cms: "Zwykle niepotrzebny",
           scope: "Jedna oferta, jasny cel",
@@ -534,7 +534,7 @@ export const pl: Dictionary = {
             "Techniczne SEO i performance",
             "CMS zależnie od zakresu",
           ],
-          price: "od 2500 zł",
+          price: "od 3\u00a0000 zł",
           pages: "Kilka podstron",
           cms: "Opcjonalny",
           scope: "Marka, oferta, kontakt",
@@ -542,7 +542,7 @@ export const pl: Dictionary = {
         {
           id: "advanced",
           index: "03",
-          name: "ROZBUDOWANA STRONA",
+          name: "ROZBUDOWANA STRONA FIRMOWA",
           headline: "Więcej treści, funkcji i możliwości rozwoju.",
           description:
             "Większy serwis dla projektu wymagającego bardziej rozbudowanej struktury, CMS, wersji językowych, integracji lub indywidualnych funkcji.",
@@ -557,7 +557,7 @@ export const pl: Dictionary = {
             "Większa liczba treści",
             "Dalsza rozbudowa",
           ],
-          price: "od 4000 zł",
+          price: "od 4\u00a0500 zł",
           pages: "Wiele podstron",
           cms: "W standardzie",
           scope: "Struktura, funkcje, rozwój",
@@ -667,19 +667,19 @@ export const pl: Dictionary = {
           id: "one-offer",
           label: "Jedna konkretna oferta",
           result: "Landing Page",
-          price: "od 1200 zł",
+          price: "od 1\u00a0500 zł",
         },
         {
           id: "full-company",
           label: "Pełna prezentacja firmy",
           result: "Strona firmowa",
-          price: "od 2500 zł",
+          price: "od 3\u00a0000 zł",
         },
         {
           id: "larger",
           label: "Większy serwis / wiele funkcji",
-          result: "Rozbudowana strona",
-          price: "od 4000 zł",
+          result: "Rozbudowana strona firmowa",
+          price: "od 4\u00a0500 zł",
         },
       ],
       resultLead: "Najbardziej zbliżony zakres",
@@ -693,9 +693,9 @@ export const pl: Dictionary = {
       note: "Każdy projekt wyceniamy indywidualnie po poznaniu zakresu.",
       cta: "Poproś o dokładną wycenę",
       rows: [
-        { name: "Landing Page", price: "od 1200 zł" },
-        { name: "Strona firmowa", price: "od 2500 zł" },
-        { name: "Rozbudowana strona", price: "od 4000 zł" },
+        { name: "Landing Page", price: "od 1\u00a0500 zł" },
+        { name: "Strona firmowa", price: "od 3\u00a0000 zł" },
+        { name: "Rozbudowana strona firmowa", price: "od 4\u00a0500 zł" },
         { name: "Opieka i rozwój", price: "od 249 zł / mies." },
       ],
       factorsLabel: "Co wpływa na cenę",
