@@ -6,12 +6,11 @@
  * faked (e.g. LinkedIn/Facebook profiles don't exist yet, so they're absent).
  *
  * `email` is the single source of truth for the public contact address used
- * across the UI (footer, contact page, CTAs) and as the mailer's default
- * recipient. It is currently the active Gmail address; kontakt@wertusdigital.pl
- * is inactive and must not be shown to users until it is re-enabled.
+ * across the UI (footer, contact page, CTAs, privacy policy). Form delivery
+ * is configured separately in lib/contact/mailer.ts (CONTACT_TO_EMAIL).
  */
 export const SITE = {
-  email: "wertusdigital@gmail.com",
+  email: "kontakt@wertusdigital.pl",
   phone: "+48 516 950 801",
   // Dial-ready form of `phone` (no spaces) for tel: links.
   phoneTel: "+48516950801",

@@ -1,6 +1,10 @@
 import nodemailer from "nodemailer";
-import { SITE } from "@/lib/site";
 import type { BuiltEmail } from "./email";
+
+// Delivery fallback when CONTACT_TO_EMAIL is unset. Deliberately decoupled
+// from the public SITE.email so changing the displayed address never
+// silently reroutes enquiries. Switch only after confirming the new inbox.
+const DEFAULT_INBOX = "wertusdigital@gmail.com";
 
 /**
  * SMTP transport for the contact form. Server-side only — this module is
@@ -9,7 +13,7 @@ import type { BuiltEmail } from "./email";
  *
  * Configuration comes entirely from environment variables (see .env.example).
  * Nothing here is hard-coded except the sender display name and the default
- * recipient, which falls back to the public studio address.
+ * recipient (DEFAULT_INBOX above).
  */
 
 export type MailConfig = {
@@ -43,7 +47,7 @@ export function getMailConfig(): MailConfig | null {
   const secure =
     secureEnv === "true" ? true : secureEnv === "false" ? false : port === 465;
 
-  const to = process.env.CONTACT_TO_EMAIL?.trim() || SITE.email;
+  const to = process.env.CONTACT_TO_EMAIL?.trim() || DEFAULT_INBOX;
   const from = process.env.CONTACT_FROM_EMAIL?.trim() || user;
 
   return { host, port, secure, user, pass, to, from };

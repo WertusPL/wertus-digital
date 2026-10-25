@@ -260,7 +260,9 @@ export function ContactForm({
 
           {/* Honeypot — hidden from users and assistive tech. */}
           <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-            <label htmlFor={`${uid}-company-url`}>Company website</label>
+            <label htmlFor={`${uid}-company-url`}>
+              {locale === "pl" ? "Strona internetowa firmy" : "Company website"}
+            </label>
             <input
               id={`${uid}-company-url`}
               type="text"

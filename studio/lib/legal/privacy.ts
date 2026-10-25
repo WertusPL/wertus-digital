@@ -32,8 +32,8 @@ const pl: LegalDoc = {
       { label: "Lokalizacja", value: "Białystok, Polska" },
       {
         label: "E-mail",
-        value: "wertusdigital@gmail.com",
-        href: "mailto:wertusdigital@gmail.com",
+        value: "kontakt@wertusdigital.pl",
+        href: "mailto:kontakt@wertusdigital.pl",
       },
       { label: "Telefon", value: "+48 516 950 801", href: "tel:+48516950801" },
     ],
@@ -45,7 +45,7 @@ const pl: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Administratorem Twoich danych osobowych jest Kacper Niedzielko, działający pod marką Wertus Digital, z Białegostoku. We wszystkich sprawach dotyczących danych osobowych możesz skontaktować się z nami pod adresem e-mail wertusdigital@gmail.com lub telefonicznie: +48 516 950 801.",
+          text: "Administratorem Twoich danych osobowych jest Kacper Niedzielko, działający pod marką Wertus Digital, z Białegostoku. We wszystkich sprawach dotyczących danych osobowych możesz skontaktować się z nami pod adresem e-mail kontakt@wertusdigital.pl lub telefonicznie: +48 516 950 801.",
         },
         {
           type: "p",
@@ -204,7 +204,7 @@ const pl: LegalDoc = {
         },
         {
           type: "p",
-          text: "Aby skorzystać z tych praw, napisz do nas na adres wertusdigital@gmail.com.",
+          text: "Aby skorzystać z tych praw, napisz do nas na adres kontakt@wertusdigital.pl.",
         },
       ],
     },
@@ -284,8 +284,8 @@ const en: LegalDoc = {
       { label: "Location", value: "Białystok, Poland" },
       {
         label: "E-mail",
-        value: "wertusdigital@gmail.com",
-        href: "mailto:wertusdigital@gmail.com",
+        value: "kontakt@wertusdigital.pl",
+        href: "mailto:kontakt@wertusdigital.pl",
       },
       { label: "Phone", value: "+48 516 950 801", href: "tel:+48516950801" },
     ],
@@ -297,7 +297,7 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "The controller of your personal data is Kacper Niedzielko, operating under the Wertus Digital brand, based in Białystok, Poland. For any data-protection matter you can reach us at wertusdigital@gmail.com or by phone: +48 516 950 801.",
+          text: "The controller of your personal data is Kacper Niedzielko, operating under the Wertus Digital brand, based in Białystok, Poland. For any data-protection matter you can reach us at kontakt@wertusdigital.pl or by phone: +48 516 950 801.",
         },
         {
           type: "p",
@@ -456,7 +456,7 @@ const en: LegalDoc = {
         },
         {
           type: "p",
-          text: "To exercise these rights, write to us at wertusdigital@gmail.com.",
+          text: "To exercise these rights, write to us at kontakt@wertusdigital.pl.",
         },
       ],
     },

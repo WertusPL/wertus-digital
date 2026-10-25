@@ -8,7 +8,7 @@ import { checkRateLimit, getClientIp } from "@/lib/contact/rate-limit";
  * Contact form endpoint — real SMTP delivery to the studio inbox.
  *
  * Flow: POST → validation → honeypot → rate limit → SMTP transport → the
- * studio inbox (CONTACT_TO_EMAIL, default the public studio address).
+ * studio inbox (CONTACT_TO_EMAIL, fallback DEFAULT_INBOX in mailer.ts).
  * Success (200) is returned ONLY after the mail transport accepts the message;
  * we never fake delivery. Errors are deliberately generic to the client — no
  * SMTP host, credentials or stack traces leak out. SMTP settings come from
