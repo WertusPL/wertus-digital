@@ -82,11 +82,15 @@ export function ServicesMegaMenu({
     closeTimer.current = window.setTimeout(() => setOpen(false), 120);
   }, [clearTimer]);
 
-  // Close on route change (e.g. clicking an anchor from another page).
-  useEffect(() => {
-    closeNow();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  // Close on route change (e.g. clicking an anchor from another page):
+  // reset state during render, drop any pending close timer in an effect.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setOpen(false);
+    setActiveIndex(0);
+  }
+  useEffect(() => clearTimer(), [pathname, clearTimer]);
 
   // Outside click — listener only while open, cleaned up on close/unmount.
   useEffect(() => {

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
+import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 
 type Featured = Dictionary["featured"];
@@ -18,12 +19,9 @@ export function FeaturedProject({ featured }: { featured: Featured }) {
   const reduce = usePrefersReducedMotion();
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  // Only for precise pointers (never touch); resolves after mount so SSR markup
-  // is unaffected.
-  const [finePointer, setFinePointer] = useState(false);
-  useEffect(() => {
-    setFinePointer(window.matchMedia("(pointer: fine)").matches);
-  }, []);
+  // Only for precise pointers (never touch); resolves after hydration so SSR
+  // markup is unaffected.
+  const finePointer = useMediaQuery("(pointer: fine)");
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);

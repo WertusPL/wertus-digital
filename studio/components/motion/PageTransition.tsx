@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
@@ -24,12 +24,11 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const reduced = usePrefersReducedMotion();
-  const isFirst = useRef(true);
-  const skipEnter = isFirst.current;
-
-  useEffect(() => {
-    isFirst.current = false;
-  }, [pathname]);
+  // Skip the enter animation until the first client-side navigation.
+  const [initialPath] = useState(pathname);
+  const [navigated, setNavigated] = useState(false);
+  if (!navigated && pathname !== initialPath) setNavigated(true);
+  const skipEnter = !navigated;
 
   return (
     <motion.div

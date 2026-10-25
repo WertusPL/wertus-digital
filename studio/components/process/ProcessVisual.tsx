@@ -16,14 +16,7 @@ import type { Locale } from "@/lib/i18n/config";
  * is purely presentational, so it renders identically under reduced motion.
  */
 
-const STEP_IDS = [
-  "discovery",
-  "direction",
-  "design",
-  "development",
-  "launch",
-] as const;
-type StepId = (typeof STEP_IDS)[number];
+type StepId = "discovery" | "direction" | "design" | "development" | "launch";
 
 const HEADER: Record<StepId, string> = {
   discovery: "PROJECT BRIEF",
@@ -249,7 +242,6 @@ function DesignVisual() {
  * ------------------------------------------------------------------ */
 const A = "text-accent";
 const P = "text-white/65";
-const S = "text-white/40";
 
 const DEV_CODE: Array<Array<[string, string]>> = [
   [["export function ", A], ["Section", "text-white/85"], ["() {", P]],

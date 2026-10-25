@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
 import type { Locale } from "@/lib/i18n/config";
 import { SITE } from "@/lib/site";
+import { EMAIL_RE, LIMITS, MESSAGE_MIN } from "@/lib/contact/schema";
 import { cn } from "@/lib/utils";
 import { InView } from "@/components/motion/InView";
 
@@ -19,8 +20,6 @@ const item = {
   hidden: { opacity: 0, y: 14 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 };
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Form = Dictionary["contactPage"]["form"];
 type FieldKey = "name" | "email" | "company" | "service" | "message";
@@ -79,7 +78,9 @@ export function ContactForm({
     else if (!EMAIL_RE.test(v.email.trim())) e.email = form.errors.emailInvalid;
     if (!v.company.trim()) e.company = form.errors.company;
     if (!v.service) e.service = form.errors.service;
-    if (!v.message.trim()) e.message = form.errors.message;
+    // Same rules as the API (lib/contact/schema.ts); max lengths are enforced
+    // by maxLength on the controls.
+    if (v.message.trim().length < MESSAGE_MIN) e.message = form.errors.message;
     return e;
   }
 
@@ -186,6 +187,7 @@ export function ContactForm({
                 onBlur={() => markTouched("name")}
                 error={shownError("name")}
                 autoComplete="name"
+                maxLength={LIMITS.name}
                 required
               />
             </motion.div>
@@ -201,6 +203,7 @@ export function ContactForm({
                 onBlur={() => markTouched("email")}
                 error={shownError("email")}
                 autoComplete="email"
+                maxLength={LIMITS.email}
                 required
               />
             </motion.div>
@@ -214,6 +217,7 @@ export function ContactForm({
                 onBlur={() => markTouched("company")}
                 error={shownError("company")}
                 autoComplete="organization"
+                maxLength={LIMITS.company}
                 required
               />
             </motion.div>
@@ -253,6 +257,7 @@ export function ContactForm({
                 onChange={(v) => set("message", v)}
                 onBlur={() => markTouched("message")}
                 error={shownError("message")}
+                maxLength={LIMITS.message}
                 required
               />
             </motion.div>
@@ -441,6 +446,7 @@ function Field({
   type = "text",
   inputMode,
   autoComplete,
+  maxLength,
   required,
 }: {
   id: string;
@@ -452,6 +458,7 @@ function Field({
   type?: string;
   inputMode?: "email" | "text";
   autoComplete?: string;
+  maxLength?: number;
   required?: boolean;
 }) {
   const errorId = `${id}-error`;
@@ -464,6 +471,7 @@ function Field({
           type={type}
           inputMode={inputMode}
           autoComplete={autoComplete}
+          maxLength={maxLength}
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -489,6 +497,7 @@ function TextAreaField({
   onChange,
   onBlur,
   error,
+  maxLength,
   required,
 }: {
   id: string;
@@ -498,6 +507,7 @@ function TextAreaField({
   onChange: (v: string) => void;
   onBlur: () => void;
   error?: string;
+  maxLength?: number;
   required?: boolean;
 }) {
   const errorId = `${id}-error`;
@@ -509,6 +519,7 @@ function TextAreaField({
           id={id}
           rows={5}
           placeholder={placeholder}
+          maxLength={maxLength}
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}

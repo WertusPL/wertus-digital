@@ -62,7 +62,8 @@ export type ValidationResult =
   | { ok: false; errors: Record<string, string> };
 
 // No whitespace allowed either side of the @, and a dot in the domain.
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Shared with the client form so both sides validate identically.
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function str(v: unknown): string {
   return typeof v === "string" ? v.trim() : "";
