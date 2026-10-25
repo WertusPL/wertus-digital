@@ -98,12 +98,15 @@ export function ServicesPricing({
             return (
               <div
                 key={row.name}
-                className="flex items-baseline gap-x-5 border-b border-[var(--border-light)] py-6 lg:py-7"
+                className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-b border-[var(--border-light)] py-6 lg:py-7"
               >
                 <span className="text-[13px] font-medium tabular-nums tracking-[0.1em] text-muted">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-[clamp(1.05rem,0.6vw+0.9rem,1.35rem)] font-medium text-ink">
+                {/* grow + basis-0: the name absorbs free space and only its
+                    longest word counts when the row decides to wrap, so the
+                    price drops to its own line only when it truly can't fit. */}
+                <h3 className="grow basis-0 text-[clamp(1.05rem,0.6vw+0.9rem,1.35rem)] font-medium text-ink">
                   {row.name}
                 </h3>
                 <p className="ml-auto flex items-baseline gap-1.5 whitespace-nowrap tabular-nums">
