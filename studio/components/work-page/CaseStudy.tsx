@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
 import type { CaseStudy as CaseStudyData, Shot } from "@/lib/work";
 import { InView } from "@/components/motion/InView";
+import { ANCHOR_SCROLL_MT } from "@/components/services-page/anchors";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -26,12 +27,20 @@ type Copy = Dictionary["workPage"]["caseStudy"];
 export function CaseStudy({
   copy,
   data,
+  priority = true,
 }: {
   copy: Copy;
   data: CaseStudyData;
+  /** Preload the main screenshot — only for the first case study on the page. */
+  priority?: boolean;
 }) {
+  const headingId = `case-${data.id}-heading`;
   return (
-    <section aria-labelledby="case-lechbud-heading" className="pb-8 lg:pb-12">
+    <section
+      id={data.id}
+      aria-labelledby={headingId}
+      className={`pb-8 lg:pb-12 ${ANCHOR_SCROLL_MT}`}
+    >
       <div className="wd-container">
         <div className="mx-auto max-w-[1360px]">
           {/* ---- Header: name + subtitle + description | meta ---- */}
@@ -50,7 +59,7 @@ export function CaseStudy({
               </motion.p>
 
               <motion.h2
-                id="case-lechbud-heading"
+                id={headingId}
                 variants={y16}
                 className="section-heading mt-5 tracking-[-0.02em]"
               >
@@ -113,7 +122,7 @@ export function CaseStudy({
                 width={data.main.width}
                 height={data.main.height}
                 alt={copy.mainAlt}
-                priority
+                priority={priority}
                 sizes="(min-width: 1360px) 1360px, 100vw"
                 className="h-auto w-full object-top transition-transform duration-[600ms] ease-out group-hover:scale-[1.012]"
               />

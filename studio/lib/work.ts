@@ -44,3 +44,23 @@ export const LECHBUD: CaseStudy = {
     worksMobile: { src: `${BASE}/lechbud-realizacje-mobile.png`, width: 375, height: 829 },
   },
 };
+
+const PS = "/portfolio/pracownia-s";
+
+/**
+ * Pracownia S. — published with the client's consent. Screenshots of the live
+ * site (https://pracowniasandra.pl); logo and photos shown in them belong to
+ * the client. Gallery slots: offer subpage (Śluby), homepage on mobile,
+ * contact form, CMS-fed bouquet gallery on mobile.
+ */
+export const PRACOWNIA_S: CaseStudy = {
+  id: "pracownia-s",
+  liveUrl: "https://pracowniasandra.pl",
+  main: { src: `${PS}/pracownia-s-home-desktop.png`, width: 1872, height: 918 },
+  gallery: {
+    worksDesktop: { src: `${PS}/pracownia-s-sluby-desktop.png`, width: 1872, height: 918 },
+    homeMobile: { src: `${PS}/pracownia-s-home-mobile.png`, width: 780, height: 1688 },
+    contactDesktop: { src: `${PS}/pracownia-s-kontakt-desktop.png`, width: 1872, height: 918 },
+    worksMobile: { src: `${PS}/pracownia-s-kwiaty-mobile.png`, width: 780, height: 1688 },
+  },
+};

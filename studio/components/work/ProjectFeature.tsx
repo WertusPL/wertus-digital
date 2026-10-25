@@ -91,8 +91,9 @@ export function ProjectFeature({
         variants={rise}
         aria-labelledby={headingId}
         className={cn(
-          "lg:col-span-4 lg:col-start-9",
-          reverse && "lg:order-1 lg:col-start-1",
+          "lg:col-span-4",
+          // cn() doesn't dedupe — pick one col-start, or col-start-9 wins over 1.
+          reverse ? "lg:order-1 lg:col-start-1" : "lg:col-start-9",
         )}
       >
         <p className="text-label text-accent">{number}</p>
@@ -124,11 +125,12 @@ export function ProjectFeature({
         </dl>
 
         <Link
-          href={routes[project.linkKey][locale]}
+          href={routes[project.linkKey][locale] + (project.anchor ? `#${project.anchor}` : "")}
           className="group mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-white"
         >
           <span className="relative">
             {work.cta}
+            <span className="sr-only">: {project.title}</span>
             <span
               aria-hidden="true"
               className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"

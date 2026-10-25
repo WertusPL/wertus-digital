@@ -306,34 +306,8 @@ export type Dictionary = {
       countLabel: string; // e.g. "01 REALIZACJA" / "01 PROJECT"
       yearLabel: string; // e.g. "2026"
     };
-    caseStudy: {
-      label: string; // "CASE STUDY"
-      name: string; // "LECH-BUD"
-      subtitle: string; // "Strona internetowa dla firmy budowlanej"
-      description: string;
-      metaLabel: string; // small label above the meta block, e.g. "ZAKRES PROJEKTU"
-      scopeLabel: string; // "ZAKRES"
-      scope: string[]; // Web Design, Development, Responsive, …
-      sectorLabel: string; // "BRANŻA"
-      sector: string; // "Budownictwo" / "Construction"
-      mainCaption: string; // label above the big screen, e.g. "STRONA GŁÓWNA"
-      mainAlt: string;
-      galleryLabel: string; // "PRZEGLĄD" / "OVERVIEW"
-      shots: {
-        worksDesktopLabel: string;
-        worksDesktopAlt: string;
-        homeMobileLabel: string;
-        homeMobileAlt: string;
-        contactDesktopLabel: string;
-        contactDesktopAlt: string;
-        worksMobileLabel: string;
-        worksMobileAlt: string;
-      };
-      solutionLabel: string; // "ZAKRES WYKONANIA"
-      solution: Array<{ area: string; text: string }>; // Projekt / Development / Mobile
-      liveCta: string; // "Zobacz stronę na żywo"
-      liveExternalHint: string; // "(nowa karta)" / "(new tab)" — appended to aria-label
-    };
+    caseStudy: CaseStudyCopy; // Lech-Bud
+    caseStudyPracowniaS: CaseStudyCopy;
     more: {
       heading: string; // "Kolejne realizacje już wkrótce."
       description: string;
@@ -428,4 +402,34 @@ export type Dictionary = {
     title: string;
     description: string;
   };
+};
+
+/** Copy for one case study on the work page (one per project). */
+export type CaseStudyCopy = {
+  label: string; // "CASE STUDY"
+  name: string; // "LECH-BUD"
+  subtitle: string; // "Strona internetowa dla firmy budowlanej"
+  description: string;
+  metaLabel: string; // small label above the meta block, e.g. "ZAKRES PROJEKTU"
+  scopeLabel: string; // "ZAKRES"
+  scope: string[]; // Web Design, Development, Responsive, …
+  sectorLabel: string; // "BRANŻA"
+  sector: string; // "Budownictwo" / "Construction"
+  mainCaption: string; // label above the big screen, e.g. "STRONA GŁÓWNA"
+  mainAlt: string;
+  galleryLabel: string; // "PRZEGLĄD" / "OVERVIEW"
+  shots: {
+    worksDesktopLabel: string;
+    worksDesktopAlt: string;
+    homeMobileLabel: string;
+    homeMobileAlt: string;
+    contactDesktopLabel: string;
+    contactDesktopAlt: string;
+    worksMobileLabel: string;
+    worksMobileAlt: string;
+  };
+  solutionLabel: string; // "ZAKRES WYKONANIA"
+  solution: Array<{ area: string; text: string }>; // Projekt / Development / Mobile
+  liveCta: string; // "Zobacz stronę na żywo"
+  liveExternalHint: string; // "(nowa karta)" / "(new tab)" — appended to aria-label
 };

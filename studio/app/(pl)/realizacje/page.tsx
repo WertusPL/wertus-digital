@@ -4,7 +4,7 @@ import { MoreWork } from "@/components/work-page/MoreWork";
 import { ServicesFinalCta } from "@/components/services-page/ServicesFinalCta";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { buildMetadata } from "@/lib/i18n/metadata";
-import { LECHBUD } from "@/lib/work";
+import { LECHBUD, PRACOWNIA_S } from "@/lib/work";
 
 const dict = getDictionary("pl");
 
@@ -16,6 +16,7 @@ export default function WorkPagePl() {
     <>
       <WorkHero hero={w.hero} />
       <CaseStudy copy={w.caseStudy} data={LECHBUD} />
+      <CaseStudy copy={w.caseStudyPracowniaS} data={PRACOWNIA_S} priority={false} />
       <MoreWork locale="pl" more={w.more} />
       <ServicesFinalCta finalCta={w.finalCta} locale="pl" />
     </>

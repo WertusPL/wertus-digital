@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/dictionaries/types";
 import type { RouteKey } from "@/lib/i18n/routes";
-import { LECHBUD, type Shot } from "@/lib/work";
+import { LECHBUD, PRACOWNIA_S, type Shot } from "@/lib/work";
 
 export type ProjectType = "concept" | "client";
 
@@ -36,6 +36,8 @@ export type WorkProject = {
   video?: string;
   /** Internal page with the full case study. */
   linkKey: RouteKey;
+  /** Optional in-page anchor of the case study on that page. */
+  anchor?: string;
 };
 
 export const workProjects: WorkProject[] = [
@@ -57,19 +59,23 @@ export const workProjects: WorkProject[] = [
     linkKey: "work",
   },
   {
-    // Pracownia S. — https://pracowniasandra.pl. Real project, NOT published:
-    // waiting for the client's consent. To publish: capture desktop + mobile
-    // screenshots into /public/portfolio/pracownia-s/, fill `poster`/`mobile`
-    // (with real pixel sizes) and the alts, then set `published: true`.
+    // Pracownia S. — https://pracowniasandra.pl. Published with the client's consent.
     id: "pracownia-s",
     title: "Pracownia S.",
     type: "client",
-    published: false,
+    published: true,
+    poster: PRACOWNIA_S.main.src,
     posterAlt: {
-      pl: "Strona główna serwisu Pracownia S. na desktopie.",
-      en: "Pracownia S. homepage on desktop.",
+      pl: "Strona główna Pracowni S. na desktopie — nagłówek o kwiatach i dekoracjach na wyjątkowe chwile obok zdjęć ślubnych.",
+      en: "Pracownia S. homepage on desktop — headline about flowers and decorations for special occasions next to wedding photos.",
+    },
+    mobile: PRACOWNIA_S.gallery.homeMobile,
+    mobileAlt: {
+      pl: "Strona główna Pracowni S. w widoku mobilnym.",
+      en: "Pracownia S. homepage on mobile.",
     },
     linkKey: "work",
+    anchor: PRACOWNIA_S.id,
   },
 ];
 

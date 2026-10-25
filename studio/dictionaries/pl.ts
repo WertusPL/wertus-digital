@@ -121,18 +121,17 @@ export const pl: Dictionary = {
           "Wielostronicowa strona dla firmy budowlanej z Białegostoku: oferta usług, galeria realizacji z filtrowaniem i formularz zapytania.",
         scope: ["Projekt graficzny", "Wdrożenie", "Wersja mobilna", "Formularz kontaktowy", "SEO"],
       },
-      // Not published yet — requires the client's consent (see projects.ts).
       "pracownia-s": {
-        sector: "Florystyka",
+        sector: "Florystyka i dekoracje",
         summary:
-          "Strona pracowni florystycznej z Białegostoku: oferta ślubna i okolicznościowa, realizacje i formularz kontaktowy.",
+          "Strona pracowni florystycznej z Białegostoku: podstrony ofertowe dla ślubów, uroczystości i bukietów, galerie prac z CMS Sanity i formularz zapytania.",
         scope: [
-          "Projekt graficzny",
+          "Projekt strony",
           "Wdrożenie",
           "CMS Sanity",
-          "Formularz kontaktowy z Turnstile",
-          "SEO i opieka",
-          "Konfiguracja domeny i Cloudflare Pages",
+          "Formularz z Cloudflare Turnstile",
+          "Konfiguracja domeny",
+          "Cloudflare Pages",
         ],
       },
     },
@@ -760,7 +759,7 @@ export const pl: Dictionary = {
     meta: {
       title: "Realizacje — strony internetowe dla firm | Wertus Digital",
       description:
-        "Zobacz, jak projektujemy i wdrażamy strony internetowe dla firm. Case study Lech-Bud: strona firmy budowlanej z Białegostoku z galerią realizacji i formularzem zapytania.",
+        "Zobacz, jak projektujemy i wdrażamy strony internetowe dla firm. Case study: Lech-Bud — firma budowlana i Pracownia S. — pracownia florystyczna z Białegostoku.",
     },
     hero: {
       label: "WYBRANE REALIZACJE",
@@ -768,7 +767,7 @@ export const pl: Dictionary = {
       headingAccent: "biznesie.",
       description:
         "Projektujemy i wdrażamy strony internetowe, które łączą dopracowaną warstwę wizualną z czytelną strukturą, responsywnością i solidnym wykonaniem technicznym.",
-      countLabel: "01 PROJEKT",
+      countLabel: "02 PROJEKTY",
       yearLabel: "2026",
     },
     caseStudy: {
@@ -819,6 +818,62 @@ export const pl: Dictionary = {
         {
           area: "Wersja mobilna",
           text: "Interfejs dostosowany do telefonów bez ograniczania funkcjonalności wersji desktopowej.",
+        },
+      ],
+      liveCta: "Zobacz stronę na żywo",
+      liveExternalHint: "otwiera się w nowej karcie",
+    },
+    caseStudyPracowniaS: {
+      label: "CASE STUDY",
+      name: "PRACOWNIA S.",
+      subtitle: "Strona internetowa dla pracowni florystycznej",
+      description:
+        "Wielostronicowa strona dla pracowni florystycznej z Białegostoku, która przygotowuje dekoracje ślubne, oprawę rodzinnych uroczystości oraz bukiety i kompozycje. Zaprojektowaliśmy i wdrożyliśmy ją od podstaw: osobne podstrony ofertowe, galerie prac zasilane z CMS Sanity i formularz zapytania. Logo i fotografie należą do pracowni — naszym zadaniem było zbudować wokół nich spójną, czytelną stronę.",
+      metaLabel: "O PROJEKCIE",
+      scopeLabel: "ZAKRES",
+      scope: [
+        "Projekt strony",
+        "Wdrożenie",
+        "Podstrony ofertowe",
+        "Galerie z filtrowaniem",
+        "CMS Sanity",
+        "Formularz zapytania",
+        "Konfiguracja domeny",
+        "Cloudflare Pages",
+      ],
+      sectorLabel: "BRANŻA",
+      sector: "Florystyka i dekoracje",
+      mainCaption: "STRONA GŁÓWNA",
+      mainAlt:
+        "Strona główna Pracowni S. na desktopie — nagłówek „Kwiaty i dekoracje tworzone z myślą o wyjątkowych chwilach” obok zdjęć ślubnych z bukietem.",
+      galleryLabel: "PRZEGLĄD",
+      shots: {
+        worksDesktopLabel: "OFERTA ŚLUBNA — DESKTOP",
+        worksDesktopAlt:
+          "Podstrona „Śluby” na desktopie — nagłówek „Florystyczna oprawa Waszego dnia” na zdjęciu dekoracji stołu ze świecami.",
+        homeMobileLabel: "STRONA GŁÓWNA — MOBILE",
+        homeMobileAlt:
+          "Strona główna Pracowni S. w widoku mobilnym — nagłówek oferty i przyciski kontaktu.",
+        contactDesktopLabel: "FORMULARZ ZAPYTANIA — DESKTOP",
+        contactDesktopAlt:
+          "Formularz zapytania na podstronie kontaktu — pola imienia, telefonu, e-maila, rodzaju zamówienia, planowanego terminu i wiadomości oraz weryfikacja Cloudflare Turnstile.",
+        worksMobileLabel: "GALERIA KOMPOZYCJI — MOBILE",
+        worksMobileAlt:
+          "Galeria „Nasze kompozycje” w widoku mobilnym — filtry kategorii i siatka zdjęć bukietów.",
+      },
+      solutionLabel: "ZAKRES WYKONANIA",
+      solution: [
+        {
+          area: "Struktura i projekt",
+          text: "Oferta podzielona na śluby, uroczystości oraz bukiety i kompozycje — każda grupa usług ma własną podstronę, a przy bukietach pojawia się orientacyjny cennik. Projekt zbudowany wokół fotografii i identyfikacji pracowni.",
+        },
+        {
+          area: "CMS Sanity",
+          text: "Zdjęcia w galeriach podstron ofertowych pochodzą z CMS Sanity, dzięki czemu pracownia może je aktualizować bez zmian w kodzie. Galerię kompozycji można filtrować według kategorii.",
+        },
+        {
+          area: "Formularz i wdrożenie",
+          text: "Formularz zapytania z polami dopasowanymi do zamówień — rodzajem i planowanym terminem — chroniony przed spamem przez Cloudflare Turnstile. Skonfigurowaliśmy domenę i wdrożyliśmy stronę na Cloudflare Pages.",
         },
       ],
       liveCta: "Zobacz stronę na żywo",

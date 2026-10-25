@@ -122,18 +122,17 @@ export const en: Dictionary = {
           "A multi-page website for a Białystok construction company: a services overview, a filterable project gallery and an inquiry form.",
         scope: ["Visual design", "Development", "Mobile version", "Contact form", "SEO"],
       },
-      // Not published yet — requires the client's consent (see projects.ts).
       "pracownia-s": {
-        sector: "Floristry",
+        sector: "Floral design",
         summary:
-          "A website for a Białystok floristry studio: wedding and event offer, portfolio and a contact form.",
+          "A website for a floral design studio in Białystok, Poland: service pages for weddings, celebrations and bouquets, Sanity-powered galleries and an inquiry form.",
         scope: [
-          "Visual design",
+          "Website design",
           "Development",
           "Sanity CMS",
-          "Contact form with Turnstile",
-          "SEO and maintenance",
-          "Domain setup and Cloudflare Pages",
+          "Form with Cloudflare Turnstile",
+          "Domain setup",
+          "Cloudflare Pages",
         ],
       },
     },
@@ -761,7 +760,7 @@ export const en: Dictionary = {
     meta: {
       title: "Work — Websites for Small Businesses | Wertus Digital",
       description:
-        "Selected websites we designed and built, including Lech-Bud — a multi-page website for a construction company with a filterable project gallery and an inquiry form.",
+        "Selected websites we designed and built: case studies for Lech-Bud, a construction company, and Pracownia S., a floral design studio — both in Białystok, Poland.",
     },
     hero: {
       label: "SELECTED WORK",
@@ -769,7 +768,7 @@ export const en: Dictionary = {
       headingAccent: "businesses.",
       description:
         "We design and build websites that pair a considered visual layer with a clear structure, responsive behavior and solid technical execution.",
-      countLabel: "01 PROJECT",
+      countLabel: "02 PROJECTS",
       yearLabel: "2026",
     },
     caseStudy: {
@@ -820,6 +819,62 @@ export const en: Dictionary = {
         {
           area: "Mobile version",
           text: "An interface adapted to phones without cutting back on the functionality of the desktop version.",
+        },
+      ],
+      liveCta: "View live website",
+      liveExternalHint: "opens in a new tab",
+    },
+    caseStudyPracowniaS: {
+      label: "CASE STUDY",
+      name: "PRACOWNIA S.",
+      subtitle: "Website for a floral design studio",
+      description:
+        "A multi-page website for a floral design studio in Białystok, Poland, that creates wedding florals, decorations for family celebrations, and bouquets and arrangements. We designed and built it from scratch: dedicated service pages, project galleries powered by Sanity CMS and an inquiry form. The logo and photography belong to the studio — our job was to build a clear, cohesive website around them.",
+      metaLabel: "ABOUT THE PROJECT",
+      scopeLabel: "SCOPE",
+      scope: [
+        "Website design",
+        "Development",
+        "Service pages",
+        "Filterable galleries",
+        "Sanity CMS",
+        "Inquiry form",
+        "Domain setup",
+        "Cloudflare Pages",
+      ],
+      sectorLabel: "SECTOR",
+      sector: "Floral design",
+      mainCaption: "HOMEPAGE",
+      mainAlt:
+        "Pracownia S. homepage on desktop — headline about flowers and decorations for special occasions next to wedding photos with a bouquet.",
+      galleryLabel: "OVERVIEW",
+      shots: {
+        worksDesktopLabel: "WEDDINGS PAGE — DESKTOP",
+        worksDesktopAlt:
+          "The weddings service page on desktop — headline over a photo of a table decorated with flowers and candles.",
+        homeMobileLabel: "HOMEPAGE — MOBILE",
+        homeMobileAlt:
+          "Pracownia S. homepage on mobile — the main headline and contact buttons.",
+        contactDesktopLabel: "INQUIRY FORM — DESKTOP",
+        contactDesktopAlt:
+          "Inquiry form on the contact page — fields for name, phone, email, type of order, planned date and message, plus Cloudflare Turnstile verification.",
+        worksMobileLabel: "BOUQUET GALLERY — MOBILE",
+        worksMobileAlt:
+          "The bouquet and arrangement gallery on mobile — category filters and a grid of bouquet photos.",
+      },
+      solutionLabel: "WHAT WE DELIVERED",
+      solution: [
+        {
+          area: "Structure and design",
+          text: "Services split into weddings, celebrations, and bouquets and arrangements — each with its own page, and an indicative price list for bouquets. The design is built around the studio's photography and brand identity.",
+        },
+        {
+          area: "Sanity CMS",
+          text: "Photos in the service page galleries come from Sanity CMS, so the studio can update them without touching the code. The arrangement gallery can be filtered by category.",
+        },
+        {
+          area: "Form and deployment",
+          text: "An inquiry form with fields tailored to orders — type and planned date — protected from spam with Cloudflare Turnstile. We set up the domain and deployed the site to Cloudflare Pages.",
         },
       ],
       liveCta: "View live website",
