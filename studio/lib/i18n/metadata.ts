@@ -4,7 +4,7 @@ import { ogLocale, type Locale } from "./config";
 import { routes, type RouteKey } from "./routes";
 
 /** Canonical production origin — used for hreflang / OpenGraph foundation. */
-const SITE_URL = "https://wertusdigital.pl";
+export const SITE_URL = "https://wertusdigital.pl";
 
 /**
  * Build per-page metadata with correct canonical + hreflang alternates
@@ -30,7 +30,7 @@ export function buildMetadata(
       canonical: path,
       languages: {
         "pl-PL": routes[key].pl,
-        "en-GB": routes[key].en,
+        "en-US": routes[key].en,
         "x-default": routes[key].pl,
       },
     },

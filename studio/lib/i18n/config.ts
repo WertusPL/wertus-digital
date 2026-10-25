@@ -7,12 +7,12 @@ export const defaultLocale: Locale = "pl";
 /** BCP-47 tags used for <html lang> and OpenGraph. */
 export const htmlLang: Record<Locale, string> = {
   pl: "pl-PL",
-  en: "en-GB",
+  en: "en-US",
 };
 
 export const ogLocale: Record<Locale, string> = {
   pl: "pl_PL",
-  en: "en_GB",
+  en: "en_US",
 };
 
 export function isLocale(value: string): value is Locale {
