@@ -2,6 +2,9 @@
 
 import { motion } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
+import type { Locale } from "@/lib/i18n/config";
+import { routes } from "@/lib/i18n/routes";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { InView } from "@/components/motion/InView";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -15,7 +18,13 @@ const y10 = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
-export function MoreWork({ more }: { more: Dictionary["workPage"]["more"] }) {
+export function MoreWork({
+  locale,
+  more,
+}: {
+  locale: Locale;
+  more: Dictionary["workPage"]["more"];
+}) {
   return (
     <section aria-labelledby="more-work-heading" className="pb-20 lg:pb-28">
       <div className="wd-container">
@@ -47,6 +56,10 @@ export function MoreWork({ more }: { more: Dictionary["workPage"]["more"] }) {
           >
             {more.description}
           </motion.p>
+
+          <motion.div variants={y10} className="mt-6">
+            <ArrowLink href={routes.services[locale]} label={more.servicesCta} />
+          </motion.div>
         </InView>
       </div>
     </section>

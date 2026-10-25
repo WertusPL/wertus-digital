@@ -53,6 +53,7 @@ export type Dictionary = {
     kicker: string; // section label, e.g. "STUDIO" (index "01 /" is structural)
     headline: string[]; // main heading, one entry per line
     description: string;
+    aboutCta: string; // contextual link to the studio page
     pillars: Array<{
       eyebrow: string; // DESIGN / DEVELOPMENT / GROWTH
       headline: string;
@@ -212,6 +213,7 @@ export type Dictionary = {
       label: string; // "01 /" is structural; this is "CO TWORZYMY"
       heading: string[]; // one entry per line
       description: string;
+      caseStudyCta: string; // contextual link to the Lech-Bud case study
       bestForLabel: string;
       includesLabel: string;
       previewLabels: { pages: string; cms: string; scope: string };
@@ -335,6 +337,7 @@ export type Dictionary = {
     more: {
       heading: string; // "Kolejne realizacje już wkrótce."
       description: string;
+      servicesCta: string; // contextual link to the services page
     };
     finalCta: {
       label: string;
@@ -385,6 +388,8 @@ export type Dictionary = {
       label: string; // "ZAKRES" / "CAPABILITIES"
       heading: string[];
       items: string[]; // typographic list, no per-item descriptions
+      servicesCta: string; // contextual link to the services page
+      workCta: string; // contextual link to the work page
     };
     tech: {
       index: string; // "05"

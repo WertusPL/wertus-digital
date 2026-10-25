@@ -181,7 +181,7 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "The contact form works without cookies. Form data is sent to us as an e-mail message — you'll find more in the {link}.",
+          text: "The contact form works without cookies. Form data is sent to us as an email message — you'll find more in the {link}.",
           link: { label: "Privacy Policy", href: "/en/privacy-policy" },
         },
       ],

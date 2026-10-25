@@ -2,6 +2,9 @@
 
 import { motion } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
+import type { Locale } from "@/lib/i18n/config";
+import { routes } from "@/lib/i18n/routes";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { cn } from "@/lib/utils";
 import { AnimatedGroup } from "@/components/motion/AnimatedGroup";
 import { InView } from "@/components/motion/InView";
@@ -36,7 +39,13 @@ const pillarsVariants = {
   },
 };
 
-export function StudioSection({ studio }: { studio: Dictionary["studio"] }) {
+export function StudioSection({
+  locale,
+  studio,
+}: {
+  locale: Locale;
+  studio: Dictionary["studio"];
+}) {
   return (
     <section
       id="studio"
@@ -76,6 +85,10 @@ export function StudioSection({ studio }: { studio: Dictionary["studio"] }) {
           >
             {studio.description}
           </motion.p>
+
+          <motion.div variants={descVar} className="md:col-span-7 md:col-start-5">
+            <ArrowLink href={routes.studio[locale]} label={studio.aboutCta} />
+          </motion.div>
         </InView>
 
         {/* Three pillars — separated by hairlines, never cards */}

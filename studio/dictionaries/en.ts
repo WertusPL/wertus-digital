@@ -1,6 +1,6 @@
 import type { Dictionary } from "./types";
 
-// Natural British English — written for the language, not translated word-for-word.
+// Natural American English — written for the language, not translated word-for-word.
 export const en: Dictionary = {
   nav: {
     services: "Services",
@@ -27,7 +27,7 @@ export const en: Dictionary = {
         subtitle: "Design and development for complete business websites.",
         previewTitle: "Websites",
         previewText:
-          "We design and build business websites — from structure and UI through to development and launch.",
+          "We design and build business websites — from structure and UI all the way to development and launch.",
         microLabels: ["UX", "UI", "RESPONSIVE", "DEVELOPMENT"],
       },
       {
@@ -57,7 +57,7 @@ export const en: Dictionary = {
         subtitle: "Ongoing support, updates and development after launch.",
         previewTitle: "Care & Growth",
         previewText:
-          "Updates, optimisation and continued development once the website is live.",
+          "Updates, optimization and continued development once the website is live.",
         microLabels: ["MAINTAIN", "UPDATE", "IMPROVE"],
       },
     ],
@@ -69,7 +69,7 @@ export const en: Dictionary = {
       [{ text: "found the " }, { text: "right", accent: true }, { text: " business." }],
     ],
     description:
-      "We design and build websites that clearly present your services, build trust, and make it easier for customers to get in touch.",
+      "We design and build custom websites for small businesses — sites that clearly present your services, build trust and make it easier for customers to get in touch.",
     primaryCta: "Start a project",
     secondaryCta: "View our work",
     factsLabel: "At a glance",
@@ -84,7 +84,8 @@ export const en: Dictionary = {
     kicker: "STUDIO",
     headline: ["Design, technology", "and strategy in one place."],
     description:
-      "Wertus Digital creates websites that combine thoughtful design, solid development and a clear business purpose.",
+      "Wertus Digital is an independent web design studio based in Poland, working with clients locally and remotely. Every website combines thoughtful design, solid development and a clear business purpose.",
+    aboutCta: "About the studio",
     pillars: [
       {
         eyebrow: "DESIGN",
@@ -118,7 +119,7 @@ export const en: Dictionary = {
       lechbud: {
         sector: "Construction",
         summary:
-          "A multi-page website for a Białystok construction company: a services offer, a filterable project gallery and an enquiry form.",
+          "A multi-page website for a Białystok construction company: a services overview, a filterable project gallery and an inquiry form.",
         scope: ["Visual design", "Development", "Mobile version", "Contact form", "SEO"],
       },
       // Not published yet — requires the client's consent (see projects.ts).
@@ -186,7 +187,7 @@ export const en: Dictionary = {
           "Simple editing panel",
           "Changes without a developer",
           "Grows without a rebuild",
-          "Well-organised content",
+          "Well-organized content",
         ],
       },
       {
@@ -199,7 +200,7 @@ export const en: Dictionary = {
         benefits: [
           "Updates",
           "Small changes as you go",
-          "Optimisation",
+          "Optimization",
           "Ongoing support",
         ],
       },
@@ -221,7 +222,7 @@ export const en: Dictionary = {
         id: "direction",
         title: "Structure",
         description:
-          "We decide which pages and content are needed and how to guide visitors towards getting in touch.",
+          "We decide which pages and content are needed and how to guide visitors toward getting in touch.",
       },
       {
         id: "design",
@@ -281,7 +282,7 @@ export const en: Dictionary = {
         name: "Care & growth",
         price: "from PLN 249 / month",
         description:
-          "Updates, small improvements, optimisation and continued development after launch.",
+          "Updates, small improvements, optimization and continued development after launch.",
       },
     ],
   },
@@ -295,7 +296,7 @@ export const en: Dictionary = {
         id: "timeline",
         question: "How long does a website take to build?",
         answer:
-          "It depends on the scope. A focused landing page can be completed more quickly, while a larger website with a CMS and additional functionality will take longer. We agree the timeline before work begins.",
+          "It depends on the scope. A focused landing page can be completed more quickly, while a larger website with a CMS and additional functionality will take longer. We agree on the timeline before work begins.",
       },
       {
         id: "editing",
@@ -339,16 +340,16 @@ export const en: Dictionary = {
   },
   contactPage: {
     meta: {
-      title: "Contact — Wertus Digital",
+      title: "Contact & Free Website Quote | Wertus Digital",
       description:
-        "Tell us about your project. We'll review the scope and prepare a clear proposal for your new website.",
+        "Tell us about your project and we'll put together a free, no-obligation quote for your new website. Reach us through the form, by email or by phone.",
     },
     hero: {
       label: "CONTACT / START A PROJECT",
       headingLead: "Tell us about your ",
       headingAccent: "project.",
       description:
-        "Tell us what you need and we'll come back with a clear response and the next steps.",
+        "Tell us what you need and we'll get back to you with a clear response and the next steps.",
       microcopy: "The initial conversation and quote are free of charge.",
       panelLabel: "CONTACT DETAILS",
       statusLabel: "STATUS",
@@ -403,11 +404,11 @@ export const en: Dictionary = {
         { value: "unsure", label: "not sure yet" },
       ],
       privacy: {
-        pre: "By submitting the form, you agree to be contacted regarding your enquiry. Details are available in the ",
+        pre: "By submitting the form, you agree to be contacted regarding your inquiry. Details are available in the ",
         linkLabel: "Privacy Policy",
         post: ".",
       },
-      submit: "Send enquiry",
+      submit: "Send inquiry",
       submitting: "Sending…",
       success: {
         heading: "Thank you. Your message has been sent.",
@@ -434,13 +435,13 @@ export const en: Dictionary = {
       steps: [
         {
           index: "01",
-          title: "We review your enquiry",
+          title: "We review your inquiry",
           description:
             "We look through the project details and the information you've provided.",
         },
         {
           index: "02",
-          title: "We come back to you",
+          title: "We get back to you",
           description:
             "If needed, we ask a few questions and clarify the scope.",
         },
@@ -460,17 +461,17 @@ export const en: Dictionary = {
   },
   servicesPage: {
     meta: {
-      title: "Services — Web Design & Development | Wertus Digital",
+      title: "Small Business Website Design & Development | Wertus Digital",
       description:
-        "Web design and development for businesses — from focused landing pages to larger websites with CMS and ongoing support.",
+        "Custom landing pages, business websites and larger CMS-powered sites for small businesses. Transparent starting prices and a free, no-obligation quote.",
     },
     hero: {
-      label: "SERVICES / WEB DESIGN & DEVELOPMENT",
+      label: "SERVICES / SMALL BUSINESS WEBSITE DEVELOPMENT",
       headingLine1: "A website built",
       headingLine2Lead: "around ",
       headingAccent: "your business.",
       description:
-        "We design and build websites around the brand, project scope and the purpose the website needs to serve.",
+        "We design and build custom websites for small businesses — shaped around your brand, scope and goals.",
       secondary:
         "From focused landing pages to larger websites with a CMS and ongoing support after launch.",
       primaryCta: "Request a quote",
@@ -488,7 +489,8 @@ export const en: Dictionary = {
       label: "WHAT WE BUILD",
       heading: ["Three levels of scope.", "One standard of execution."],
       description:
-        "These aren't artificial packages — they're three kinds of project. We shape the scope around what the website needs to do, not the other way round.",
+        "These aren't artificial packages — they're three kinds of project. We shape the scope around what the website needs to do, not the other way around.",
+      caseStudyCta: "See the Lech-Bud case study",
       bestForLabel: "Best for",
       includesLabel: "Includes",
       previewLabels: { pages: "Pages", cms: "CMS", scope: "Character" },
@@ -500,15 +502,15 @@ export const en: Dictionary = {
           name: "LANDING PAGE",
           headline: "A focused page. One clear goal.",
           description:
-            "A carefully designed one-page website for a service, campaign, product or offer, built to communicate value clearly and guide visitors towards action.",
+            "A carefully designed one-page website for a service, campaign, product or offer, built to communicate value clearly and guide visitors toward action.",
           bestFor:
             "A good fit when your communication needs to focus on one specific offer.",
           includes: [
-            "Bespoke layout",
+            "Custom layout",
             "Responsive design",
             "Contact form / CTA",
             "Technical SEO foundations",
-            "Speed optimisation",
+            "Speed optimization",
             "Deployment",
           ],
           price: "from PLN 1,200",
@@ -630,7 +632,7 @@ export const en: Dictionary = {
           scope: [
             "Updates",
             "Small changes",
-            "Optimisation",
+            "Optimization",
             "Development",
             "Technical support",
           ],
@@ -685,7 +687,7 @@ export const en: Dictionary = {
       resultLead: "Closest scope",
       cta: "Discuss the project",
       disclaimer:
-        "This isn't an automatic quote — just a hint on where to start. We agree the exact scope after a conversation.",
+        "This isn't an automatic quote — just a hint on where to start. We agree on the exact scope after a conversation.",
     },
     pricing: {
       label: "STARTING PRICES",
@@ -718,7 +720,7 @@ export const en: Dictionary = {
           id: "individual",
           question: "Is every website designed individually?",
           answer:
-            "Yes. The visual direction and structure are tailored to the specific business and project scope. We don't sell a single ready-made mock-up changed only through colours and text.",
+            "Yes. The visual direction and structure are tailored to the specific business and project scope. We don't sell a single ready-made mockup changed only through colors and text.",
         },
         {
           id: "cms-included",
@@ -757,16 +759,16 @@ export const en: Dictionary = {
   },
   workPage: {
     meta: {
-      title: "Work | Wertus Digital",
+      title: "Work — Websites for Small Businesses | Wertus Digital",
       description:
-        "Selected websites designed and built by Wertus Digital.",
+        "Selected websites we designed and built, including Lech-Bud — a multi-page website for a construction company with a filterable project gallery and an inquiry form.",
     },
     hero: {
       label: "SELECTED WORK",
-      headingLead: "Digital work built around real ",
+      headingLead: "Websites built around real ",
       headingAccent: "businesses.",
       description:
-        "We design and build websites that pair a considered visual layer with a clear structure, responsive behaviour and solid technical execution.",
+        "We design and build websites that pair a considered visual layer with a clear structure, responsive behavior and solid technical execution.",
       countLabel: "01 PROJECT",
       yearLabel: "2026",
     },
@@ -800,7 +802,7 @@ export const en: Dictionary = {
           "Lech-Bud homepage on mobile — hero and services section adapted to a phone screen.",
         contactDesktopLabel: "CONTACT — DESKTOP",
         contactDesktopAlt:
-          "Lech-Bud contact page on desktop — contact details next to an enquiry form.",
+          "Lech-Bud contact page on desktop — contact details next to an inquiry form.",
         worksMobileLabel: "WORK — MOBILE",
         worksMobileAlt:
           "Lech-Bud projects page on mobile — filterable gallery laid out for a phone.",
@@ -827,6 +829,7 @@ export const en: Dictionary = {
       heading: "More projects coming soon.",
       description:
         "The Wertus Digital portfolio will grow as new projects go live.",
+      servicesCta: "Explore services and starting prices",
     },
     finalCta: {
       label: "CONTACT",
@@ -838,9 +841,9 @@ export const en: Dictionary = {
   },
   studioPage: {
     meta: {
-      title: "About the studio | Wertus Digital",
+      title: "About Wertus Digital — Independent Web Design Studio",
       description:
-        "Meet Wertus Digital — an independent web studio based in Białystok, designing and building modern websites for businesses.",
+        "Wertus Digital is an independent web design studio based in Białystok, Poland. We work directly with small businesses — in Poland and remotely with clients abroad, including the US.",
     },
     hero: {
       label: "ABOUT THE STUDIO",
@@ -854,7 +857,7 @@ export const en: Dictionary = {
       metaItems: [
         { label: "Model", value: "Independent web studio" },
         { label: "Location", value: "Białystok / Poland" },
-        { label: "Reach", value: "Clients across Poland" },
+        { label: "Reach", value: "Poland and remote, incl. the US" },
         { label: "Working style", value: "Remote, direct" },
       ],
     },
@@ -943,6 +946,8 @@ export const en: Dictionary = {
         "Redesign",
         "Care & growth",
       ],
+      servicesCta: "Explore services",
+      workCta: "View our work",
     },
     tech: {
       index: "05",
@@ -955,13 +960,13 @@ export const en: Dictionary = {
     location: {
       label: "WORKING TOGETHER",
       place: "Białystok / Poland",
-      body: "We work with businesses across Poland through a straightforward remote process.",
+      body: "We work with businesses across Poland and take on remote projects for clients abroad, including the US.",
     },
     finalCta: {
       label: "CONTACT",
       heading: ["Let's talk", "about your project."],
       description:
-        "Tell us what you need. We'll come back with a proposed scope and next steps.",
+        "Tell us what you need. We'll get back to you with a proposed scope and next steps.",
       primaryCta: "Start a project",
       secondary: "Or email us at",
     },
@@ -980,8 +985,8 @@ export const en: Dictionary = {
     copyright: "All rights reserved.",
   },
   meta: {
-    title: "Wertus Digital — web design & development studio",
+    title: "Custom Website Design for Small Businesses | Wertus Digital",
     description:
-      "A boutique digital studio based in Białystok, Poland. We design and build modern websites that build trust and help businesses win new customers.",
+      "An independent web design studio based in Poland. We design and build custom websites for small businesses — clear, fast and built to turn visitors into inquiries.",
   },
 };

@@ -9,6 +9,7 @@ import { FaqSection } from "@/components/faq/FaqSection";
 import { FinalCtaSection } from "@/components/contact/FinalCtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { buildMetadata } from "@/lib/i18n/metadata";
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 
 // Section numbers are contiguous over the visible sections (Studio 01,
 // Selected work 02 … Contact 07). Selected work lists real client projects
@@ -21,8 +22,9 @@ export default function HomePagePl() {
   const work = publishedWork(dict.work);
   return (
     <>
+      <OrganizationJsonLd description={dict.meta.description} />
       <Hero locale="pl" hero={dict.hero} />
-      <StudioSection studio={dict.studio} />
+      <StudioSection locale="pl" studio={dict.studio} />
       <SelectedWork locale="pl" projects={work.projects} work={work.work} />
       <ServicesSection locale="pl" services={dict.services} />
       <ProcessSection locale="pl" process={dict.process} />

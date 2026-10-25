@@ -2,6 +2,9 @@
 
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/dictionaries/types";
+import type { Locale } from "@/lib/i18n/config";
+import { routes } from "@/lib/i18n/routes";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { InView } from "@/components/motion/InView";
 import { SectionIntro } from "./SectionIntro";
 
@@ -12,8 +15,10 @@ const reveal = {
 };
 
 export function StudioCapabilities({
+  locale,
   capabilities,
 }: {
+  locale: Locale;
   capabilities: Dictionary["studioPage"]["capabilities"];
 }) {
   const items = capabilities.items;
@@ -54,6 +59,11 @@ export function StudioCapabilities({
               </li>
             ))}
           </ul>
+
+          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
+            <ArrowLink href={routes.services[locale]} label={capabilities.servicesCta} />
+            <ArrowLink href={routes.work[locale]} label={capabilities.workCta} />
+          </div>
         </InView>
       </div>
     </section>

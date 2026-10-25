@@ -33,53 +33,27 @@ export function StudioProcess({
           description={process.description}
         />
 
-        {/* Desktop — horizontal axis, one node per stage */}
+        {/* One list for every breakpoint (no duplicated headings in the DOM).
+            Mobile: vertical timeline with a connecting rail.
+            md+: horizontal axis, one column per stage. */}
         <InView
           as="div"
           variants={reveal}
-          viewOptions={{ once: true, margin: "0px 0px -12% 0px" }}
-          className="mt-14 hidden border-t border-[var(--border-light)] pt-10 md:block lg:mt-16 lg:pt-12"
+          viewOptions={{ once: true, margin: "0px 0px -10% 0px" }}
+          className="mt-10 md:mt-14 md:border-t md:border-[var(--border-light)] md:pt-10 lg:mt-16 lg:pt-12"
         >
-          <ol className="grid grid-cols-4 gap-x-8">
+          <ol className="md:grid md:grid-cols-4 md:gap-x-8">
             {steps.map((step, i) => (
               <li
                 key={step.index}
                 className={cn(
-                  i > 0 && "border-l border-[var(--border-light)] pl-8",
-                  i < lastIndex && "pr-8",
+                  "flex gap-5 md:block",
+                  i > 0 && "md:border-l md:border-[var(--border-light)] md:pl-8",
+                  i < lastIndex && "md:pr-8",
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-label tabular-nums text-accent">
-                    {step.index}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="h-px flex-1 bg-[var(--border-light)]"
-                  />
-                </div>
-                <h3 className="mt-5 text-[1.15rem] font-medium leading-[1.2] tracking-[-0.01em] text-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-[1.55] text-muted">
-                  {step.description}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </InView>
-
-        {/* Mobile — vertical timeline with a connecting rail */}
-        <InView
-          as="div"
-          variants={reveal}
-          viewOptions={{ once: true, margin: "0px 0px -8% 0px" }}
-          className="mt-10 md:hidden"
-        >
-          <ol>
-            {steps.map((step, i) => (
-              <li key={step.index} className="flex gap-5">
-                <div className="flex flex-col items-center">
+                {/* Mobile rail */}
+                <div className="flex flex-col items-center md:hidden">
                   <span className="text-label tabular-nums text-accent">
                     {step.index}
                   </span>
@@ -90,11 +64,22 @@ export function StudioProcess({
                     />
                   )}
                 </div>
-                <div className={cn(i < lastIndex ? "pb-9" : "pb-0")}>
-                  <h3 className="text-[1.2rem] font-medium leading-[1.2] tracking-[-0.01em] text-ink">
+
+                <div className={cn(i < lastIndex ? "pb-9" : "pb-0", "md:pb-0")}>
+                  {/* md+ axis node */}
+                  <div className="hidden items-center gap-3 md:flex">
+                    <span className="text-label tabular-nums text-accent">
+                      {step.index}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="h-px flex-1 bg-[var(--border-light)]"
+                    />
+                  </div>
+                  <h3 className="text-[1.2rem] font-medium leading-[1.2] tracking-[-0.01em] text-ink md:mt-5 md:text-[1.15rem]">
                     {step.title}
                   </h3>
-                  <p className="mt-2.5 text-[15px] leading-[1.55] text-muted">
+                  <p className="mt-2.5 text-[15px] leading-[1.55] text-muted md:mt-3 md:text-[14px]">
                     {step.description}
                   </p>
                 </div>

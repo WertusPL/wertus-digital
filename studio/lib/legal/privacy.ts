@@ -275,7 +275,7 @@ const en: LegalDoc = {
   updated: "2 September 2026",
   intro: [
     "This policy explains what personal data we collect through the Wertus Digital website, why and on what basis we process it, and what rights you have. We try to keep it plain and specific.",
-    "The website is informational. We do not run user accounts, registration, a newsletter or e-mail marketing.",
+    "The website is informational. We do not run user accounts, registration, a newsletter or email marketing.",
   ],
   contactPanel: {
     label: "DATA CONTROLLER",
@@ -283,7 +283,7 @@ const en: LegalDoc = {
       { label: "Controller", value: "Kacper Niedzielko, operating under the Wertus Digital brand" },
       { label: "Location", value: "Białystok, Poland" },
       {
-        label: "E-mail",
+        label: "Email",
         value: "kontakt@wertusdigital.pl",
         href: "mailto:kontakt@wertusdigital.pl",
       },
@@ -317,7 +317,7 @@ const en: LegalDoc = {
           type: "ul",
           items: [
             "your name,",
-            "e-mail address,",
+            "email address,",
             "company name,",
             "the selected type of service and — optionally — an approximate budget,",
             "the message content and anything else you choose to include (e.g. a phone number, if you add one).",
@@ -325,7 +325,7 @@ const en: LegalDoc = {
         },
         {
           type: "p",
-          text: "We do not ask for special-category data and do not collect anything that isn't needed to answer your enquiry.",
+          text: "We do not ask for special-category data and do not collect anything that isn't needed to answer your inquiry.",
         },
       ],
     },
@@ -340,8 +340,8 @@ const en: LegalDoc = {
         {
           type: "ul",
           items: [
-            "to answer your enquiry and carry on the correspondence — based on our legitimate interest in handling contact (Art. 6(1)(f) GDPR);",
-            "to take steps towards concluding and performing a contract, where your enquiry concerns that — based on Art. 6(1)(b) GDPR;",
+            "to answer your inquiry and carry on the correspondence — based on our legitimate interest in handling contact (Art. 6(1)(f) GDPR);",
+            "to take steps towards concluding and performing a contract, where your inquiry concerns that — based on Art. 6(1)(b) GDPR;",
             "to establish, exercise or defend possible claims — based on our legitimate interest (Art. 6(1)(f) GDPR).",
           ],
         },
@@ -353,11 +353,11 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "The form is used solely to send an enquiry and to contact you about potential collaboration. Submitted data reaches us as an e-mail message.",
+          text: "The form is used solely to send an inquiry and to contact you about potential collaboration. Submitted data reaches us as an email message.",
         },
         {
           type: "p",
-          text: "The form contains: name, e-mail, company, type of service, budget (optional) and the message. There is no mandatory marketing consent and no newsletter sign-up, because we don't run those.",
+          text: "The form contains: name, email, company, type of service, budget (optional) and the message. There is no mandatory marketing consent and no newsletter sign-up, because we don't run those.",
         },
         {
           type: "p",
@@ -367,11 +367,11 @@ const en: LegalDoc = {
     },
     {
       id: "correspondence",
-      heading: "E-mail and phone contact",
+      heading: "Email and phone contact",
       blocks: [
         {
           type: "p",
-          text: "If you contact us directly — by e-mail or phone — we process the data you provide (e.g. e-mail address, phone number, message content) to handle the contact and reply.",
+          text: "If you contact us directly — by email or phone — we process the data you provide (e.g. email address, phone number, message content) to handle the contact and reply.",
         },
       ],
     },
@@ -401,7 +401,7 @@ const en: LegalDoc = {
           type: "ul",
           items: [
             "Vercel Inc. — the hosting provider whose infrastructure runs the site;",
-            "e-mail providers (currently Google — Gmail), through which form messages and correspondence are sent, received and stored.",
+            "email providers (currently Google — Gmail), through which form messages and correspondence are sent, received and stored.",
           ],
         },
         {
@@ -426,7 +426,7 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Data related to an ordinary enquiry is kept for as long as needed to handle the contact, and then for a maximum of 12 months from the end of the correspondence. We keep data longer only where:",
+          text: "Data related to an ordinary inquiry is kept for as long as needed to handle the contact, and then for a maximum of 12 months from the end of the correspondence. We keep data longer only where:",
         },
         {
           type: "ul",
@@ -477,7 +477,7 @@ const en: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Providing your data is voluntary but necessary to answer your enquiry. Without contact details we won't be able to get back to you.",
+          text: "Providing your data is voluntary but necessary to answer your inquiry. Without contact details we won't be able to get back to you.",
         },
       ],
     },

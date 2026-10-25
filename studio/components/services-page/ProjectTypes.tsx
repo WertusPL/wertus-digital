@@ -4,6 +4,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import type { Dictionary } from "@/dictionaries/types";
 import type { Locale } from "@/lib/i18n/config";
+import { routes } from "@/lib/i18n/routes";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { cn } from "@/lib/utils";
 import { InView } from "@/components/motion/InView";
 import { AnimatedGroup } from "@/components/motion/AnimatedGroup";
@@ -93,6 +95,10 @@ export function ProjectTypes({
           >
             {projectTypes.description}
           </motion.p>
+
+          <motion.div variants={y10} className="md:col-span-7 md:col-start-5">
+            <ArrowLink href={routes.work[locale]} label={projectTypes.caseStudyCta} />
+          </motion.div>
         </InView>
 
         {/* Desktop: list + dynamic preview */}

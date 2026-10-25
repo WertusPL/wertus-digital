@@ -21,7 +21,7 @@ export default function StudioPagePl() {
       <StudioApproach approach={s.approach} />
       <StudioDifference difference={s.difference} />
       <StudioProcess process={s.process} />
-      <StudioCapabilities capabilities={s.capabilities} />
+      <StudioCapabilities locale="pl" capabilities={s.capabilities} />
       <StudioTech tech={s.tech} />
       <StudioLocation location={s.location} />
       <ServicesFinalCta finalCta={s.finalCta} locale="pl" />

@@ -16,7 +16,7 @@ export default function WorkPageEn() {
     <>
       <WorkHero hero={w.hero} />
       <CaseStudy copy={w.caseStudy} data={LECHBUD} />
-      <MoreWork more={w.more} />
+      <MoreWork locale="en" more={w.more} />
       <ServicesFinalCta finalCta={w.finalCta} locale="en" />
     </>
   );

@@ -68,7 +68,7 @@ export const pl: Dictionary = {
       [{ text: "do " }, { text: "właściwej", accent: true }, { text: " firmy." }],
     ],
     description:
-      "Projektujemy i wdrażamy strony internetowe, które jasno prezentują ofertę, budują zaufanie i ułatwiają klientom kontakt z Twoją firmą.",
+      "Projektujemy i wdrażamy strony internetowe dla firm — takie, które jasno prezentują ofertę, budują zaufanie i ułatwiają klientom kontakt.",
     primaryCta: "Rozpocznij projekt",
     secondaryCta: "Zobacz realizacje",
     factsLabel: "W skrócie",
@@ -83,7 +83,8 @@ export const pl: Dictionary = {
     kicker: "STUDIO",
     headline: ["Design, technologia", "i strategia w jednym miejscu."],
     description:
-      "Wertus Digital tworzy strony internetowe, które łączą dopracowany design, solidne wdrożenie i konkretny cel biznesowy.",
+      "Wertus Digital to studio z Białegostoku, które zajmuje się projektowaniem i tworzeniem stron internetowych — łącząc dopracowany design, solidne wdrożenie i konkretny cel biznesowy.",
+    aboutCta: "Poznaj studio",
     pillars: [
       {
         eyebrow: "DESIGN",
@@ -338,9 +339,9 @@ export const pl: Dictionary = {
   },
   contactPage: {
     meta: {
-      title: "Kontakt — Wertus Digital",
+      title: "Kontakt i bezpłatna wycena strony | Wertus Digital",
       description:
-        "Opowiedz nam o swoim projekcie. Bezpłatnie poznamy zakres i przygotujemy propozycję realizacji strony internetowej.",
+        "Opisz swój projekt, a przygotujemy bezpłatną wycenę strony internetowej. Napisz przez formularz, wyślij e-mail lub zadzwoń — studio z Białegostoku, współpraca w całej Polsce.",
     },
     hero: {
       label: "KONTAKT / START PROJEKTU",
@@ -459,17 +460,17 @@ export const pl: Dictionary = {
   },
   servicesPage: {
     meta: {
-      title: "Oferta — strony internetowe | Wertus Digital",
+      title: "Projektowanie stron internetowych dla firm | Wertus Digital",
       description:
-        "Projektujemy i wdrażamy landing page, strony firmowe i rozbudowane strony internetowe z możliwością CMS i dalszej opieki.",
+        "Landing page od 1200 zł, strona firmowa od 2500 zł, rozbudowana strona od 4000 zł. Indywidualny projekt, wdrożenie i techniczne SEO, CMS zależnie od zakresu. Bezpłatna wycena.",
     },
     hero: {
-      label: "OFERTA / WEB DESIGN & DEVELOPMENT",
+      label: "OFERTA / PROJEKTOWANIE STRON INTERNETOWYCH",
       headingLine1: "Strona dopasowana",
       headingLine2Lead: "do ",
       headingAccent: "Twojego biznesu.",
       description:
-        "Projektujemy i wdrażamy strony internetowe dopasowane do marki, zakresu projektu i celu, jaki strona ma realizować.",
+        "Projektujemy i wdrażamy strony internetowe dla firm, dopasowane do marki, zakresu i celu, jaki strona ma realizować.",
       secondary:
         "Od prostego landing page po rozbudowany serwis z CMS i dalszym wsparciem po wdrożeniu.",
       primaryCta: "Poproś o wycenę",
@@ -488,6 +489,7 @@ export const pl: Dictionary = {
       heading: ["Trzy zakresy.", "Jeden standard wykonania."],
       description:
         "To nie są sztuczne pakiety, tylko trzy rodzaje projektu. Zakres dobieramy do tego, co strona ma realizować — nie odwrotnie.",
+      caseStudyCta: "Zobacz realizację Lech-Bud",
       bestForLabel: "Dla kogo",
       includesLabel: "W zakresie",
       previewLabels: { pages: "Podstrony", cms: "CMS", scope: "Charakter" },
@@ -756,13 +758,13 @@ export const pl: Dictionary = {
   },
   workPage: {
     meta: {
-      title: "Realizacje | Wertus Digital",
+      title: "Realizacje — strony internetowe dla firm | Wertus Digital",
       description:
-        "Wybrane strony internetowe zaprojektowane i wdrożone przez Wertus Digital.",
+        "Zobacz, jak projektujemy i wdrażamy strony internetowe dla firm. Case study Lech-Bud: strona firmy budowlanej z Białegostoku z galerią realizacji i formularzem zapytania.",
     },
     hero: {
       label: "WYBRANE REALIZACJE",
-      headingLead: "Projekty tworzone z myślą o realnym ",
+      headingLead: "Strony tworzone z myślą o realnym ",
       headingAccent: "biznesie.",
       description:
         "Projektujemy i wdrażamy strony internetowe, które łączą dopracowaną warstwę wizualną z czytelną strukturą, responsywnością i solidnym wykonaniem technicznym.",
@@ -826,6 +828,7 @@ export const pl: Dictionary = {
       heading: "Kolejne realizacje już wkrótce.",
       description:
         "Portfolio Wertus Digital będzie rozwijane wraz z premierami kolejnych projektów.",
+      servicesCta: "Zobacz ofertę i ceny startowe",
     },
     finalCta: {
       label: "KONTAKT",
@@ -837,9 +840,9 @@ export const pl: Dictionary = {
   },
   studioPage: {
     meta: {
-      title: "O studiu | Wertus Digital",
+      title: "O studiu — projektowanie stron w Białymstoku | Wertus Digital",
       description:
-        "Poznaj Wertus Digital — niezależne studio webowe z Białegostoku projektujące i wdrażające nowoczesne strony internetowe dla firm.",
+        "Wertus Digital to niezależne studio z Białegostoku. Projektujemy i wdrażamy strony internetowe dla firm z całej Polski, a zdalnie także dla klientów z zagranicy.",
     },
     hero: {
       label: "O STUDIU",
@@ -853,7 +856,7 @@ export const pl: Dictionary = {
       metaItems: [
         { label: "Model", value: "Niezależne studio webowe" },
         { label: "Lokalizacja", value: "Białystok / Polska" },
-        { label: "Zasięg", value: "Klienci z całej Polski" },
+        { label: "Zasięg", value: "Polska i zdalnie za granicą" },
         { label: "Współpraca", value: "Zdalnie, bezpośrednio" },
       ],
     },
@@ -942,6 +945,8 @@ export const pl: Dictionary = {
         "Redesign",
         "Opieka i rozwój",
       ],
+      servicesCta: "Zobacz ofertę",
+      workCta: "Zobacz realizacje",
     },
     tech: {
       index: "05",
@@ -954,7 +959,7 @@ export const pl: Dictionary = {
     location: {
       label: "WSPÓŁPRACA",
       place: "Białystok / Polska",
-      body: "Pracujemy z firmami z całej Polski — zdalnie i bez zbędnych komplikacji.",
+      body: "Pracujemy z firmami z całej Polski, a zdalnie także z klientami z zagranicy — bez zbędnych komplikacji.",
     },
     finalCta: {
       label: "KONTAKT",
@@ -979,8 +984,8 @@ export const pl: Dictionary = {
     copyright: "Wszelkie prawa zastrzeżone.",
   },
   meta: {
-    title: "Wertus Digital — studio projektowania i tworzenia stron internetowych",
+    title: "Tworzenie stron internetowych Białystok | Wertus Digital",
     description:
-      "Boutique digital studio z Białegostoku. Projektujemy i tworzymy nowoczesne strony internetowe, które budują zaufanie i pomagają firmom zdobywać klientów.",
+      "Wertus Digital to studio z Białegostoku. Projektujemy i tworzymy strony internetowe dla firm — indywidualny projekt, szybka i responsywna strona, techniczne SEO i CMS. Bezpłatna wycena.",
   },
 };
